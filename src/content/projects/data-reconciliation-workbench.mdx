@@ -1,0 +1,48 @@
+---
+title: "Data Reconciliation Workbench"
+slug: "data-reconciliation-workbench"
+date: "2024-06-01"
+tags:
+  - "Python"
+  - "PyQt6"
+  - "pandas"
+  - "SQLite"
+  - "Excel"
+track: "web-cloud"
+role: "Firmware → Full-stack Data Tools"
+context: "Built at an energy market operator (Colombia). This page shows a sanitized demo."
+repo: "https://github.com/carjes232/data-reconciliation-lite"
+summary: "Left/Right source comparison across DB/Excel/CSV with tolerance rules and Excel audit report."
+cover: "/images/projects/reconcile-cover.png"
+results:
+  - "Time to reconcile: 4–6h → <30m"
+  - "Mismatch rate reduced ~70% after rule tuning"
+badges:
+  - "Excel Automation"
+  - "Schema Mapping"
+  - "Tolerance Rules"
+xp: 120
+confidential: true
+---
+
+## Problem
+
+An energy market operator reconciled dispatch schedules across SCADA, Excel, and broker uploads. Analysts manually eyeballed differences, creating long delays and inconsistent audit trails during regulatory reviews.
+
+## Approach
+
+- Partnered with operations SMEs to map tolerance rules and exception workflows.
+- Assembled a **PyQt6** desktop app with modular plugins that load spreadsheets, SQL queries, or CSV drops.
+- Crafted a diff engine in **pandas** that normalizes units, applies tolerance bands, and flags anomalies with explanations.
+- Generated Excel audit packs with macros disabled, including pivot-ready tabs and sign-off cells for compliance.
+- Published a sanitized lite demo repo: mocked datasets + walkthrough scripts for recruiters and partners.
+
+## Results
+
+- Reduced reconciliation time from **4–6 hours** to **under 30 minutes**.
+- Cut mismatch rate by ~70% through iterative rule tuning and retention of prior decisions.
+- Enabled non-technical analysts to triage exceptions while leaving an immutable evidence trail.
+
+## Links
+
+- [Sanitized demo repository](https://github.com/carjes232/data-reconciliation-lite)

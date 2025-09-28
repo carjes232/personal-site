@@ -16,6 +16,13 @@
 # next.js
 /.next/
 /out/
+.contentlayer/
+/.swc/
+/.turbo/
+
+# editor
+.vscode/
+.idea/
 
 # production
 /build

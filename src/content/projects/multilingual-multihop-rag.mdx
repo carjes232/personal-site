@@ -1,0 +1,51 @@
+---
+title: "Multilingual Multi-Hop RAG"
+slug: "multilingual-multihop-rag"
+date: "2025-09-01"
+tags:
+  - "Python"
+  - "FastAPI"
+  - "pgvector"
+  - "Ollama"
+  - "RAG"
+track: "ai-backend"
+role: "ML & Backend"
+summary: "Local-first RAG with pgvector HNSW, BGE-M3, multilingual evals."
+repo: "https://github.com/carjes232/multilingual-multihop-rag"
+cover: "/images/projects/rag-cover.png"
+results:
+  - "Latency p50 2.8s / p95 4.9s"
+  - "+18% Recall@5 vs baseline"
+badges:
+  - "Dockerized"
+  - "RAG <5s p95"
+  - "Multilingual"
+xp: 120
+confidential: false
+featured: true
+---
+
+## Problem
+
+Customer support teams needed localized answer quality faster than LLM SaaS allowed. The incumbent pipeline combined a basic keyword search with manual translation passes, taking ~35 seconds per query and missing domain-specific synonyms across Spanish and Portuguese tickets.
+
+## Approach
+
+I built a local-first retrieval stack:
+
+- **FastAPI** orchestrates ingestion, chunking, and retrieval with async workers.
+- **BGE-M3** embeddings stored in **pgvector** using HNSW for sub-5s p95 latency on commodity hardware.
+- Adaptive prompt chain executes multilingual multi-hop reasoning: translate → retrieve → cite → synthesize.
+- Eval harness (Python + Pandas) measures recall@k and BLEU across Spanish/English corpora with automatically generated contrastive questions.
+- Infra packaged via Docker Compose with GPU optional path; GitHub Actions runs nightly regression evals.
+
+## Results
+
+- Latency p50 2.8s and p95 4.9s on a Ryzen 7 + RTX 3060 workstation.
+- Recall@5 improved **18%** over the keyword baseline, with automated alerts on drift.
+- Delivered an **offline-first** workflow enabling on-prem deployments in LATAM markets.
+
+## Links
+
+- [Source repository](https://github.com/carjes232/multilingual-multihop-rag)
+- [Architecture diagram →](#)

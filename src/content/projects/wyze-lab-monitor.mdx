@@ -1,0 +1,47 @@
+---
+title: "Wyze Lab Monitor"
+slug: "wyze-lab-monitor"
+date: "2024-03-22"
+tags:
+  - "Python"
+  - "FastAPI"
+  - "Computer Vision"
+  - "IoT"
+track: "firmware"
+role: "Embedded → Cloud"
+summary: "FastAPI service performing OCR on lab camera snapshots for compliance."
+repo: "https://github.com/carjes232/wyze-lab-monitor"
+cover: "/images/projects/wyze-cover.png"
+results:
+  - "Automated log capture every 5 minutes"
+  - "Compliance misses reduced from weekly to zero"
+badges:
+  - "Edge/IoT Roots"
+  - "OCR"
+  - "Alerting"
+xp: 95
+confidential: false
+featured: true
+---
+
+## Problem
+
+A biotech lab relied on Wyze cameras pointed at instrument panels to prove temperature and reagent compliance. Interns manually transcribed readings, leading to gaps and late-night audits.
+
+## Approach
+
+- Reverse-engineered Wyze camera RTSP feeds and deployed **Raspberry Pi** edge nodes to capture frames.
+- Wrote **OpenCV** pipelines with Tesseract OCR tuned for seven-segment displays and printed labels.
+- Aggregated readings via **FastAPI**, persisting to TimescaleDB and emitting alerts through Slack + SMS when drift exceeded thresholds.
+- Added a calibration UI running as a PWA so technicians could re-align bounding boxes in seconds.
+- Hardened stack with device watchdogs, systemd services, Prometheus exporters for uptime.
+
+## Results
+
+- Fully automated capture every 5 minutes with SLA-backed alerts.
+- Eliminated weekly compliance misses and improved audit readiness with downloadable CSV exports.
+- Reduced manual transcription time by 6+ hours per week across shifts.
+
+## Links
+
+- [Source repository](https://github.com/carjes232/wyze-lab-monitor)

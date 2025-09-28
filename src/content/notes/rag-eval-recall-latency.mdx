@@ -1,0 +1,17 @@
+---
+title: "RAG evaluation notes: recall@k vs latency"
+slug: "rag-eval-recall-latency"
+date: "2025-08-15"
+tags:
+  - "RAG"
+  - "Evaluation"
+summary: "Benchmarking recall@k trade-offs against multilingual latency budgets."
+---
+
+Ran controlled tests on multilingual corpora comparing HNSW parameters and prompt strategies. Highlights:
+
+- BGE-M3 embeddings + cosine distance outperformed ada-002 across ES/PT corpora by ~7% recall@5.
+- Hybrid reranking (embedding + Mistral-7B classifier) adds ~220 ms but lifts citation accuracy to 91%.
+- For 30 doc contexts, prompt compression with LlamaGuard reduces hallucinations without hurting latency.
+
+Target for production: maintain p95 under 5s while retaining ≥88% recall@5. Next iteration involves quantized reranker + streaming partial answers.

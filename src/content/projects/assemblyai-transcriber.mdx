@@ -1,0 +1,48 @@
+---
+title: "AssemblyAI Live Transcriber"
+slug: "assemblyai-transcriber"
+date: "2024-07-14"
+tags:
+  - "TypeScript"
+  - "Next.js"
+  - "WebRTC"
+  - "AssemblyAI"
+track: "web-cloud"
+role: "Full Stack"
+summary: "Live transcription and highlights for bilingual stakeholder calls."
+repo: "https://github.com/carjes232/assemblyai-live-transcriber"
+demo: "https://assemblyai-live-transcriber.vercel.app"
+cover: "/images/projects/assemblyai-cover.png"
+results:
+  - "Streaming latency ~450ms"
+  - "Auto summaries under 2 minutes"
+badges:
+  - "WebRTC"
+  - "Edge Functions"
+  - "Bilingual"
+xp: 90
+confidential: false
+---
+
+## Problem
+
+Distributed product teams needed live transcripts and summaries for bilingual (ES/EN) roadmap reviews. Off-the-shelf tools struggled with code-switching and required manual exporting.
+
+## Approach
+
+- Built a **Next.js** edge function that proxies AssemblyAI live transcription with auth token rotation.
+- Created a WebRTC capture widget that streams microphone audio via **MediaRecorder** chunks over WebSockets.
+- Implemented bilingual speaker diarization with language hints and automatic glossary injection.
+- Added highlights + action item extraction using a hybrid of AssemblyAI summarization and custom prompt engineering in Vercel AI SDK.
+- Stored sessions in **Supabase** with row-level security for invite-only access and auto-cleanup after 14 days.
+
+## Results
+
+- End-to-end streaming latency around **450 ms**, validated with synthetic tests.
+- Meeting summaries and action items ready **&lt;2 minutes** after call end.
+- Boosted async participation; PMs reuse transcripts in Linear + Notion automation.
+
+## Links
+
+- [Source repository](https://github.com/carjes232/assemblyai-live-transcriber)
+- [Live demo](https://assemblyai-live-transcriber.vercel.app)

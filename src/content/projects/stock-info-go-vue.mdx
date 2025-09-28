@@ -1,0 +1,50 @@
+---
+title: "Stock Insights Dashboard"
+slug: "stock-info-go-vue"
+date: "2024-11-12"
+tags:
+  - "Go"
+  - "Vue"
+  - "CockroachDB"
+  - "Redis"
+  - "Fintech"
+track: "web-cloud"
+role: "Backend & Frontend"
+summary: "Go + Vue stack delivering AI-assisted portfolio intelligence."
+repo: "https://github.com/carjes232/stock-insights-demo"
+demo: "https://stock-insights-demo.vercel.app"
+cover: "/images/projects/stock-cover.png"
+results:
+  - "Aggregations in <1.2s for 50k holdings"
+  - "+22% research throughput for analysts"
+badges:
+  - "Realtime"
+  - "Vector Search"
+  - "CockroachDB"
+xp: 110
+confidential: false
+featured: true
+---
+
+## Problem
+
+Equity analysts at a boutique firm tracked disparate datasets (CSV, vendor APIs, custom notes) and stitched them manually in Excel. Leadership wanted a single workspace with smart tagging and alerting to surface exposure risks within seconds.
+
+## Approach
+
+- Designed a **Go** service graph with domain-driven modules and OpenAPI-first contracts.
+- Built ingestion workers that sync holdings into **CockroachDB**, denormalizing for OLAP-style queries.
+- Implemented vector tagging (OpenAI embeddings cached via **Redis**) to cluster similar positions and annotate market narratives.
+- Crafted a responsive **Vue 3** SPA with deck.gl visualizations and an AI assistant for natural-language queries.
+- Observability: Honeycomb tracing, Loki logs, Terraform provisioning for GKE.
+
+## Results
+
+- Aggregations under **1.2 seconds** for 50k holdings across four asset classes.
+- Analysts reported **22% faster** research sprints and fewer missed compliance triggers.
+- Delivered multi-tenant RBAC and per-client branding delivered via feature flags.
+
+## Links
+
+- [Source repository](https://github.com/carjes232/stock-insights-demo)
+- [Live demo](https://stock-insights-demo.vercel.app)
