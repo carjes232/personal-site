@@ -35,7 +35,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
-  const { slug } = params;
+  const slug = params.slug;
   const project = getProjectBySlug(slug);
   if (!project) {
     return {
@@ -78,7 +78,7 @@ function ConfidentialCallout({ context }: { context?: string }) {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { slug } = params;
+  const slug = params.slug;
   const project = getProjectBySlug(slug);
 
   if (!project) {

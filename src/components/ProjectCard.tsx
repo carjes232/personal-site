@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Github, Globe } from "lucide-react";
@@ -5,6 +7,8 @@ import type { Project } from "@/lib/content";
 import { Badge } from "@/components/Badge";
 import { cn } from "@/lib/utils";
 import { AwardLink } from "@/components/AwardLink";
+import { useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
 
 interface ProjectCardProps {
   project: Project;
@@ -12,6 +16,13 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
+  const [isImageModalOpen, setImageModalOpen] = useState(false);
+  const hasCover = Boolean(project.cover);
+  const coverSrc = project.cover ?? "/images/placeholder-project.svg";
+  const coverAlt = hasCover
+    ? `${project.title} cover`
+    : `${project.title} placeholder`;
+
   return (
     <article
       className={cn(
@@ -21,32 +32,48 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
       role="article"
       aria-labelledby={`project-title-${project.slug}`}
     >
-      <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-hud-border/40 bg-hud-surface-alt group-hover:border-hud-accent/40 transition-colors duration-500">
-        {project.cover ? (
-          <Image
-            src={project.cover}
-            alt={`${project.title} cover`}
-            fill
-            className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
-            sizes="(min-width: 768px) 400px, 100vw"
-          />
-        ) : (
-          <Image
-            src="/images/placeholder-project.svg"
-            alt={`${project.title} placeholder`}
-            fill
-            className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
-            sizes="(min-width: 768px) 400px, 100vw"
-          />
-        )}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-hud-bg/90 via-hud-bg/20 to-transparent" />
-        <div className="absolute left-4 top-4 flex gap-2">
-          {project.badges?.slice(0, 3).map((badge) => (
-            <Badge key={badge} label={badge} kind="info" />
-          ))}
-        </div>
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-hud-accent/10 to-transparent" />
-      </div>
+      <Dialog.Root open={isImageModalOpen} onOpenChange={setImageModalOpen}>
+        <Dialog.Trigger asChild>
+          <div className="relative mb-4 aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-2xl border border-hud-border/40 bg-hud-surface-alt group-hover:border-hud-accent/40 transition-colors duration-500">
+            <Image
+              src={coverSrc}
+              alt={coverAlt}
+              fill
+              className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
+              sizes="(min-width: 768px) 400px, 100vw"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-hud-bg/90 via-hud-bg/20 to-transparent" />
+            <div className="absolute left-4 top-4 flex gap-2">
+              {project.badges?.slice(0, 3).map((badge) => (
+                <Badge key={badge} label={badge} kind="info" />
+              ))}
+            </div>
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-hud-accent/10 to-transparent" />
+          </div>
+        </Dialog.Trigger>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" />
+          <Dialog.Content
+            className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center p-4 md:p-8"
+            onClick={() => setImageModalOpen(false)}
+          >
+            <Dialog.Title className="sr-only">{project.title}</Dialog.Title>
+            <Dialog.Description className="sr-only">
+              A larger view of the project image for {project.title}.
+            </Dialog.Description>
+            <div className="relative h-full w-full max-h-[90vh] max-w-[90vw]">
+              <Image
+                src={coverSrc}
+                alt={coverAlt}
+                fill
+                className="h-full w-full object-contain"
+                sizes="100vw"
+              />
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+
       <div className="flex flex-1 flex-col">
         <div className="flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-hud-subtle">
           <span>{new Date(project.date).getFullYear()}</span>
