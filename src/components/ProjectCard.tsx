@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Github, Globe } from "lucide-react";
+import { Github, Globe } from "lucide-react";
 import type { Project } from "@/lib/content";
 import { Badge } from "@/components/Badge";
 import { cn } from "@/lib/utils";
@@ -31,7 +31,13 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             sizes="(min-width: 768px) 400px, 100vw"
           />
         ) : (
-          <div className="absolute inset-0 hud-grid opacity-60" />
+          <Image
+            src="/images/placeholder-project.svg"
+            alt={`${project.title} placeholder`}
+            fill
+            className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
+            sizes="(min-width: 768px) 400px, 100vw"
+          />
         )}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-hud-bg/90 via-hud-bg/20 to-transparent" />
         <div className="absolute left-4 top-4 flex gap-2">

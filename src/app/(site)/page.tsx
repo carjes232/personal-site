@@ -103,7 +103,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-2">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-hud-accent px-8 py-3 text-sm font-semibold text-hud-bg transition-all hover:bg-hud-accent-strong hover:scale-105 shadow-lg shadow-hud-accent/25"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-hud-accent px-8 py-3 text-sm font-semibold !text-hud-bg transition-all hover:bg-hud-accent-strong hover:!text-hud-bg hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hud-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-hud-bg shadow-lg shadow-hud-accent/25"
             >
               Contact
             </Link>

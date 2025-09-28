@@ -58,7 +58,7 @@ export default function AboutPage() {
             <div className="flex flex-wrap gap-3">
               <a
                 href="/resume.pdf"
-                className="inline-flex items-center gap-2 rounded-full bg-hud-accent px-5 py-2 text-sm font-semibold text-hud-bg transition hover:bg-hud-accent-strong"
+                className="inline-flex items-center gap-2 rounded-full bg-hud-accent px-5 py-2 text-sm font-semibold !text-hud-bg transition hover:bg-hud-accent-strong hover:!text-hud-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hud-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-hud-bg"
               >
                 Download résumé
               </a>
