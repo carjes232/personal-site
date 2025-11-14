@@ -24,7 +24,7 @@ function minutesToRead(project: Project) {
 }
 
 interface ProjectPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -35,7 +35,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
-  const slug = params.slug;
+  const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) {
     return {
@@ -78,7 +78,7 @@ function ConfidentialCallout({ context }: { context?: string }) {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const slug = params.slug;
+  const { slug } = await params;
   const project = getProjectBySlug(slug);
 
   if (!project) {

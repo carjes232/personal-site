@@ -1,0 +1,74 @@
+---
+title: "Mobile Robotics — STM32 IMU Heading + A*"
+slug: "mobile-robotics-stm32-imu-astar"
+date: "2024-06-10"
+tags:
+  - "C"
+  - "STM32F4"
+  - "FreeRTOS"
+  - "MPU6050"
+  - "IMU"
+  - "PID"
+  - "Odometry"
+  - "A*"
+  - "Path Planning"
+  - "EXTI"
+  - "PWM"
+  - "I2C"
+  - "USART"
+track: "robotics"
+role: "Course Monitor & Robot Firmware"
+summary: "Brought up a hand‑assembled differential‑drive robot on STM32F4: fused gyroscope with improvised encoders to hold heading, executed accurate 3×3 m squares, and ran A* pathfinding on‑board."
+repo: "https://github.com/Carjes232/Robotica_dacardenasj/commits/main/"
+cover: "/images/projects/robotics.webp"
+results:
+  - "Heading control with MPU6050 gyro fusion and PID PWM balancing"
+  - "EXTI‑based wheel tick counting + dead‑reckoning position updates"
+  - "‘square `<L>`’ command drove 3×3 m loops within a few centimeters"
+  - "A* search integrated on MCU (open/closed lists, CMSIS sqrt)"
+  - "High‑rate telemetry for tuning (theta, PWM, ticks, gains)"
+badges:
+  - "C / STM32F4"
+  - "IMU / MPU6050"
+  - "PID Control"
+  - "A* Pathfinding"
+  - "Embedded Debugging"
+xp: 140
+confidential: false
+featured: true
+---
+
+## Overview
+
+This was a relaunch of Mobile Robotics after more than four years without the subject running. Most people who had taken it were already graduated, so the teacher picked me (fresh from serving as a monitor in Taller V on the STM32 track) to help bring it back to life. It was equal parts hilarious and intense: we hand‑soldered the PCBs, used budget motors, and 3D‑printed encoders that “said” we were going straight while the robot was very clearly drawing circles on the floor.
+
+That’s where the fun began. I anchored navigation on the gyroscope, fused it with wheel ticks, and used a simple PID to bias left/right PWM so the robot actually went straight in the real world, not just on paper.
+
+## Highlights
+
+- IMU‑anchored heading: integrated `gyroZ` into a global heading `thetaG` in a 100 µs timer task, and used a PID to bias the left/right PWM so the robot stayed on course even when encoder ticks disagreed.
+- Odometry + state machine: EXTI‑edge tick counting on each wheel feeds a dead‑reckoning update; a simple square‑drive state machine sequences forward legs and 90° yaw rotations.
+- Tuning live: added serial telemetry (tab‑separated) at a steady cadence, then tuned `Kp/Ki/Kd` and distance constants interactively.
+- On‑MCU A*: implemented grid parsing, neighbor discovery, and the classic open/closed‑list loop, using CMSIS‑DSP `arm_sqrt_f32` to keep math fast on the M4F.
+
+## What I Delivered
+
+- Stable straight‑line motion on uneven motors: heading error drove differential PWM with clamped limits to avoid saturation.
+- Accurate 90° rotations and a 3×3 m square routine with only centimeters of final position error (in lab testing).
+- A* pathfinding compiled and exercised on the same STM32 base, ready to couple with the motion layer.
+- A clean serial protocol exposing x/y/theta, wheel ticks, PWM, and controller gains for external visualization and logging.
+
+## How It Works
+
+- Heading from the IMU: integrate the gyro rate into a global angle and keep it drift‑checked during motion.
+- Keep it straight: compute heading error vs. the target and nudge each motor’s PWM up or down with a bounded PID so small biases don’t saturate.
+- Know where we are: count wheel ticks on external interrupts, convert ticks to distance per wheel, then update x/y using the current heading.
+- Make a square: drive forward until the leg distance is met, pause, rotate ~90° using the gyro target, and repeat 4 times. The fun part is watching “paper‑straight” become “actually straight”.
+- Plan paths: feed a tiny grid into an on‑board A* implementation (open/closed lists, simple heuristic) and get a sequence of cells to follow.
+- Tune like a human: stream a tab‑separated line over serial with position, heading, ticks, PWM and gains so it’s easy to plot and adjust.
+
+## Transferable Skills
+
+- Control under bad sensors: fuse minimal sensors and bias actuators to achieve reliable behavior.
+- Embedded rigor: timing with hardware timers, EXTI edge handling, and predictable serial I/O.
+- Algorithm deployment: adapt textbook A* to constrained MCUs without dynamic allocation.
