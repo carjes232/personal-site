@@ -27,3 +27,8 @@
 - Write imperative commit messages ("Add XP bar hover state"); group related changes together.
 - Pull requests should summarize scope, list impacted routes/components, and include screenshots of UI changes when relevant.
 - Link Jira/GitHub issues in the PR description and document follow-up tasks in checklist form.
+
+## Resume Generation Guidelines
+- When the user asks for a new or updated résumé/CV, default to a **one-page** layout (or as close as reasonably possible) while preserving hiring effectiveness.
+- Prioritize concise, high-impact bullets that satisfy automated screening (ATS/keyword requirements) and remain attractive to human reviewers who skim quickly.
+- Prefer fewer, stronger bullets and a small set of the most relevant projects over exhaustive lists; avoid wording that inflates length without adding clear hiring signal.
