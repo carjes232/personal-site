@@ -43,7 +43,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               sizes="(min-width: 768px) 400px, 100vw"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-hud-bg/90 via-hud-bg/20 to-transparent" />
-            <div className="absolute left-4 top-4 flex gap-2">
+            <div className="absolute left-4 right-4 top-4 flex flex-wrap gap-2">
               {project.badges?.slice(0, 3).map((badge) => (
                 <Badge key={badge} label={badge} kind="info" />
               ))}
