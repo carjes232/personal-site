@@ -1,0 +1,50 @@
+---
+title: "AssemblyAI Audio Transcriber"
+slug: "assemblyai-transcriber"
+date: "2024-07-14"
+tags:
+  - "Python"
+  - "Flask"
+  - "Tkinter"
+  - "AssemblyAI"
+  - "Audio"
+  - "Automation"
+track: "ai-backend"
+role: "Python Automation"
+summary: "Desktop and web transcription tool that chunks long audio files, preserves overlap, and saves full plus per-part transcripts."
+repo: "https://github.com/carjes232/Transcribe-assemblyai"
+context: "Personal automation project built around AssemblyAI, ffmpeg/pydub, Flask, and Tkinter."
+results:
+  - "Handles long local audio through configurable chunks and overlap"
+  - "Ships both Tkinter desktop UI and Flask web UI with polling progress"
+  - "Keeps API keys local and discards sensitive data after processing"
+badges:
+  - "AssemblyAI"
+  - "Flask UI"
+  - "Tkinter"
+xp: 90
+confidential: false
+---
+
+## Problem
+
+I needed a reliable way to transcribe long local audio files without uploading a whole recording blindly or losing context at chunk boundaries. The tool also had to be safe enough for repeated use: no committed API keys, clear outputs, and recoverable per-part transcripts.
+
+## Approach
+
+- Built a **Tkinter** desktop app for direct local use and a **Flask** web app for browser-based uploads.
+- Used **pydub** and **ffmpeg** to normalize audio to mono 16 kHz before transcription.
+- Split recordings into configurable windows with overlap so long files remain manageable while preserving sentence context.
+- Wrote per-chunk transcript files plus one joined transcript with timestamps for review.
+- Added a thread-safe job registry in the Flask app so the UI can poll status, progress, logs, and final transcript text.
+- Loaded API keys from `.env` or the UI, avoided committing secrets, and cleaned temporary files after each job.
+
+## Results
+
+- A practical transcription utility for `.m4a`, `.mp3`, `.wav`, and other ffmpeg-supported formats.
+- Outputs are easy to audit: `*_FULL.txt` plus timestamped part files.
+- The same core transcription logic is reused by the desktop and web interfaces.
+
+## Links
+
+- [Source repository](https://github.com/carjes232/Transcribe-assemblyai)

@@ -1,0 +1,118 @@
+---
+title: "STM32 Cortex‑M4 — Taller V (UNAL)"
+slug: "stm32-cortexm4-electronica-digital"
+date: "2023-10-22"
+tags:
+  - "C"
+  - "STM32F411RE"
+  - "CMSIS"
+  - "Bare‑metal"
+  - "GPIO"
+  - "Timers"
+  - "EXTI"
+  - "ADC"
+  - "PWM"
+  - "USART"
+  - "SPI"
+  - "I2C"
+  - "ILI9341"
+  - "FatFs"
+  - "SD"
+  - "Logic Analyzer"
+track: "firmware"
+role: "Firmware & Teaching Assistant"
+summary: "Bare‑metal STM32F411RE: custom drivers, ILI9341 display, SD/FatFs image rendering, and a game — plus deep debugging skills (registers, pointers, timing)."
+repo: "https://github.com/Carjes232/STM32CortexM4ElectronicaDigital/commits/main/"
+cover: "/images/projects/stm32tv.webp"
+results:
+  - "Wrote drivers for GPIO, timers/EXTI, ADC/PWM, USART, SPI, I2C"
+  - "Brought up ILI9341 TFT over SPI; streamed images and text"
+  - "Built SD image pipeline with FatFs and memory‑safe rendering"
+  - "Final project: Snake + image streaming with precise timing"
+badges:
+  - "C / CMSIS"
+  - "ILI9341"
+  - "FatFs"
+  - "Embedded Debugging"
+xp: 110
+confidential: false
+featured: false
+---
+
+## Overview
+
+This track documents my journey building on a STM32F411RE (Cortex‑M4) without vendor codegen: writing drivers from scratch, understanding the MCU at the register level, and delivering working applications under tight memory and timing constraints.
+
+I focused on fundamentals — how computers execute instructions, how memory‑mapped I/O works, and how interrupts and clocks interact — while becoming fluent in C, pointers, and low‑level debugging.
+
+## Core Skills Gained
+
+- Computer fundamentals: Von Neumann model, memory‑mapped peripherals, NVIC/interrupts, clock tree, startup/linker basics.
+- C mastery: types, pointers to memory‑mapped registers, structs, headers to organize code and place `const` data in Flash.
+- ARM Cortex‑M4 specifics: vector table, SysTick, exception priorities, efficient register bit manipulation.
+- Driver work: GPIO, EXTI, timers, ADC + PWM, USART, SPI, I2C, simple PLL and SysTick configuration.
+- Display + graphics: ILI9341 initialization, address‑window writes, rectangle fills, font rendering, streaming pixel data.
+- Filesystem + storage: integrating FatFs for SD card I/O and planning memory‑safe image rendering.
+- Debugging: reading STM32 registers by hand, single‑stepping, logic‑analyzer traces for SPI, validating command/data sequencing.
+
+## Key Projects
+
+### ProyectoImagenesSD — SD images on ILI9341
+
+Goal: load images from an SD card and render them on an SPI‑connected ILI9341 TFT within tight memory limits.
+
+- Problem: limited SRAM (~128 KB) made full‑frame buffers impractical; also, the display’s command/data protocol is unforgiving.
+- Approach: initialized the display, set address windows, and streamed pixels line‑by‑line to avoid large buffers. Integrated FatFs for directory traversal and file reads. Used a logic analyzer to validate SPI polarity/phase and the DC (data/command) pin timing.
+- Outcome: stable image rendering and text overlay with no tearing, using constant memory footprints and predictable timing.
+
+### ProyectoFinal — Snake + image streaming
+
+Goal: combine a responsive game UI with image streaming to the same display.
+
+- Problem: coordinating input (buttons/joystick), game timing, and display updates caused flicker and missed inputs when naive loops were used.
+- Approach: drove the game loop from timers; used EXTI for button edges and ADC/PWM to control speed/inputs; gated screen updates to defined regions using address windows; streamed image bytes over USART into active windows when needed.
+- Outcome: smooth movement without tearing, responsive controls, and a menu/UI rendered with simple primitives.
+
+### ProyectoFinalEntrega — image pack rendering
+
+Goal: deliver multiple curated images while staying well within SRAM limits.
+
+- Problem: image assets exceeded what was comfortable for RAM and naive buffering.
+- Approach: placed assets and rendering routines in Flash (`const`), and streamed pixels directly into the LCD’s windowed regions. Selected images via a small dispatcher instead of loading large data structures.
+- Outcome: deterministic memory use and fast startup, suitable for demos and constrained environments.
+
+## Drivers and Peripherals
+
+I wrote and exercised drivers for the core MCU peripherals used across projects:
+
+- GPIO, EXTI, timers, SysTick, PLL for baseline bring‑up and timing
+- ADC for sampling joystick/sensors; PWM for refresh and actuator control
+- USART for text/binary streaming; SPI for display/SD; I2C for auxiliary devices
+
+Design choices focused on clarity and predictability: explicit init structures, bit‑precise register writes, and simple state machines. Common pitfalls I avoided included misordered clock enables, interrupt priority inversions, and blocking I/O in timing‑critical paths.
+
+## Debugging Stories
+
+- Register‑level triage: I tracked down stuck peripherals by reading status/flag bits and confirming clock/reset sequencing, often catching missing enables or wrong modes early.
+- Frame‑level analysis: a logic analyzer revealed a subtle DC pin timing issue on SPI; adjusting the command/data toggle fixed blank frames instantly.
+- Performance under constraints: I avoided frame‑sized buffers and wrote windowed, tight loops to keep refresh rates smooth and SRAM usage constant.
+
+## Transferable Lessons
+
+- Think from the hardware up: read datasheets, design state machines, and prove correctness with instruments.
+- Memory‑aware design: place large `const` assets in Flash, stream in chunks, and be explicit about lifetimes/ownership.
+- Strong debugging habits: isolate faults, write minimal repros, and instrument your code and signals.
+
+## Teaching (Monitor) — Taller V
+
+For my strong performance, I later served as a course monitor (TA) in Taller V. After that, the professor asked me to help relaunch the Mobile Robotics subject after more than four years without it running — most prior students had already graduated, so there wasn’t much “institutional memory.” I helped bootstrap the robot platform and mentor students through bring‑up and control.
+
+See the follow‑on project for that story: `projects/mobile-robotics-stm32-imu-astar`.
+
+## Notes
+
+- Board: STM32F411RE (Cortex‑M4F). Projects organized under `STM32CortexM4ElectronicaDigital/`.
+- Display: ILI9341 over SPI with address window writes and font primitives.
+- Filesystem: FatFs used for SD card access in the image project.
+
+If you’re interested in deeper implementation details, I’m happy to walk through the driver patterns and display pipeline.

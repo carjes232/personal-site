@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daniel Cárdenas — Playable Portfolio
 
-## Getting Started
+Next.js App Router site showcasing firmware, backend, and AI/RAG case studies with a HUD-inspired UI. Content lives in MDX, filtered via Contentlayer 2, and the XP system rewards interactions (project reads, repo/demo clicks, notes).
 
-First, run the development server:
+## Stack
+
+- **Framework**: Next.js 15 (App Router, React 19)
+- **Styling**: Tailwind CSS v4 with a dark HUD theme
+- **Content**: Contentlayer2 loading MDX case studies and notes
+- **Animations**: Framer Motion accents
+- **Command Palette**: `cmdk` + Fuse.js search
+- **Icons**: Lucide
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Contentlayer generates types on demand. If you add MDX files while the dev server is running, the loader will pick them up automatically.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Authoring content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Projects live in `src/content/projects/*.mdx`
+- Notes live in `src/content/notes/*.mdx`
+- Frontmatter is validated in `contentlayer.config.ts` and surfaces computed fields (slug, reading time, etc.)
 
-## Learn More
+Run a build to fail fast on invalid front‑matter:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## XP system
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+XP is stored locally (`localStorage`) and updated via custom events. The progress bar listens to `xp:update` events dispatched by helpers in `src/lib/xp.ts`. New interactions can award XP by importing `awardXP` or reusing `AwardLink` for links.
 
-## Deploy on Vercel
+## OG images
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Dynamic images for projects are generated at `/og/[slug]` using `next/og`. Project metadata wires the image into Open Graph + Twitter cards.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project structure
+
+```
+src/
+  app/
+    (site)/
+      page.tsx                 # Home
+      projects/
+        page.tsx               # Projects index with filters
+        [slug]/page.tsx        # MDX-rendered case study
+      notes/
+        page.tsx               # Notes index
+        [slug]/page.tsx        # Note detail
+      about/page.tsx
+      contact/page.tsx
+    og/[slug]/route.tsx        # Dynamic OG images
+  components/
+    HUDShell.tsx               # Shared HUD chrome + command palette trigger
+    ProjectCard.tsx
+    NoteCard.tsx
+    Badge.tsx
+    XPBar.tsx
+    CmdPalette.tsx
+    AwardLink.tsx
+    projects/
+      ProjectsBrowser.tsx
+      ProjectXPTracker.tsx
+    notes/
+      NoteXPTracker.tsx
+  content/                      # MDX sources
+  lib/
+    content.ts                  # Content helpers (sorting, tracks, tags)
+    xp.ts                       # XP storage helpers
+    utils.ts                    # `cn` helper
+```
+
+## Pending enhancements (backlog)
+
+Refer to the spec for v1.1+ items: Spanish i18n, contact API, sitemap, analytics dashboard, Solenium project writeups, and admin revalidation controls.

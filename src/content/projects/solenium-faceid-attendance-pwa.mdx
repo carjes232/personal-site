@@ -1,0 +1,60 @@
+---
+title: "Solenium FaceID Attendance PWA"
+slug: "solenium-faceid-attendance-pwa"
+date: "2026-04-01"
+tags:
+  - "Python"
+  - "Flask"
+  - "PWA"
+  - "Face Recognition"
+  - "IndexedDB"
+  - "Geolocation"
+  - "Vite"
+  - "Sentry"
+track: "ai-backend"
+role: "PWA + Backend Developer"
+summary: "Mobile-first FaceID attendance system for mini solar farm crews, with on-device recognition, liveness, GPS/project checks, offline queueing, and photo-backed publishing."
+context: "Work performed at Solenium; implementation details and endpoints are private, so this case study is anonymized."
+results:
+  - "Replaced fragile manual attendance/overtime records with biometric, photo-backed check-in/check-out events"
+  - "On-device face embeddings and liveness checks reduce network dependency and keep biometric matching local"
+  - "GPS and project-distance checks help verify that workers are registering at the correct mini solar farm"
+  - "Offline IndexedDB outbox preserves field events and publishes them when connectivity returns"
+badges:
+  - "FaceID PWA"
+  - "Offline Outbox"
+  - "Geo Check"
+  - "Compliance"
+xp: 145
+confidential: true
+featured: true
+---
+
+## Problem
+
+Solenium builds and operates mini solar farms, where field attendance has direct operational and compliance impact. Manual attendance and overtime reporting created a weak point: managers could end up filling records by hand, people could be marked as present without actually going to the site, and funders needed confidence that overtime and field work were aligned with legal and operational requirements.
+
+The project needed to make attendance evidence stronger without depending on perfect field connectivity or a heavy native app rollout.
+
+## Approach
+
+- Mobile-first PWA: built a Vite/Tailwind browser app served by a minimal Flask + Gunicorn backend, so workers could use phone cameras without app-store distribution.
+- Local biometric matching: enrollment captures multiple face poses, computes embeddings in the browser, and stores worker profiles in IndexedDB.
+- Liveness and recognition: recognition uses face embeddings with a cosine threshold, plus MediaPipe hand/liveness checks to reduce weak captures.
+- Project validation: each event includes the selected mini solar farm, GPS location, project coordinates, project name, and distance warnings when the user appears far from the selected project.
+- Offline-first attendance: check-in/check-out events, photos, timestamps, biometric authorization, and project metadata are queued locally and published later through a service-worker outbox.
+- Secure publishing: the backend keeps publish credentials server-side, exposes runtime PWA configuration, proxies project lists, and publishes authenticated multipart event payloads to the internal system.
+- Operational debugging: client logs, Sentry integration, and an admin error store help diagnose field failures without exposing sensitive credentials in the browser.
+
+## Why It Matters
+
+This is not just a face recognition demo. It turns field attendance into an auditable workflow with biometric evidence, photo evidence, project context, geolocation, and offline resilience.
+
+For the business, that means less manual manager data entry, stronger evidence for overtime and attendance, and a better answer when funders or legal stakeholders ask whether field labor records are trustworthy.
+
+## Skills Demonstrated
+
+- Browser-based computer vision and biometric UX under mobile constraints.
+- Offline-first PWA design with IndexedDB, service workers, and retryable publishing.
+- Backend security boundaries for credentials, project metadata, error reporting, and authenticated event forwarding.
+- Product judgment around compliance, field operations, and low-connectivity environments.

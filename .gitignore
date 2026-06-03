@@ -16,6 +16,13 @@
 # next.js
 /.next/
 /out/
+.contentlayer/
+/.swc/
+/.turbo/
+
+# editor
+.vscode/
+.idea/
 
 # production
 /build
@@ -23,6 +30,18 @@
 # misc
 .DS_Store
 *.pem
+
+# local profile exports, drafts, and repo snapshots
+/Profile.pdf
+/upWork.md
+/profile-recommendations.md
+/profile-updates/
+/src/content/repo-to-text_*.txt
+
+# generated resume exports
+/resume/output/*.pdf
+/resume/output/*.docx
+!/resume/output/.gitkeep
 
 # debug
 npm-debug.log*

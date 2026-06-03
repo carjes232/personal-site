@@ -1,0 +1,61 @@
+---
+title: "Wyze Lab Monitor"
+slug: "wyze-lab-monitor"
+date: "2025-08-01"
+tags:
+  - "Python"
+  - "FastAPI"
+  - "Gemini"
+  - "Computer Vision"
+  - "Docker"
+  - "SQLite"
+  - "IoT"
+track: "ai-backend"
+role: "Backend / Computer Vision Developer"
+summary: "FastAPI service that captures Wyze Bridge camera snapshots, uses Gemini OCR to read lab thermometer/hygrometer displays, and stores environmental history with alerts and correction tools."
+context: "Internal lab monitoring project; camera credentials, endpoints, and raw environment data are private, so this case study is anonymized."
+
+results:
+  - "Automated 15-minute captures from Lab and BodLab cameras"
+  - "Merged camera-derived readings with RHT-20 datalogger uploads for Bodega"
+  - "Stored 20k+ local readings with charting, image history, alerts, and manual correction flow"
+  - "Added Docker Compose operations around Wyze Bridge, FastAPI, startup, reset, and health scripts"
+badges:
+  - "Gemini OCR"
+  - "Wyze Bridge"
+  - "SQLite"
+  - "Alerts"
+xp: 105
+confidential: true
+featured: false
+---
+
+## Problem
+
+The lab needed regular temperature and humidity history for environmental monitoring, but the available instruments were a mix of camera-visible UNI-T A12T thermometer/hygrometers and an RHT-20 datalogger.
+
+The practical problem was not just reading values once. The system needed to keep collecting data, survive camera/bridge instability, show history, preserve image evidence, and let a human correct OCR mistakes without losing the audit trail.
+
+## Approach
+
+- Camera ingestion: used Wyze Bridge as the local camera source and scheduled FastAPI captures every 15 minutes for Lab and BodLab.
+- Structured OCR: sent each snapshot to Gemini with a strict JSON schema for indoor temperature, outdoor temperature, humidity, and display time.
+- Local persistence: stored readings in SQLite with uniqueness by sensor/timestamp and retained recent camera images for review.
+- Mixed sensor inputs: accepted RHT-20 datalogger uploads for the Bodega sensor through a dedicated API endpoint.
+- Dashboard: built a browser UI with live values, Chart.js history by sensor/date/metric, alert threshold configuration, and image review.
+- Correction workflow: chart points can open the captured image and submit corrected temperature/humidity values back to the database.
+- Operations: added Docker Compose for Wyze Bridge + FastAPI, startup scripts, bridge reset scripts, health checks, and a nightly recovery path.
+
+## Results
+
+- Continuous 15-minute environmental capture for camera-backed lab sensors.
+- 20k+ local readings across Lab, BodLab, and Bodega during the reviewed data window.
+- Fast inspection of historical readings with the original image attached to camera-derived samples.
+- Lower operational friction through reset/startup scripts for the Wyze Bridge and sensor app.
+
+## Skills Demonstrated
+
+- Practical computer vision/OCR workflow using camera snapshots and structured LLM output.
+- FastAPI API design for capture, history, alerts, corrections, image retrieval, and datalogger uploads.
+- Docker-based local operations for an IoT monitoring stack.
+- Product sense around human-in-the-loop correction where OCR can be wrong.

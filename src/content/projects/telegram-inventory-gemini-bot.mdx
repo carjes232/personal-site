@@ -1,0 +1,51 @@
+---
+title: "Telegram Inventory Bot with Gemini Voice Parsing"
+slug: "telegram-inventory-gemini-bot"
+date: "2025-08-31"
+tags:
+  - "Python"
+  - "Telegram"
+  - "Gemini"
+  - "SQLite"
+  - "Voice AI"
+  - "Automation"
+track: "ai-backend"
+role: "AI Automation Developer"
+summary: "Telegram bot that turns Spanish voice messages into confirmed inventory, sales, reservation, payment, and debt records."
+repo: "https://github.com/carjes232/telegram_inventario"
+results:
+  - "Natural-language voice transactions parsed into structured JSON with Gemini"
+  - "Inventory and customer debt updates persisted in SQLite"
+  - "Confirmation flow lets users review and correct before saving"
+badges:
+  - "Gemini"
+  - "Voice AI"
+  - "SQLite"
+xp: 115
+confidential: false
+featured: true
+---
+
+## Problem
+
+Small inventory workflows often happen in chat, voice notes, and quick informal messages. The hard part is not only extracting the transaction, but also confirming it, updating stock, tracking customer debt, and producing daily summaries without forcing people into a heavy ERP.
+
+## Approach
+
+- Built a Telegram bot in **Python** with commands for inventory, daily summaries, and customer status.
+- Used **Gemini** to parse natural Spanish voice messages into structured transaction data.
+- Supported sales, reservations, debt payments, equipment expenses, and miscellaneous expenses.
+- Added a confirmation step so users can review parsed values before the database changes.
+- Persisted transactions, inventory, and debt items in **SQLite** with parameterized queries and clear state transitions.
+- Added chat restrictions and environment-based configuration for bot tokens, allowed chats, and Gemini model selection.
+
+## Results
+
+- Voice messages become auditable structured transactions instead of untracked chat history.
+- Inventory is reduced automatically on sales and reservations.
+- Customer debt uses FIFO-style payment application and can be queried from Telegram.
+- Daily reports summarize transaction types, income, expenses, and balance in the Colombian timezone.
+
+## Links
+
+- [Source repository](https://github.com/carjes232/telegram_inventario)

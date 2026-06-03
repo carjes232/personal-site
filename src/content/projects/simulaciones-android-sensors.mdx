@@ -1,0 +1,51 @@
+---
+title: "Simulaciones — Android Sensors, Bluetooth, and MQTT (Java)"
+slug: "simulaciones-android-sensors"
+date: "2022-08-01"
+tags:
+  - "Android"
+  - "Java"
+  - "Sensors"
+  - "Bluetooth"
+  - "MQTT"
+  - "UI"
+track: "web-cloud"
+role: "Student → Course Monitor (TA)"
+summary: "Hands‑on Android work using on‑device sensors (accelerometer, magnetometer, light), Bluetooth comms, and an MQTT dashboard — later taught the course and coached classmates in Java."
+repo: "https://github.com/carjes232/Simulaciones/commits/main"
+cover: "/images/projects/simulaciones.webp"
+results:
+  - "Sensor suite apps: accelerometer, magnetometer (gaussimeter), and light meter with custom gauges and live plots"
+  - "Bluetooth: client/server patterns to stream sensor data between phones and peripherals"
+  - "MQTT: configurable client with dashboard gauge/graph and runtime broker settings"
+  - "Device capability explorer: enumerates available sensors with units, ranges, and update rates"
+badges:
+  - "Android / Java"
+  - "Bluetooth"
+  - "MQTT Client"
+  - "Embedded UI"
+xp: 70
+confidential: false
+featured: false
+---
+
+## Context
+
+Simulaciones was an Android‑focused subject where we learned by building. We worked in Java, used the phone’s sensors directly, and shipped small apps that talked over Bluetooth or MQTT. After taking the course (around the second half of 2022), I returned as a monitor to help the next cohort — especially with Java fundamentals, sensor APIs, and practical debugging.
+
+This experience predates most of the embedded/robotics work on my site and sits roughly around the time of my Diseño Geométrico projects.
+
+## Highlights
+
+- Sensor dashboards: built small apps that read accelerometer, magnetometer (gaussimeter), and ambient light. I added simple gauges and graphs so you can “feel” the signal, not just print numbers.
+- Sensor catalog: a utility that lists every sensor on the device with units, ranges, and delays — great for learning what’s actually available on different phones.
+- Bluetooth comms: implemented common client/server flows, including permission handling on newer Android, to stream sensor data between devices.
+- MQTT telemetrics: a configurable client (broker, topics, auth) with an on‑screen gauge/graph to visualize incoming values in real time — handy for quick lab demos.
+
+## What I Taught (as Monitor)
+
+- Java basics for Android: activity lifecycles, views/layouts, and event wiring.
+- Sensor patterns: registration/unregistration, sampling frequencies, and naive filtering.
+- Comms trade‑offs: when to use Bluetooth vs. an MQTT broker; handling permissions and background lifecycles cleanly.
+
+If you’d like specific demos or APKs for any of these, I can package a couple “best of” apps for quick review.

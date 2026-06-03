@@ -1,0 +1,64 @@
+---
+title: "Rover Vision — Raspberry Pi YOLO + Kinect (Aprendizaje Automático)"
+slug: "proyecto-aprendizaje-raspberry-vision"
+date: "2024-12-11"
+tags:
+  - "Python"
+  - "Raspberry Pi"
+  - "YOLOv5/YOLOv8"
+  - "NCNN"
+  - "ONNX"
+  - "OpenCV"
+  - "Flask"
+  - "ROS2"
+  - "Kinect"
+  - "Computer Vision"
+track: "ai-backend"
+role: "Vision Lead (Rover) & Course Project"
+summary: "Led the rover’s Vision work and built a Raspberry Pi inference stack for a class project: trained lightweight YOLO variants, exported to ONNX/NCNN, streamed Kinect video with live detections, and integrated a ROS2 node for downstream use."
+repo: "https://github.com/carjes232/proyecto_aprendizaje/commits/main"
+cover: "/images/projects/raspvision.webp"
+results:
+  - "Training-to-deployment pipeline: YOLOv5n/YOLOv8n → ONNX → NCNN for Raspberry Pi"
+  - "Live detection server: Kinect RGB → YOLO inference → JPEG stream over Flask"
+  - "ROS2 node publishes images/results for other rover nodes"
+  - "Compared multiple lightweight models (including NanoDet) for latency/quality trade‑offs"
+  - "Later experiments with Hailo inference to push performance further"
+badges:
+  - "Raspberry Pi"
+  - "YOLO"
+  - "NCNN/ONNX"
+  - "ROS2"
+  - "Kinect"
+xp: 95
+confidential: false
+featured: false
+---
+
+## Context
+
+This project had two lives:
+
+- Rover Vision: I led the vision effort for a university rover team aiming at international competitions. Hardware reality (Raspberry Pi budgets, tight power) meant we needed small models and careful deployment.
+- Aprendizaje Automático (course): I turned the stack into a class project using a Kinect camera, showing real‑time inference and a clean path from training to deployment on the Pi.
+
+## What I Built
+
+- Lightweight models that run on a Pi: trained YOLOv5n/YOLOv8n and evaluated NanoDet; exported to ONNX and converted to NCNN for fast CPU inference on ARM.
+- A streaming inference app: captured Kinect RGB frames, ran YOLO on device, and served annotated frames as a motion‑JPEG stream via Flask, including a tiny endpoint to report the last inference time for quick benchmarking.
+- A ROS2 integration: wrapped the pipeline in a ROS2 node that publishes images/results for downstream consumers (navigation, logging, teleop overlays).
+- A simple benchmarking loop: saved per‑frame inference times and used them to compare model variants and input resolutions.
+
+## How It Works
+
+- Capture: grab RGB from the Kinect on the Pi.
+- Infer: run a tiny object detector (YOLOv5n/YOLOv8n exported to NCNN) on the frame.
+- Overlay: draw boxes/labels, and write the latest inference time to a lightweight store.
+- Serve/Publish: either stream frames over HTTP (Flask) or publish via ROS2 to other nodes.
+
+## Notes & Next Steps
+
+- Hailo acceleration: we later experimented with a Hailo module to offload inference and improve FPS. It’s not committed here, but the pipeline was designed to swap inference backends.
+- Dataset iteration: for Rover, we focused on practical classes (tools, markers, terrain cues) and on input sizes that preserved throughput on the Pi.
+
+If you want to see the embedded control that this vision work complements, check out the STM32 projects and the mobile robotics page.
