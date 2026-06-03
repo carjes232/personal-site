@@ -56,10 +56,10 @@ function Footer() {
         <a href="https://github.com/carjes232" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
-        <a href="https://www.linkedin.com/in/daniel-cardenas/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/dancarjes/" target="_blank" rel="noopener noreferrer">
           LinkedIn
         </a>
-        <a href="mailto:hi@danielcardenas.dev">hi@danielcardenas.dev</a>
+        <a href="mailto:daniestebanc@hotmail.com">daniestebanc@hotmail.com</a>
       </div>
     </footer>
   );
@@ -81,11 +81,11 @@ export function HUDShell({ children }: { children: React.ReactNode }) {
                     Daniel Cárdenas
                   </p>
                   <h1 className="mt-2 text-xl sm:text-2xl font-semibold text-hud-text leading-tight">
-                    Full-Stack Builder: Firmware · Web · AI
+                    AI Automation Engineer: RAG · Edge ML · Firmware
                   </h1>
                 </div>
                 <p className="text-sm text-hud-subtle leading-relaxed max-w-2xl">
-                  I design and ship end-to-end systems—from STM32 firmware and edge data capture to Go/Python backends and multilingual RAG experiences.
+                  I build practical AI systems: RAG pipelines, voice and document automation, Python APIs, and the embedded telemetry that makes edge ML useful in the real world.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">

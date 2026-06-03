@@ -1,0 +1,46 @@
+---
+title: "WhatsApp Ledger and Statement Bot"
+slug: "fondo-whatsapp-ledger"
+date: "2026-03-01"
+tags:
+  - "Python"
+  - "FastAPI"
+  - "PostgreSQL"
+  - "WhatsApp"
+  - "PDF"
+  - "Automation"
+track: "ai-backend"
+role: "Backend Automation Developer"
+summary: "Local-first finance ledger foundation with FastAPI, Postgres, Excel import previews, PDF statements, registration, and WhatsApp webhook delivery."
+context: "Personal/local automation project; no public remote was configured in the scanned repo."
+results:
+  - "FastAPI service with Postgres and Alembic migrations"
+  - "Excel import preview and member statement PDF generation"
+  - "WhatsApp webhook flow for registration and statement delivery"
+badges:
+  - "FastAPI"
+  - "WhatsApp"
+  - "PDF Reports"
+xp: 110
+confidential: false
+featured: false
+---
+
+## Problem
+
+Finance and membership workflows often depend on Excel files, manual statement generation, and repeated WhatsApp messages. This project turns that into a backend foundation that can import data, generate statements, and answer member requests through a simple WhatsApp flow.
+
+## Approach
+
+- Built a **FastAPI** backend backed by **PostgreSQL** and Alembic migrations.
+- Added admin import preview endpoints for monthly Excel workbooks.
+- Generated member statement PDFs by document ID and month.
+- Implemented a public registration page so members can link their document ID and WhatsApp number.
+- Added WhatsApp webhook verification and inbound message handling through Meta configuration.
+- Supported a simple menu flow where registered users can request the latest available monthly statement.
+
+## Results
+
+- A repeatable local-first service that can be started with Docker Compose and Make targets.
+- Document IDs are normalized before lookup, reducing errors from punctuation or formatting differences.
+- The WhatsApp flow gives users self-service access to statements without exposing admin tools.

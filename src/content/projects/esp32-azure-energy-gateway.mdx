@@ -1,0 +1,48 @@
+---
+title: "ESP32 Azure Energy Gateway"
+slug: "esp32-azure-energy-gateway"
+date: "2025-10-01"
+tags:
+  - "ESP32"
+  - "ESP-IDF"
+  - "Azure IoT Hub"
+  - "Modbus"
+  - "MQTT"
+  - "Flask"
+  - "FreeRTOS"
+track: "firmware"
+role: "Firmware / IoT Developer"
+summary: "Technical-test energy gateway with ESP-IDF firmware, Modbus/TCP meter polling, Azure IoT Hub telemetry, twin updates, simulator, and Flask monitor."
+context: "Technical-test repository; public access depends on the GitLab repo settings."
+results:
+  - "ESP-IDF firmware publishes telemetry every 5 seconds over MQTT/TLS"
+  - "Four-meter Modbus/TCP simulator enables development without hardware"
+  - "Azure device twin desired-property handling updates meter ports and reports acknowledgements"
+badges:
+  - "ESP-IDF"
+  - "Azure IoT"
+  - "Modbus"
+xp: 105
+confidential: false
+featured: false
+---
+
+## Problem
+
+The assignment was to design an energy monitoring gateway that could poll multiple power meters, report telemetry to Azure IoT Hub, trigger overcurrent events, and support configuration updates without relying on physical meters during development.
+
+## Approach
+
+- Built ESP-IDF firmware for an ESP32 gateway with Wi-Fi provisioning, SNTP clock sync, and MQTT over TLS.
+- Used the Azure Embedded C SDK to format client IDs, usernames, topics, and SAS-based authentication.
+- Polled four Modbus/TCP meter endpoints and published JSON telemetry on a 5-second cadence.
+- Added overcurrent event publishing with MQTT application properties.
+- Implemented desired-property handling for `modbus_ports`, including reported-state acknowledgements.
+- Created a Python Modbus/TCP simulator with a web UI to spike phase currents and test alarms without hardware.
+- Added a Flask monitor app to send telemetry/events, inspect device twins, and patch desired properties.
+
+## Results
+
+- Firmware, simulator, and monitor app form a complete local development loop.
+- The gateway can be validated against telemetry cadence, event behavior, and twin update handling.
+- The README documents setup, message formats, Azure IoT Hub configuration, and test commands for repeatability.

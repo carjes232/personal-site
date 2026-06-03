@@ -2,25 +2,22 @@
 
 Medellín, Colombia · daniestebanc@hotmail.com · linkedin.com/in/dancarjes
 
-Ericsson Recruitment Team  
-Ericsson Brazil
-
-**Re: Software Architect – AI Agents & Backend (Req ID: 776257)**
+Hiring Team
+Lean Tech
 
 Dear Hiring Team,
 
-I am writing to express my interest in the Software Architect position focused on AI agents and backend systems (Req ID: 776257). With a background as an engineering physicist turned software architect and AI engineer, I have been designing and delivering end-to-end backend and AI solutions that combine robust system architecture, cloud-native services, and LLM-powered features.
+I am writing to express my interest in the Senior AI Engineer position at Lean Tech in Medellín. I am an engineering physicist and AI engineer with experience building and optimizing end‑to‑end AI feature pipelines—spanning LLM/RAG backends, computer vision systems, and data tools—deployed on Azure and GCP for international customers.
 
-In my recent work, I have architected and implemented production-grade services in Python and Go with clear API contracts, CI/CD, and observability. At Magnus, I contributed to Azure-hosted LLM and RAG pipelines using FAISS and PostgreSQL, designing multi-step retrieval and evaluation workflows that grounded LLM responses in domain data for clinical simulations and survey analysis. In my own projects, I have built local-first RAG stacks (FastAPI + pgvector + BGE-M3 + Ollama) and integrated LLM-based agents into applications such as live transcription tools and portfolio analytics dashboards, always with attention to latency, reliability, and metrics.
+At Magnus, I worked as a Machine Learning Engineer on Azure‑hosted LLM automation for clinical simulations and survey feedback. I built and maintained Python services (FastAPI/Flask) that combined LLMs with structured data, implemented RAG‑style workflows with FAISS and PostgreSQL/pgvector, and contributed to internal tools for prompt evaluation and quality monitoring. This experience gave me a strong foundation in designing, deploying, and iterating on LLM pipelines that turn complex data into clear business value.
 
-I also bring experience in system integration and cloud infrastructure that aligns with Ericsson’s focus on secure, scalable, and maintainable software. I have designed services that integrate with databases, external APIs, and telemetry systems, packaged via Docker and deployed on managed Kubernetes (GKE) and Azure environments, with monitoring through Prometheus and logging/trace tools. My work often includes designing data flows and documenting architectures with diagrams and clear technical notes so that cross-functional teams can understand and evolve the systems over time.
+My recent work also includes leading computer vision and embedded AI projects. For a rover vision stack, I trained and deployed YOLOv5/YOLOv8 models, exported them to ONNX/NCNN, and delivered real‑time object detection on Raspberry Pi, exposing results via Flask/ROS2 APIs and benchmarking tools. At Solenium, I architected an AI‑driven NILM analytics flow that connects C/C++ acquisition on STM32 with Python microservices and MQTT telemetry, and I have been responsible for performance tuning and resolving issues across firmware, backend, and data layers.
 
-Beyond hands-on engineering, I enjoy working in agile teams and helping others grow. As a teaching assistant for embedded and robotics courses, I mentored students on systematic debugging, design patterns, and documentation. In industry projects, I have collaborated with product managers, subject-matter experts, and operations teams to refine requirements, prioritize non-functional needs (security, performance, reliability), and use AI-assisted development tools to speed up design and implementation without sacrificing quality.
+I care about clean, well‑documented pipelines and collaborative engineering practices. I regularly define standards for data collection and model deployment, lead or participate in code reviews and pair programming, and create documentation that helps teams debug and extend AI features over time. As a teaching assistant in mobile robotics and embedded systems, and as a vision lead on a rover team, I have mentored students and peers, guided systematic debugging, and facilitated technical discussions in both Spanish and English.
 
-I am excited by Ericsson’s vision of AI-native software development and would welcome the opportunity to bring my experience with backend architecture, LLM-powered agents, and cloud infrastructure to your team, while expanding my skills in Java/Spring and AWS within a global, cross-functional environment.
+Lean Tech’s focus on building a powerful tech workforce in Latin America and partnering with global customers in entertainment, finance, and logistics resonates strongly with me. I would be excited to help oversee and improve your AI feature pipeline, design and ship new LLM and computer vision capabilities, and support your engineering teams through clear standards, shared tooling, and hands‑on collaboration.
 
-Thank you for your time and consideration. I would be glad to discuss how my background can contribute to Ericsson’s AI and software architecture initiatives.
+Thank you for your time and consideration. I would welcome the opportunity to discuss how my background in LLMs, RAG, computer vision, and AI infrastructure can contribute to Lean Tech’s Data Science & Analytics initiatives.
 
 Sincerely,  
 Daniel Esteban Cárdenas Jerez
-

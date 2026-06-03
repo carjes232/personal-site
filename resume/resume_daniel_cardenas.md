@@ -1,56 +1,44 @@
 # Daniel Esteban Cárdenas Jerez
+Medellín, Colombia (Remote) · +57 318 884 8757 · [daniestebanc@hotmail.com](mailto:daniestebanc@hotmail.com)
+[linkedin.com/in/dancarjes](https://linkedin.com/in/dancarjes) · [github.com/carjes232](https://github.com/carjes232) · [dev.danielcardenas.dev](https://dev.danielcardenas.dev)
 
-Medellín, Colombia · +57 318 884 8757 · [daniestebanc@hotmail.com](mailto:daniestebanc@hotmail.com)
-
-[linkedin.com/in/dancarjes](https://linkedin.com/in/dancarjes) · [github.com/carjes232](https://github.com/carjes232) · Portfolio: [dev.danielcardenas.dev](https://dev.danielcardenas.dev)
-
-## Software Architect & AI Engineer — Backend, LLM Agents & Cloud
-
-Engineering physicist turned software architect and AI engineer focused on backend systems, LLM‑powered agents, and cloud‑native services. I design and ship end‑to‑end solutions (APIs, data flows, RAG pipelines, Azure/GCP deployments, observability), integrating AI into products and using AI‑assisted development to accelerate delivery in agile teams.
+## AI Automation / RAG Engineer
+AI engineer building production-oriented GenAI systems: RAG pipelines, voice/document automation, computer vision/OCR, Python APIs, vector search, and edge ML telemetry. Strong in Python/FastAPI/Flask, PostgreSQL/pgvector, FAISS, Gemini/Azure OpenAI, Docker, MQTT, STM32/FreeRTOS, and reliability-minded evaluation.
 
 ## Experience
 
-**Solenium — ML & Firmware Engineer** · Medellín · Jan 2025 – Present (on site)  
-• Lifted meter sensor fidelity ~10× by tuning STM32 timer/ADC pipelines and synchronization with NILM compute stages feeding downstream ML models.  
-• Architected and implemented a NILM analytics flow (C/C++ acquisition, Python services, MQTT streaming) plus an on‑device web console and telemetry APIs for fleet operations and support.
+**Lean Tech — Artificial Intelligence Engineer** · Medellín · Feb 2026 – Present
+- Building Python-based AI automation, LLM integration workflows, and maintainable AI features for production-oriented business use cases.
 
-**Magnus — Machine Learning Engineer (LLMs & RAG)** · Remote · May 2023 – Sep 2024  
-• Contributed to Azure‑hosted LLM pipelines for clinical simulations and survey feedback analysis (prompt templates, safety checks, monitoring).  
-• Implemented FAISS + PostgreSQL vector search backends for RAG workflows and evaluated embeddings (OpenAI, SBERT, Cohere) to improve multilingual retrieval quality.  
-• Helped design internal tools for prompt evaluation and response‑quality monitoring and supported Flask/async services for inference and summarization, including RL‑style alignment loops and multi‑step agent‑like workflows.
+**Solenium — ML & Firmware Engineer** · Medellín · Jan 2025 – Feb 2026
+- Led ML development for a smart-meter NILM system with real-time energy disaggregation at **10 Hz** and **sub-2-second latency**.
+- Built retrainable ML workflows plus a FaceID field-attendance PWA with on-device recognition, liveness, GPS/project checks, offline queueing, and photo-backed publishing.
+- Contributed to STM32 acquisition, OTA updates, watchdogs, OpenSSL-backed data handling, JWT Flask/Django APIs, and **six field-device** deployments.
 
-**XM S.A. E.S.P — Market Development Analyst (Intern)** · Medellín (hybrid) · Jul 2024 – Jan 2025  
-• Shipped a PyQt6/Pandas workbench that reconciles SQL, Excel, and API sources with tolerance rules, cutting reconciliation time from **4–6 hours** to **under 30 minutes** and reducing mismatch rate by ~70%.  
-• Authored acceptance criteria, reproducible datasets, and audit‑ready Excel exports.
+**Magnus — Machine Learning Engineer (LLMs & RAG)** · Remote · May 2023 – Sep 2024
+- Built Python services for Azure-hosted LLM workflows supporting clinical simulations and survey feedback analysis.
+- Implemented RAG workflows with **FAISS** and **PostgreSQL/pgvector**, plus Flask APIs, async inference/summarization services, embedding comparisons, prompt evaluation, and quality monitoring.
 
-**Universidad Nacional de Colombia — Teaching Assistant (Mobile Robotics & Embedded Systems)** · 2023 – 2024  
-• Guided STM32F4 FreeRTOS labs (sensor fusion, odometry, PWM/PID, on‑board A*) and standardized bring‑up/debugging guides, mentoring students on systematic debugging.
+**XM S.A. E.S.P — Market Development Analyst** · Medellín · Jul 2024 – Jan 2025
+- Shipped a **PyQt6 + Pandas** SQL/Excel/API reconciliation workbench with tolerance rules and audit exports, cutting reconciliation from **4-6 hours** to **under 30 minutes**.
 
-## Selected Architecture & AI Projects
+**Universidad Nacional de Colombia — Teaching Assistant** · 2023 – 2024
+- Guided STM32F4/FreeRTOS robotics labs: sensor fusion, odometry, PWM/PID, onboard A*, debugging, and experiment documentation.
 
-**Multilingual Multi‑Hop RAG — FastAPI · pgvector · BGE‑M3 · Ollama**  
-• Local‑first RAG stack (FastAPI + pgvector HNSW + BGE‑M3 + Ollama) with multi‑stage prompts (translate → retrieve → cite → synthesize), improving Recall@5 by **18%** vs. keyword search.
+## Selected Projects
 
-**Rover Vision — Raspberry Pi YOLO + Kinect — Python · YOLOv5/v8 · NCNN/ONNX · ROS2**  
-• Led rover vision: trained YOLOv5n/YOLOv8n, exported to ONNX/NCNN, and deployed real‑time object detection on Raspberry Pi with Flask/ROS2 streaming and latency benchmarking.
+**Multilingual Multi-Hop RAG** — FastAPI · pgvector HNSW · BGE-M3 · Ollama: local-first RAG backend with translate/retrieve/cite/synthesize prompting, recall@k evaluation, and p95 latency target under 5 seconds.
+**Solenium FaceID Attendance PWA** — Flask · PWA · IndexedDB · Geolocation: field attendance system with local face recognition/liveness, offline queueing, GPS/project checks, and photo-backed event publishing.
+**Telegram Inventory Bot with Gemini Voice Parsing** — Python · Gemini · SQLite: voice messages become confirmed sales, reservations, payments, inventory changes, and customer debt records.
 
-**AssemblyAI Live Transcriber — Next.js · WebRTC · Vercel AI SDK**  
-• Live transcription tool for bilingual roadmap calls using WebRTC + AssemblyAI (~**450 ms** latency), with diarization, prompt‑engineered summaries/action items, and Supabase storage (RLS, auto‑cleanup).
-
-## Skills & Tools
-
-**Architecture & Backend**: Python (advanced), Go, API design, microservices, data flows, system design, test automation, Git/GitHub, agile (Scrum)  
-**LLMs & RAG**: FastAPI, Flask, RAG architectures, FAISS, pgvector/HNSW, BGE‑M3, OpenAI/SBERT/Cohere embeddings, multi‑step prompts/agents, eval harnesses (recall/BLEU), Azure‑hosted LLM pipelines, GitHub Actions CI  
-**Vision & Detection**: PyTorch (YOLOv5/v8), ONNX/NCNN, OpenCV, Tesseract OCR, Raspberry Pi, Kinect, ROS2, edge deployments and latency benchmarking  
-**Cloud & Platforms**: Docker & Docker Compose, Azure, GKE (Kubernetes/GCP), Vercel, telemetry dashboards, Prometheus exporters  
-**Web & Collaboration**: Next.js, Vue 3, WebRTC, Supabase, Vercel AI SDK, AI assistants, requirements workshops, mentoring/teaching, bilingual documentation, work with QA/ops/product
+## Skills
+**LLMs / AI:** RAG, embeddings, prompt engineering, Azure OpenAI, Gemini, OCR, computer vision, pgvector, FAISS, recall@k, citation checks
+**Backend / Data:** Python, FastAPI, Flask, Django, Pandas, PostgreSQL, SQLite, Docker/Compose, REST APIs, async workers
+**Edge / Embedded:** STM32, FreeRTOS, C/C++, MQTT, OTA, watchdogs, telemetry, Raspberry Pi, OpenCV, ROS2
 
 ## Education & Certifications
-
-B.Sc. Ingeniería Física — Universidad Nacional de Colombia · 2019 – 2025  
-In progress — IBM Deep Learning with PyTorch, Keras and TensorFlow Professional Certificate  
-In progress — IBM AI Engineering Professional Certificate
+B.Sc. Ingeniería Física — Universidad Nacional de Colombia · 2019 – 2025
+IBM Deep Learning with PyTorch, Keras and TensorFlow · AWS Academy Cloud Foundations · Cloud Computing Foundations · SQL · Applied Plotting, Charting & Data Representation in Python
 
 ## Languages
-
-Spanish (native) · English (C1) · Portuguese (A2)
+Spanish (Native) · English (C1) · Portuguese (A2)

@@ -17,11 +17,11 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://danielcardenas.dev"),
   title: {
-    default: "Daniel Cárdenas — Full-Stack Builder",
+    default: "Daniel Cárdenas — AI Automation Engineer",
     template: "%s | Daniel Cárdenas",
   },
   description:
-    "Firmware to AI: Daniel Cárdenas builds end-to-end systems across embedded, backends, PWAs, and RAG.",
+    "Daniel Cárdenas builds RAG systems, AI automation tools, Python APIs, and edge ML/firmware platforms.",
   keywords: [
     "Firmware",
     "Embedded",
@@ -32,6 +32,8 @@ export const metadata: Metadata = {
     "AI",
     "Full Stack",
     "Next.js",
+    "AI Automation",
+    "Edge ML",
   ],
   authors: [{
     name: "Daniel Cárdenas",
@@ -42,10 +44,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://danielcardenas.dev",
-    siteName: "Daniel Cárdenas — Full-Stack Builder",
-    title: "Daniel Cárdenas — Full-Stack Builder",
+    siteName: "Daniel Cárdenas — AI Automation Engineer",
+    title: "Daniel Cárdenas — AI Automation Engineer",
     description:
-      "Portfolio and case studies across firmware, backends, PWAs, and AI/RAG projects.",
+      "Portfolio and case studies across RAG, AI automation, Python APIs, edge ML, and firmware.",
   },
   twitter: {
     card: "summary_large_image",

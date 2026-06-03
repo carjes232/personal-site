@@ -1,47 +1,50 @@
 ---
-title: "AssemblyAI Live Transcriber"
+title: "AssemblyAI Audio Transcriber"
 slug: "assemblyai-transcriber"
 date: "2024-07-14"
 tags:
-  - "TypeScript"
-  - "Next.js"
-  - "WebRTC"
+  - "Python"
+  - "Flask"
+  - "Tkinter"
   - "AssemblyAI"
-track: "web-cloud"
-role: "Full Stack"
-summary: "Live transcription and highlights for bilingual stakeholder calls."
-repo: "https://github.com/carjes232/assemblyai-live-transcriber"
-demo: "https://assemblyai-live-transcriber.vercel.app"
+  - "Audio"
+  - "Automation"
+track: "ai-backend"
+role: "Python Automation"
+summary: "Desktop and web transcription tool that chunks long audio files, preserves overlap, and saves full plus per-part transcripts."
+repo: "https://github.com/carjes232/Transcribe-assemblyai"
+context: "Personal automation project built around AssemblyAI, ffmpeg/pydub, Flask, and Tkinter."
 results:
-  - "Streaming latency ~450ms"
-  - "Auto summaries under 2 minutes"
+  - "Handles long local audio through configurable chunks and overlap"
+  - "Ships both Tkinter desktop UI and Flask web UI with polling progress"
+  - "Keeps API keys local and discards sensitive data after processing"
 badges:
-  - "WebRTC"
-  - "Edge Functions"
-  - "Bilingual"
+  - "AssemblyAI"
+  - "Flask UI"
+  - "Tkinter"
 xp: 90
 confidential: false
 ---
 
 ## Problem
 
-Distributed product teams needed live transcripts and summaries for bilingual (ES/EN) roadmap reviews. Off-the-shelf tools struggled with code-switching and required manual exporting.
+I needed a reliable way to transcribe long local audio files without uploading a whole recording blindly or losing context at chunk boundaries. The tool also had to be safe enough for repeated use: no committed API keys, clear outputs, and recoverable per-part transcripts.
 
 ## Approach
 
-- Built a **Next.js** edge function that proxies AssemblyAI live transcription with auth token rotation.
-- Created a WebRTC capture widget that streams microphone audio via **MediaRecorder** chunks over WebSockets.
-- Implemented bilingual speaker diarization with language hints and automatic glossary injection.
-- Added highlights + action item extraction using a hybrid of AssemblyAI summarization and custom prompt engineering in Vercel AI SDK.
-- Stored sessions in **Supabase** with row-level security for invite-only access and auto-cleanup after 14 days.
+- Built a **Tkinter** desktop app for direct local use and a **Flask** web app for browser-based uploads.
+- Used **pydub** and **ffmpeg** to normalize audio to mono 16 kHz before transcription.
+- Split recordings into configurable windows with overlap so long files remain manageable while preserving sentence context.
+- Wrote per-chunk transcript files plus one joined transcript with timestamps for review.
+- Added a thread-safe job registry in the Flask app so the UI can poll status, progress, logs, and final transcript text.
+- Loaded API keys from `.env` or the UI, avoided committing secrets, and cleaned temporary files after each job.
 
 ## Results
 
-- End-to-end streaming latency around **450 ms**, validated with synthetic tests.
-- Meeting summaries and action items ready **&lt;2 minutes** after call end.
-- Boosted async participation; PMs reuse transcripts in Linear + Notion automation.
+- A practical transcription utility for `.m4a`, `.mp3`, `.wav`, and other ffmpeg-supported formats.
+- Outputs are easy to audit: `*_FULL.txt` plus timestamped part files.
+- The same core transcription logic is reused by the desktop and web interfaces.
 
 ## Links
 
-- [Source repository](https://github.com/carjes232/assemblyai-live-transcriber)
-- [Live demo](https://assemblyai-live-transcriber.vercel.app)
+- [Source repository](https://github.com/carjes232/Transcribe-assemblyai)

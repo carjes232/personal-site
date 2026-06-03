@@ -5,25 +5,25 @@ import { ProjectCard } from "@/components/ProjectCard";
 
 const TRACKS = [
   {
-    title: "AI / Backend",
+    title: "AI Automation",
     description:
-      "RAG systems, FastAPI and Go services, observability-first data platforms.",
+      "RAG, voice/document workflows, evals, and Python services that can be tested and deployed.",
     icon: Brain,
-    highlights: ["pgvector", "RAG evals", "Streaming inference"],
+    highlights: ["RAG", "LLM evals", "FastAPI"],
   },
   {
-    title: "Firmware / Embedded",
+    title: "Edge ML / Firmware",
     description:
-      "STM32 + RTOS, device tooling, telemetry pipelines from edge to cloud.",
+      "STM32, telemetry, OTA safety, and ML pipelines that connect real devices to cloud systems.",
     icon: CircuitBoard,
-    highlights: ["STM32", "Watchdogs", "Device UI"],
+    highlights: ["STM32", "NILM", "MQTT"],
   },
   {
-    title: "Web / Cloud",
+    title: "Data Products",
     description:
-      "PWAs, Next.js frontends, DevOps with Docker, Terraform, and observability.",
+      "Operational dashboards, reconciliation tools, and cloud-backed automations for business users.",
     icon: Cloud,
-    highlights: ["Next.js", "Vercel", "Infra-as-code"],
+    highlights: ["Postgres", "Docker", "Reports"],
   },
 ];
 
@@ -94,11 +94,10 @@ export default function HomePage() {
             <Sparkles className="size-8 text-hud-accent" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-semibold text-hud-text leading-tight">
-            Need a builder who spans firmware to AI?
+            Need AI automation that survives production?
           </h2>
           <p className="mx-auto max-w-2xl text-sm text-hud-subtle leading-relaxed">
-            I ship embedded tools, data platforms, and intelligent UIs that play nicely together.
-            Let’s talk about the next mission—RAG, device telemetry, or edge analytics.
+            I help teams turn messy documents, device telemetry, and business processes into maintainable AI systems with clear APIs, measurable quality, and deployable demos.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-2">
             <Link

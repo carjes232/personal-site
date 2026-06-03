@@ -4,30 +4,30 @@ import { Globe, Layers, Map, Rocket } from "lucide-react";
 export const metadata: Metadata = {
   title: "Player Card",
   description:
-    "Meet Daniel Cárdenas: firmware roots, backend rigor, and AI systems that deliver measurable impact.",
+    "Meet Daniel Cárdenas: AI automation engineer with RAG, Python API, edge ML, and firmware experience.",
   openGraph: {
     title: "About | Daniel Cárdenas",
     description:
-      "Meet Daniel Cárdenas: firmware roots, backend rigor, and AI systems that deliver measurable impact.",
+      "Meet Daniel Cárdenas: AI automation engineer with RAG, Python API, edge ML, and firmware experience.",
   },
 };
 
 const STACK = [
   {
     label: "Embedded",
-    items: ["STM32", "FreeRTOS", "C/C++", "Zephyr"],
+    items: ["STM32", "FreeRTOS", "C/C++", "OTA"],
   },
   {
     label: "Backend",
-    items: ["Go", "Python", "FastAPI", "Postgres", "Redis"],
+    items: ["Python", "FastAPI", "Flask", "Postgres", "Docker"],
   },
   {
     label: "AI",
-    items: ["RAG", "LangChain", "pgvector", "LLM Eval"],
+    items: ["RAG", "Gemini", "Azure OpenAI", "pgvector", "LLM Eval"],
   },
   {
     label: "Web",
-    items: ["Next.js", "Tailwind", "Supabase", "Vercel"],
+    items: ["Next.js", "Vue", "PyQt6", "Dashboards"],
   },
 ];
 
@@ -47,13 +47,13 @@ export default function AboutPage() {
               Player Card
             </p>
             <h1 className="text-4xl font-semibold text-hud-text">
-              Firmware roots, AI-fueled delivery.
+              AI automation with hardware-level instincts.
             </h1>
             <p className="text-base text-hud-subtle">
-              I started by bringing STM32 devices online for energy and IoT companies in Colombia. That edge experience built my obsession for reliability and observability—principles I now carry into AI pipelines, realtime backends, and polished web experiences. Today I help teams connect device data, vector-aware services, and frontends that feel like command centers.
+              I build production-oriented AI systems across documents, business workflows, and connected devices. My recent work includes RAG pipelines for clinical simulation workflows, a Gemini-powered Telegram inventory bot, and smart-meter NILM systems that connect STM32 acquisition, Python services, MQTT telemetry, and field devices.
             </p>
             <p className="text-base text-hud-subtle">
-              My toolkit spans embedded C, Go/Python services, Postgres/pgvector, and modern Next.js frontends. I enjoy translating ambiguous ideas into measurable outcomes: latency budgets, eval harnesses, KPI dashboards, and sanitized demos recruiters can ship internally.
+              I am strongest where software has to touch reality: noisy sensor data, private documents, legacy spreadsheets, uncertain prompts, and users who need the system to work without drama. My toolkit spans Python/FastAPI/Flask, Postgres/pgvector/FAISS, Gemini/Azure OpenAI, Docker, STM32/FreeRTOS, and practical dashboards.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
@@ -63,7 +63,7 @@ export default function AboutPage() {
                 Download résumé
               </a>
               <a
-                href="mailto:hi@danielcardenas.dev"
+                href="mailto:daniestebanc@hotmail.com"
                 className="inline-flex items-center gap-2 rounded-full border border-hud-border/70 px-5 py-2 text-sm font-semibold text-hud-accent transition hover:border-hud-accent/60 hover:text-hud-accent-strong"
               >
                 Say hi
@@ -76,7 +76,7 @@ export default function AboutPage() {
                 <Rocket className="size-4 text-hud-accent" /> Currently
               </div>
               <p className="mt-3 text-sm text-hud-subtle">
-                Consulting on AI-enabled data tooling, RAG pipelines, and edge monitoring stacks for growth-stage companies.
+                Artificial Intelligence Engineer at Lean Tech; previously ML/Firmware Engineer at Solenium and Machine Learning Engineer at Magnus.
               </p>
             </div>
             <div className="rounded-2xl border border-hud-border/60 bg-hud-surface-alt/70 p-4">
@@ -84,9 +84,9 @@ export default function AboutPage() {
                 <Layers className="size-4 text-hud-accent" /> Focus Areas
               </div>
               <ul className="mt-3 space-y-2 text-sm text-hud-subtle">
-                <li>RAG + eval harnesses with latency budgets.</li>
-                <li>Device telemetry pipelines with OTA safety.</li>
-                <li>Next.js dashboards that surface the right KPIs.</li>
+                <li>RAG, retrieval quality, and citation-aware LLM workflows.</li>
+                <li>Voice/document automation using Python APIs and LLMs.</li>
+                <li>Edge ML and smart-meter telemetry with OTA safety.</li>
               </ul>
             </div>
             <div className="rounded-2xl border border-hud-border/60 bg-hud-surface-alt/70 p-4">
