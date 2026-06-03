@@ -4,7 +4,11 @@ import { useCallback, useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Filter, X } from "lucide-react";
 import type { Project } from "@/lib/content";
-import { TRACK_LABELS, type ProjectTrack } from "@/lib/content";
+import {
+  projectMatchesFilterTag,
+  TRACK_LABELS,
+  type ProjectTrack,
+} from "@/lib/content";
 import { ProjectCard } from "@/components/ProjectCard";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +40,7 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
         ? project.track === selectedTrack
         : true;
       const matchesTags = selectedTags.length
-        ? selectedTags.every((tag) => project.tags?.includes(tag))
+        ? selectedTags.every((tag) => projectMatchesFilterTag(project, tag))
         : true;
       return matchesTrack && matchesTags;
     });
@@ -79,7 +83,16 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
 
   return (
     <div className="space-y-8">
-      <div className="rounded-3xl border border-hud-border/60 bg-hud-surface/70 p-6">
+      <p className="text-sm text-hud-subtle">
+        Showing{" "}
+        <span className="font-semibold tabular-nums text-hud-text">
+          {filteredProjects.length}
+        </span>{" "}
+        of {projects.length} projects
+        {(selectedTags.length > 0 || selectedTrack) ? " (filtered)" : ""}
+      </p>
+
+      <div className="rounded-3xl border border-hud-border/60 bg-hud-surface/70 p-6 lg:sticky lg:top-24 lg:z-20">
         <div className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.28em] text-hud-subtle">
           <Filter className="size-4 text-hud-accent" /> Filters
         </div>

@@ -15,6 +15,7 @@ import {
 } from "@/lib/content";
 import { Badge } from "@/components/Badge";
 import { MDXRenderer } from "@/components/MDXRenderer";
+import { ProjectCoverArt } from "@/components/ProjectCoverArt";
 
 function minutesToRead(project: Project) {
   const minutes = Math.ceil(project.readingTime.minutes ?? 0);
@@ -87,7 +88,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const readMinutes = minutesToRead(project);
 
   return (
-    <article className="space-y-12">
+    <article className="space-y-10">
+      <div className="relative overflow-hidden rounded-3xl border border-hud-border/60">
+        <ProjectCoverArt
+          project={project}
+          variant="hero"
+          className="aspect-[21/9] min-h-[220px] w-full sm:min-h-[280px]"
+          sizes="100vw"
+          priority
+        />
+      </div>
+
       <header className="space-y-6 rounded-3xl border border-hud-border/60 bg-hud-surface/70 p-8">
         <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.28em] text-hud-subtle">
           <span>

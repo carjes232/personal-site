@@ -12,6 +12,28 @@ export const TRACK_LABELS: Record<ProjectTrack, string> = {
   "web-cloud": "Web / Cloud",
 };
 
+const FEATURED_FILTER_TAGS = [
+  "RAG",
+  "LLM",
+  "Python",
+  "FastAPI",
+  "Gemini",
+  "Computer Vision",
+  "Automation",
+  "IoT",
+  "Firmware",
+  "STM32",
+  "MQTT",
+  "Data",
+];
+
+const TAG_ALIASES: Record<string, string[]> = {
+  LLM: ["LLM", "Embeddings", "Azure", "Azure OpenAI", "Ollama"],
+  Automation: ["Automation", "Excel", "PDF", "PyQt6", "Telegram", "WhatsApp", "Voice AI"],
+  IoT: ["IoT", "ESP32", "Azure IoT Hub", "Modbus", "Geolocation", "Sensors"],
+  Data: ["pandas", "PostgreSQL", "SQLite", "pgvector", "CockroachDB", "Fintech"],
+};
+
 export function sortProjects(projects: Project[]): Project[] {
   return [...projects].sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date)),
@@ -59,5 +81,13 @@ export function uniqueTags(): string[] {
   for (const project of allProjects) {
     project.tags?.forEach((tag) => tagSet.add(tag));
   }
-  return Array.from(tagSet).sort((a, b) => a.localeCompare(b));
+  return FEATURED_FILTER_TAGS.filter((tag) => {
+    const aliases = TAG_ALIASES[tag] ?? [tag];
+    return aliases.some((alias) => tagSet.has(alias));
+  });
+}
+
+export function projectMatchesFilterTag(project: Project, tag: string): boolean {
+  const aliases = TAG_ALIASES[tag] ?? [tag];
+  return aliases.some((alias) => project.tags?.includes(alias));
 }

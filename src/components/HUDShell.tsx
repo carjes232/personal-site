@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import Link from "next/link";
 import { getAllNotes, getAllProjects } from "@/lib/content";
 import { Navigation } from "@/components/Navigation";
 import { CmdPalette, type PaletteItem } from "@/components/CmdPalette";
@@ -48,9 +49,7 @@ function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-12 flex flex-col gap-3 border-t border-hud-border/60 pb-8 pt-6 text-sm text-hud-subtle sm:flex-row sm:items-center sm:justify-between">
-      <span>
-        © {year} Daniel Cárdenas. Firmware → AI systems.
-      </span>
+      <span>© {year} Daniel Cárdenas. Firmware → AI systems.</span>
       <div className="flex flex-wrap items-center gap-4">
         <a href="https://github.com/carjes232" target="_blank" rel="noopener noreferrer">
           GitHub
@@ -69,46 +68,42 @@ export function HUDShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="relative min-h-screen overflow-hidden gradient-bg">
-        <div className="pointer-events-none absolute inset-0 hud-grid opacity-[0.08]" />
-        <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col gap-12 px-4 pb-12 pt-8 sm:px-8 lg:px-12">
-          <header className="flex flex-col gap-6 rounded-3xl border border-hud-border/50 bg-hud-surface/85 p-6 sm:p-8 backdrop-blur relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-hud-accent/5 to-transparent opacity-50" />
-            <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div className="space-y-4">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.28em] text-hud-subtle font-medium">
-                    Daniel Cárdenas
-                  </p>
-                  <h1 className="mt-2 text-xl sm:text-2xl font-semibold text-hud-text leading-tight">
-                    AI Automation Engineer: RAG · Edge ML · Firmware
-                  </h1>
-                </div>
-                <p className="text-sm text-hud-subtle leading-relaxed max-w-2xl">
-                  I build practical AI systems: RAG pipelines, voice and document automation, Python APIs, and the embedded telemetry that makes edge ML useful in the real world.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                <Navigation items={NAV_ITEMS} />
-                <CmdPalette
-                  items={paletteItems}
-                  trigger={
-                    <button className="flex items-center gap-2 rounded-full border border-hud-border/70 bg-hud-surface-alt/80 px-4 py-2 text-sm text-hud-subtle transition-all hover:border-hud-accent/60 hover:text-hud-text hover:scale-105 backdrop-blur-sm">
-                      <Search className="size-4 text-hud-accent" />
-                      <span className="hidden sm:inline">Search portfolio</span>
-                      <span className="hidden sm:inline-block rounded bg-hud-border/80 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-hud-subtle">
-                        ⌘K
-                      </span>
-                    </button>
-                  }
-                />
-              </div>
-            </div>
-          </header>
+      <div className="pointer-events-none absolute inset-0 hud-grid opacity-[0.08]" />
+      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col gap-10 px-4 pb-12 pt-6 sm:px-8 lg:px-12">
+        <header className="sticky top-4 z-30 flex flex-col gap-4 rounded-2xl border border-hud-border/50 bg-hud-surface/90 p-4 backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between">
+          <Link href="/" className="group shrink-0 space-y-0.5">
+            <p className="text-[10px] font-medium uppercase tracking-[0.32em] text-hud-subtle">
+              Daniel Cárdenas
+            </p>
+            <p className="text-sm font-semibold text-hud-text transition group-hover:text-hud-accent">
+              AI Automation · RAG · Edge ML
+            </p>
+          </Link>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Navigation items={NAV_ITEMS} />
+            <CmdPalette
+              items={paletteItems}
+              trigger={
+                <button
+                  type="button"
+                  className="flex items-center gap-2 rounded-full border border-hud-border/70 bg-hud-surface-alt/80 px-4 py-2 text-sm text-hud-subtle transition hover:border-hud-accent/60 hover:text-hud-text"
+                  aria-label="Search portfolio"
+                >
+                  <Search className="size-4 text-hud-accent" />
+                  <span className="hidden sm:inline">Search</span>
+                  <span className="hidden rounded bg-hud-border/80 px-2 py-0.5 text-[10px] uppercase tracking-[0.18em] text-hud-subtle md:inline">
+                    ⌘K
+                  </span>
+                </button>
+              }
+            />
+          </div>
+        </header>
 
-          <main className="flex-1">{children}</main>
+        <main className="flex-1">{children}</main>
 
-          <Footer />
-        </div>
+        <Footer />
+      </div>
     </div>
   );
 }

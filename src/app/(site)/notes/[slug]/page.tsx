@@ -8,7 +8,7 @@ import {
 import { MDXRenderer } from "@/components/MDXRenderer";
 
 interface NotePageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: NotePageProps): Promise<Metadata> {
-  const note = getNoteBySlug(params.slug);
+  const { slug } = await params;
+  const note = getNoteBySlug(slug);
   if (!note) {
     return { title: "Note not found" };
   }
@@ -43,7 +44,8 @@ export async function generateMetadata({
 }
 
 export default async function NotePage({ params }: NotePageProps) {
-  const note = getNoteBySlug(params.slug);
+  const { slug } = await params;
+  const note = getNoteBySlug(slug);
   if (!note) {
     notFound();
   }
