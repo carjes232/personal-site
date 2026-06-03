@@ -28,10 +28,20 @@ const FEATURED_FILTER_TAGS = [
 ];
 
 const TAG_ALIASES: Record<string, string[]> = {
-  LLM: ["LLM", "Embeddings", "Azure", "Azure OpenAI", "Ollama"],
-  Automation: ["Automation", "Excel", "PDF", "PyQt6", "Telegram", "WhatsApp", "Voice AI"],
+  LLM: ["LLM", "Embeddings", "Azure", "Azure OpenAI", "Ollama", "Codex"],
+  Automation: [
+    "Automation",
+    "Excel",
+    "PDF",
+    "PyQt6",
+    "Telegram",
+    "WhatsApp",
+    "Voice AI",
+    "Finance Automation",
+    "Contract Analysis",
+  ],
   IoT: ["IoT", "ESP32", "Azure IoT Hub", "Modbus", "Geolocation", "Sensors"],
-  Data: ["pandas", "PostgreSQL", "SQLite", "pgvector", "CockroachDB", "Fintech"],
+  Data: ["pandas", "Pandas", "PostgreSQL", "SQLite", "pgvector", "CockroachDB", "Fintech"],
 };
 
 export function sortProjects(projects: Project[]): Project[] {
