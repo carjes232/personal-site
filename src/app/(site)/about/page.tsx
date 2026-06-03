@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Globe, Layers, Map, Rocket } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Player Card",
+  title: "About",
   description:
     "Meet Daniel Cárdenas: AI automation engineer with RAG, Python API, edge ML, and firmware experience.",
   openGraph: {
@@ -44,7 +44,7 @@ export default function AboutPage() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-2xl space-y-4">
             <p className="text-xs uppercase tracking-[0.28em] text-hud-subtle">
-              Player Card
+              Professional Snapshot
             </p>
             <h1 className="text-4xl font-semibold text-hud-text">
               AI automation with hardware-level instincts.

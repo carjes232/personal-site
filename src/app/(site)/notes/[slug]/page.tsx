@@ -6,7 +6,6 @@ import {
   getNoteBySlug,
 } from "@/lib/content";
 import { MDXRenderer } from "@/components/MDXRenderer";
-import { NoteXPTracker } from "@/components/notes/NoteXPTracker";
 
 interface NotePageProps {
   params: { slug: string };
@@ -57,7 +56,6 @@ export default async function NotePage({ params }: NotePageProps) {
 
   return (
     <article className="space-y-10">
-      <NoteXPTracker slug={note.slug} />
       <header className="rounded-3xl border border-hud-border/60 bg-hud-surface/70 p-8">
         <p className="text-xs uppercase tracking-[0.28em] text-hud-subtle">{published}</p>
         <h1 className="mt-3 text-4xl font-semibold text-hud-text">{note.title}</h1>

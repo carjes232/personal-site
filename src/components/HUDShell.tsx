@@ -1,7 +1,6 @@
-import { Sparkles } from "lucide-react";
+import { Search } from "lucide-react";
 import { getAllNotes, getAllProjects } from "@/lib/content";
 import { Navigation } from "@/components/Navigation";
-import { XPBar } from "@/components/XPBar";
 import { CmdPalette, type PaletteItem } from "@/components/CmdPalette";
 
 const NAV_ITEMS = [
@@ -94,8 +93,8 @@ export function HUDShell({ children }: { children: React.ReactNode }) {
                   items={paletteItems}
                   trigger={
                     <button className="flex items-center gap-2 rounded-full border border-hud-border/70 bg-hud-surface-alt/80 px-4 py-2 text-sm text-hud-subtle transition-all hover:border-hud-accent/60 hover:text-hud-text hover:scale-105 backdrop-blur-sm">
-                      <Sparkles className="size-4 text-hud-accent" />
-                      <span className="hidden sm:inline">Command Palette</span>
+                      <Search className="size-4 text-hud-accent" />
+                      <span className="hidden sm:inline">Search portfolio</span>
                       <span className="hidden sm:inline-block rounded bg-hud-border/80 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-hud-subtle">
                         ⌘K
                       </span>
@@ -103,9 +102,6 @@ export function HUDShell({ children }: { children: React.ReactNode }) {
                   }
                 />
               </div>
-            </div>
-            <div className="relative">
-              <XPBar />
             </div>
           </header>
 

@@ -6,7 +6,6 @@ import { Github, Globe } from "lucide-react";
 import type { Project } from "@/lib/content";
 import { Badge } from "@/components/Badge";
 import { cn } from "@/lib/utils";
-import { AwardLink } from "@/components/AwardLink";
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 
@@ -103,30 +102,26 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
           <div />
           <div className="flex items-center gap-2">
             {project.repo ? (
-              <AwardLink
+              <a
                 href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex size-9 items-center justify-center rounded-full border border-hud-border/70 text-hud-subtle transition hover:border-hud-accent/60 hover:text-hud-accent"
                 aria-label={`${project.title} repository`}
-                reason="repo_click"
-                identifier={project.slug}
               >
                 <Github className="size-4" />
-              </AwardLink>
+              </a>
             ) : null}
             {project.demo ? (
-              <AwardLink
+              <a
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex size-9 items-center justify-center rounded-full border border-hud-border/70 text-hud-subtle transition hover:border-hud-accent/60 hover:text-hud-accent"
                 aria-label={`${project.title} demo`}
-                reason="demo_click"
-                identifier={project.slug}
               >
                 <Globe className="size-4" />
-              </AwardLink>
+              </a>
             ) : null}
           </div>
         </div>

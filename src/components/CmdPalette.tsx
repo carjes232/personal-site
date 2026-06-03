@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import type { Route } from "next";
 import { usePathname, useRouter } from "next/navigation";
-import { awardXP } from "@/lib/xp";
 
 export type PaletteItemType = "route" | "project" | "note";
 
@@ -91,12 +90,6 @@ export function CmdPalette({ items, trigger }: CmdPaletteProps) {
 
   const handleSelect = useCallback(
     (item: PaletteItem) => {
-      if (item.type === "project") {
-        awardXP("project_read", item.id);
-      }
-      if (item.type === "note") {
-        awardXP("note_read", item.id);
-      }
       setOpen(false);
       router.push(item.href as Route);
     },

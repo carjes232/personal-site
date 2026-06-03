@@ -15,8 +15,6 @@ import {
 } from "@/lib/content";
 import { Badge } from "@/components/Badge";
 import { MDXRenderer } from "@/components/MDXRenderer";
-import { ProjectXPTracker } from "@/components/projects/ProjectXPTracker";
-import { AwardLink } from "@/components/AwardLink";
 
 function minutesToRead(project: Project) {
   const minutes = Math.ceil(project.readingTime.minutes ?? 0);
@@ -90,7 +88,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <article className="space-y-12">
-      <ProjectXPTracker slug={project.slug} />
       <header className="space-y-6 rounded-3xl border border-hud-border/60 bg-hud-surface/70 p-8">
         <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.28em] text-hud-subtle">
           <span>
@@ -131,28 +128,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
         <div className="flex flex-wrap items-center gap-3">
           {project.repo ? (
-            <AwardLink
+            <a
               href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-hud-border/70 px-4 py-2 text-sm font-semibold text-hud-accent transition hover:border-hud-accent/60 hover:text-hud-accent-strong"
-              reason="repo_click"
-              identifier={project.slug}
             >
               <ExternalLink className="size-4" /> Repository
-            </AwardLink>
+            </a>
           ) : null}
           {project.demo ? (
-            <AwardLink
+            <a
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-hud-border/70 px-4 py-2 text-sm font-semibold text-hud-accent transition hover:border-hud-accent/60 hover:text-hud-accent-strong"
-              reason="demo_click"
-              identifier={project.slug}
             >
               <ExternalLink className="size-4" /> Demo
-            </AwardLink>
+            </a>
           ) : null}
         </div>
         {project.confidential ? (

@@ -1,7 +1,15 @@
 import { Brain, CircuitBoard, Cloud, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { getFeaturedProjects } from "@/lib/content";
+import { getAllProjects, type Project } from "@/lib/content";
 import { ProjectCard } from "@/components/ProjectCard";
+
+const FEATURED_AI_SLUGS = [
+  "multilingual-multihop-rag",
+  "solenium-nilm-edge-platform",
+  "magnus-llm-automation",
+  "telegram-inventory-gemini-bot",
+  "wyze-lab-monitor",
+];
 
 const TRACKS = [
   {
@@ -28,10 +36,38 @@ const TRACKS = [
 ];
 
 export default function HomePage() {
-  const featured = getFeaturedProjects().slice(0, 3);
+  const projects = getAllProjects();
+  const featured = FEATURED_AI_SLUGS.map((slug) =>
+    projects.find((project) => project.slug === slug),
+  ).filter((project): project is Project => Boolean(project));
 
   return (
     <div className="space-y-20">
+      <section className="space-y-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-hud-text">
+              Featured AI Projects
+            </h2>
+            <p className="mt-2 text-sm text-hud-subtle max-w-2xl">
+              Production-oriented case studies across RAG, LLM automation, OCR, field devices, and edge ML.
+            </p>
+          </div>
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-hud-accent transition-all hover:text-hud-accent-strong hover:scale-105 self-start"
+          >
+            View all projects
+            <span className="text-xs">→</span>
+          </Link>
+        </div>
+        <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+          {featured.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
+
       <section className="rounded-3xl border border-hud-border/60 bg-hud-surface/80 p-10 backdrop-blur-sm">
         <h2 className="text-lg font-semibold uppercase tracking-[0.28em] text-hud-subtle">
           Primary Tracks
@@ -60,29 +96,6 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="space-y-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-hud-text">Featured missions</h2>
-            <p className="mt-2 text-sm text-hud-subtle max-w-2xl">
-              Flagship case studies spanning the device, backend, and AI stack.
-            </p>
-          </div>
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-hud-accent transition-all hover:text-hud-accent-strong hover:scale-105 self-start"
-          >
-            View all projects
-            <span className="text-xs">→</span>
-          </Link>
-        </div>
-        <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
-          {featured.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </section>
