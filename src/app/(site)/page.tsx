@@ -45,9 +45,10 @@ export default function HomePage() {
               Featured work
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-hud-subtle">
-              Production-oriented case studies across RAG, LLM automation, OCR,
-              field devices, and edge ML — each with architecture notes and
-              measurable outcomes where possible.
+              Production-oriented case studies across RAG, agent platforms, LLM
+              automation, CRM and finance workflows, OCR, field devices, and edge
+              ML — each with architecture notes and measurable outcomes where
+              possible.
             </p>
           </div>
           <Link

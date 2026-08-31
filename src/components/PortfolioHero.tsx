@@ -18,10 +18,11 @@ export function PortfolioHero() {
             RAG pipelines to edge firmware.
           </h1>
           <p className="max-w-2xl text-base leading-relaxed text-hud-subtle">
-            I&apos;m Daniel Cárdenas, an AI automation engineer. This site is a
-            curated set of production-oriented case studies: retrieval quality,
-            document and voice automation, Python APIs, and the embedded
-            telemetry that makes edge ML useful in the field.
+            I&apos;m Daniel Cárdenas, an applied AI and systems engineer. This site
+            is a curated set of production-oriented case studies: retrieval
+            quality, agent platforms, agentic document workflows, operational
+            data products, Python APIs, and the embedded telemetry that makes
+            edge ML useful in the field.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link

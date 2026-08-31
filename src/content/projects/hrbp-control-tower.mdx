@@ -1,0 +1,50 @@
+---
+title: "HRBP People-Ops Control Tower"
+slug: "hrbp-control-tower"
+date: "2026-08-04"
+tags:
+  - "TanStack Start"
+  - "React"
+  - "TypeScript"
+  - "Supabase"
+  - "RLS"
+  - "OAuth"
+  - "Realtime"
+  - "People Operations"
+track: "web-cloud"
+role: "Full-stack Product Engineer"
+summary: "A role-aware people-operations workspace for account handbooks, action plans, objectives, roster context, and HRBP/account-manager assignments."
+context: "Work performed at Lean Tech. The public description omits employee records, customer names, hosted credentials, and deployment-specific details."
+results:
+  - "Five connected work areas: dashboard, action plans, account handbook, objectives, and assignment/admin"
+  - "Typed TanStack Start data layer over Supabase with explicit membership roles and server-side boundaries"
+  - "RLS policies and approval states keep workspace access separate from the front-end domain convenience guard"
+  - "Realtime invalidation and optimistic update guards surface concurrent edits instead of silently overwriting them"
+badges:
+  - "People Ops"
+  - "Supabase / RLS"
+  - "Typed React"
+  - "Concurrency Safety"
+xp: 130
+confidential: true
+featured: false
+---
+
+## Problem
+
+HRBP work combines structured account facts with living documents, follow-ups, objectives, and responsibility assignments. A static artifact can show a snapshot, but it cannot safely support concurrent edits, membership approval, or a reviewable history of operational changes.
+
+## Approach
+
+- Built a TanStack Start + React + TypeScript workspace with routes for Resumen, Planes de acción, Account Handbook, Objetivos, Asignación, and admin members.
+- Replaced browser-only business storage with a typed Supabase repository/data layer and explicit tables for profiles, memberships, accounts, HRBPs, plans, check-ins, handbooks, rosters, logs, and objectives.
+- Added Google OAuth session handling, pending/active/suspended membership states, role-aware access, and Supabase RLS. The optional email-domain guard is treated as UX only; database policy remains the real boundary.
+- Used Realtime invalidation plus `updated_at` optimistic guards so a concurrent save produces a conflict state rather than erasing another operator's work.
+
+## What I learned
+
+Operational tools become safer when their data model makes ownership, approval, and history explicit. The UI can stay approachable in Spanish while the backend keeps the authorization and concurrency contracts deterministic.
+
+## Interview summary
+
+I turned a static HRBP artifact into a typed, role-aware operational workspace with Supabase-backed persistence, RLS, membership approval, realtime updates, and conflict-safe edits.

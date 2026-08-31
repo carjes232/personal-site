@@ -1,0 +1,123 @@
+---
+title: "AI-Native Multi-Agent Engineering Control Plane"
+slug: "ai-native-multi-agent-engineering"
+date: "2026-08-03"
+tags:
+  - "AgentOps"
+  - "LLMOps"
+  - "AI Agents"
+  - "Git Worktrees"
+  - "tmux"
+  - "Model Routing"
+  - "Evaluation"
+  - "Human in the Loop"
+track: "ai-backend"
+role: "AI Engineer — orchestration, acceptance, and delivery-system design"
+summary: "A bounded software-delivery control plane that routes coding work across models while isolating implementation, preserving human state, and enforcing independent acceptance."
+context: "Public-safe description of a reusable engineering framework. Company systems, private repositories, user content, credentials, infrastructure addresses, capacity details, and production topology are omitted."
+results:
+  - "Separate implementation, acceptance, and human release authority"
+  - "Isolated Git worktrees and explicit file ownership for concurrent tasks"
+  - "Durable callbacks and continuity checks for resumable agent work"
+  - "Independent regression, privacy, diff, and generated-artifact validation"
+badges:
+  - "AgentOps"
+  - "Model Routing"
+  - "Isolated Worktrees"
+  - "Human-Gated Release"
+confidential: true
+featured: true
+---
+
+## Problem
+
+Using more coding agents does not automatically create a reliable engineering process. Parallel workers can edit the same files, inherit too much private context, stall without reporting, repeat a weak approach, or declare their own changes successful. Those risks become worse when several projects share infrastructure and the active repository already contains valuable uncommitted human work.
+
+The problem was not how to prompt several models at once. It was how to design an engineering control plane where agents can accelerate bounded implementation while conventional software controls and people retain acceptance and release authority.
+
+## What This Case Study Covers
+
+This page describes the **development and orchestration system** used to build reliable AI software. It is distinct from the [agentic document workflow](/projects/agentic-document-workflow-automation), which explains a product that generates and delivers controlled documents.
+
+The framework is intentionally described without private repository names, customer information, internal addresses, credentials, conversations, subscription details, or exact production topology.
+
+## Responsibility Hierarchy
+
+- **Portfolio director:** resolves priorities and capacity across projects while preserving final human authority.
+- **Project acceptance director:** reviews architecture, risk, diffs, regression evidence, and integration readiness.
+- **Routine orchestration director:** decomposes accepted objectives into bounded lanes and supervises implementation.
+- **Implementation agents:** produce changes in persistent terminal sessions and isolated Git worktrees.
+- **Deterministic validators:** run syntax, test, privacy, diff, and generated-artifact checks.
+- **Human release authority:** approves commits, pushes, deployments, migrations, restarts, production changes, and destructive cleanup.
+
+An implementation model never accepts its own work. External coding agents are proposal generators, not release authorities.
+
+## Task Lifecycle
+
+1. **Scope:** convert the request into an objective, constraints, dependencies, risk classification, and external-action boundaries.
+2. **Define acceptance:** specify writable and read-only paths, expected behavior, tests, privacy checks, and artifact evidence.
+3. **Isolate:** create one Git worktree per implementation task and assign one active writer per file or subsystem.
+4. **Route:** choose a coding model based on complexity, risk, visual requirements, available capacity, and prior failure evidence.
+5. **Implement:** run the worker in a persistent terminal session with bounded context and deterministic commands.
+6. **Report:** return a structured `review-ready`, `needs-input`, or `blocked` callback through a durable queue.
+7. **Accept independently:** inspect the exact diff, run focused and neighboring regressions, scan for private content, and inspect visual or generated artifacts directly.
+8. **Release deliberately:** present evidence to the human who controls Git and external-system actions.
+
+## Cost- and Quality-Aware Model Routing
+
+Bounded tasks can be routed across Claude Code, OpenAI Codex, and lower-cost open coding models. Straightforward, deterministic edits are suitable for cheaper lanes with narrow paths and tests. Architectural ambiguity, sensitive changes, or repeated classified failures trigger escalation to a stronger model.
+
+Retries are bounded. Escalated workers receive compact evidence packets containing the objective, relevant diff, validation output, observed failure, ownership manifest, and acceptance criteria—not entire conversations or unrelated private context.
+
+Routing is therefore an engineering decision about task shape and evidence, not a permanent ranking of model brands.
+
+## Isolation and Ownership
+
+Each implementation task receives an isolated worktree. A path manifest declares what the worker may edit and what it may only inspect. One active writer owns each file or subsystem, while shared integration surfaces remain under acceptance control.
+
+This structure protects dirty user work, reduces merge ambiguity, and makes responsibility visible during review. It also allows a failed lane to be preserved and inspected instead of being erased or mixed into the main checkout.
+
+## Durable Coordination and Recovery
+
+Persistent terminal sessions make asynchronous work observable, but session existence is not treated as proof of progress. Continuity checks correlate terminal state, process activity, file timestamps, Git diffs, and test output.
+
+Workers publish structured callbacks to a durable, deduplicated queue. When one worker stalls, only its lane is recycled; its worktree and evidence remain available. Other projects and healthy long-running services stay untouched.
+
+## Independent Acceptance
+
+Acceptance combines evidence appropriate to the change:
+
+- exact diff inspection;
+- focused tests and neighboring regressions;
+- syntax, configuration, and schema checks;
+- privacy and secret scans;
+- fail-closed validators;
+- direct inspection of PDFs, documents, screenshots, and other generated artifacts;
+- offline qualification before asking a person to test messaging or UI behavior.
+
+Passing these checks makes a proposal reviewable. It does not authorize a commit, deployment, migration, restart, message, or destructive action.
+
+## Security and Privacy Boundaries
+
+Implementation lanes receive minimum necessary context. They do not receive customer content, credentials, private infrastructure details, proprietary conversations, or unrestricted access to hosts and deployment controls. If a capability cannot be narrowed safely, it remains outside the automated lane.
+
+Human-controlled gates apply to external effects. This keeps bounded autonomy useful without presenting the framework as fully autonomous software development.
+
+## What I Learned
+
+- Reliable multi-agent delivery depends more on separation of authority than on agent count.
+- Git worktrees and explicit ownership are safety controls as well as concurrency tools.
+- Durable evidence survives interrupted sessions better than conversational memory.
+- Cheap-model retries need limits and classified failures to make escalation useful.
+- Generated artifacts must be inspected directly; a successful command is not visual proof.
+- Preserving unrelated user work and healthy services is part of correctness.
+
+## Limitations
+
+Model behavior, provider capacity, and tooling change, so routing rules need continuous review. Operational signals can reveal a silent worker but cannot always infer intent. Tests cannot replace product judgment, security review, or usability assessment. Worktree isolation also does not replace access control or secret management.
+
+The framework improves the reliability of bounded AI-assisted delivery; it does not remove the need for experienced engineers or human release decisions.
+
+## Interview Summary
+
+I designed an AI-native engineering control plane that treats coding agents as bounded proposal generators. Work is decomposed into isolated Git worktrees with explicit ownership, routed across models according to risk and complexity, and coordinated through persistent sessions and durable callbacks. Independent acceptance reviews the diff, runs regression and privacy checks, and inspects generated artifacts directly. Humans retain authority over Git, deployments, migrations, and other external actions. The result is a resumable AgentOps process that supports cost-aware parallel assistance without sacrificing user state, privacy, or release discipline.

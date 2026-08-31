@@ -1,0 +1,46 @@
+---
+title: "Authenticated Cloud Share Service"
+slug: "authenticated-cloud-share-service"
+date: "2026-08-05"
+tags:
+  - "Python"
+  - "HTTP"
+  - "Security"
+  - "Docker"
+  - "Cloudflare"
+  - "File Delivery"
+  - "Testing"
+track: "web-cloud"
+role: "Backend / Security Engineer"
+summary: "A small authenticated file navigator for allowlisted folders with safe uploads, recursive archives, containment checks, and operator-friendly delivery."
+context: "Private VPS utility. Credentials, source roots, user files, and public tunnel details are intentionally omitted."
+results:
+  - "Basic-authenticated browse, download, upload, and ZIP surfaces over explicit roots"
+  - "Traversal, hidden-name, blocked-secret-suffix, symlink, and containment checks"
+  - "CSRF-protected multi-file uploads staged and published atomically without partial batches"
+  - "Recursive ZIP creation skips hidden, blocked, symlinked, and out-of-root entries"
+badges:
+  - "Security Boundaries"
+  - "Atomic Uploads"
+  - "Python HTTP"
+  - "Operator Tooling"
+xp: 105
+confidential: true
+featured: false
+---
+
+## Problem
+
+An internal review workflow needed a simple way to share selected artifacts without exposing an entire filesystem or depending on a heavyweight document platform. The dangerous part of a small file server is not rendering an index—it is getting containment, credentials, uploads, and archives right.
+
+## Approach
+
+- Built a dependency-light Python HTTP service with explicitly configured, resolved roots.
+- Applied Basic authentication to every protected action and derived a CSRF token for upload forms.
+- Rejected hidden names, credential-like names, sensitive key/database suffixes, absolute paths, traversal, symlink components, and out-of-root resolutions.
+- Staged every upload to a temporary file, flushed it to disk, and published with a hard link so a batch cannot overwrite a destination or partially replace an existing file.
+- Generated recursive ZIPs from regular in-root files only, preserving visible content while filtering unsafe entries.
+
+## Interview summary
+
+I designed a small file-delivery service around explicit security invariants: allowlisted roots, fail-closed path resolution, safe archive traversal, CSRF-protected uploads, and atomic publication.

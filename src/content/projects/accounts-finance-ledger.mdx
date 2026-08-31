@@ -1,0 +1,59 @@
+---
+title: "Audited Finance Ledger + Hermes MCP"
+slug: "accounts-finance-ledger"
+date: "2026-08-13"
+tags:
+  - "Python"
+  - "FastAPI"
+  - "SQLite"
+  - "MCP"
+  - "Docker"
+  - "Security"
+  - "Finance Automation"
+track: "ai-backend"
+role: "Backend / Systems Developer"
+summary: "A local-first household finance system with an audited SQLite ledger, explicit FX handling, budgets, wallets, debts, and a private Hermes MCP interface."
+context: "Personal/local system. Financial records, credentials, backup locations, and runtime endpoints are private; this page describes the engineering only."
+results:
+  - "One audited ledger for income, expenses, reimbursements, savings, wallets, and debts"
+  - "Original BRL/COP/USD values preserved with explicit FX status instead of silent conversion"
+  - "Private MCP tools expose controlled natural-language operations while the dashboard stays review-oriented"
+  - "Secure sessions, destructive-action confirmation, audit snapshots, and rotated SQLite backups"
+badges:
+  - "Python / FastAPI"
+  - "MCP Tools"
+  - "Auditability"
+  - "Local-First"
+xp: 135
+confidential: true
+featured: true
+---
+
+## Problem
+
+Household finance data is easy to record and hard to keep trustworthy. Currency conversion, reimbursements, transfers, personal ownership, debt payments, and corrections can all produce misleading totals when they are collapsed into one generic expense table.
+
+The goal was a small system that could be operated through a private assistant without turning natural-language convenience into silent accounting changes.
+
+## Architecture
+
+- **Source of truth:** a SQLite ledger stores original currency values, BRL equivalents, FX metadata, ownership, funding, flags, lifecycle state, and correction relationships.
+- **Private assistant boundary:** a FastAPI MCP service exposes typed tools for transactions, income, categories, budgets, savings, wallets, debts, and reports. The MCP endpoint is reachable only inside the private Docker network.
+- **Review surface:** a separate authenticated dashboard supports inspection and deliberate corrections rather than pretending that every model extraction is final.
+- **Planning model:** budgets, goals, purpose-labelled savings, personal pockets, and debt review candidates remain separate from the transaction ledger so each decision stays explainable.
+
+## Reliability and safety
+
+- Original BRL, COP, and USD amounts are never overwritten by a conversion.
+- Missing FX data remains visible as `pending` instead of being replaced with a guessed rate.
+- Wallet transfers are not counted as income or spending, and linked expenses are not double-counted.
+- Destructive operations require confirmation and write before/after audit records; password hashes and session tokens never enter the audit log.
+- Backup and restore scripts use restricted permissions and scratch-database guards.
+
+## What I delivered
+
+I designed the data model, service layer, MCP tools, dashboard/auth boundary, reporting semantics, migration path, and regression suite. The result is a compact example of building an AI-facing interface around deterministic financial state rather than allowing the model to become the accounting system.
+
+## Interview summary
+
+I built a local-first finance platform where an MCP assistant can record and explain transactions, but every material financial rule remains deterministic, auditable, and reviewable in the application layer.

@@ -1,0 +1,87 @@
+---
+title: "Quiver — Multimodal Agent Operations Platform"
+slug: "quiver-multimodal-agent-operations"
+date: "2026-08-31"
+tags:
+  - "AgentOps"
+  - "LLM"
+  - "AI Agents"
+  - "OpenClaw"
+  - "Python"
+  - "TypeScript"
+  - "Slack"
+  - "Microsoft Teams"
+  - "DOCX"
+  - "Visio"
+  - "Docker"
+  - "Evaluation"
+track: "ai-backend"
+role: "AI Platform Engineer — agent orchestration, multimodal workflows, and reliability"
+summary: "A channel-aware agent platform that turns conversations and visual process sources into governed SOPs and flowcharts, with parallel agent work, typed tools, durable state, and validated delivery."
+context: "Work performed on an internal Lean Tech platform. Customer content, private prompts, credentials, identifiers, deployment addresses, and internal topology are omitted; this page focuses on reusable architecture and my technical contribution."
+results:
+  - "Parallel agent collaboration with explicit ownership, durable callbacks, isolated workspaces, and human-controlled acceptance"
+  - "SOP and flowchart generation that preserves source lineage and carries structured evidence into typed process graphs"
+  - "Template-controlled DOCX plus Mermaid, PNG, SVG, Visio, and PDF outputs with structural and visual quality gates"
+  - "Approval, consent, retries, receipts, and exactly-once effect boundaries across Slack and Microsoft Teams"
+  - "A focused upstream OpenClaw bug fix that makes Teams honor its channel-specific inbound media limit"
+badges:
+  - "Parallel Agents"
+  - "Multimodal Evidence"
+  - "SOP + Flowchart"
+  - "OpenClaw"
+xp: 190
+confidential: true
+featured: true
+---
+
+## Product
+
+Quiver is an internal product for turning natural-language requests and source files into useful operational artifacts. A requester can ask for a standard operating procedure, a Work Instruction, or a process flowchart through a supported collaboration channel and receive an editable, reviewable output rather than a chat transcript.
+
+The difficult part is preserving meaning across intake, source understanding, graph construction, document layout, validation, approval, and delivery. The model contributes semantic reasoning, while deterministic services protect the boundaries where an incorrect or duplicated effect would be costly.
+
+## Architecture
+
+- **Agent layer:** specialized workflows use prompts and typed tools for request interpretation, source selection, document planning, revision handling, and completion. Semantic decisions stay with the agent; safety-critical effects stay in deterministic code.
+- **Parallel work:** bounded tasks have explicit ownership, correlation identifiers, isolated workspaces, and durable handoff callbacks. This lets agents collaborate on independent lanes without sharing an ambiguous global state or accepting their own changes.
+- **Channel adapters:** Slack and Microsoft Teams provide different attachment, consent, reply, and delivery semantics. Quiver keeps a shared workflow contract while preserving channel-specific behavior.
+- **Artifact pipeline:** approved templates drive DOCX construction. A normalized process graph drives Mermaid, PNG, SVG, Visio, and PDF flowchart outputs through a dedicated worker.
+- **Durability:** request, revision, approval, consent, delivery, receipt, and output-version state are recorded so retries and recovery remain inspectable.
+
+This architecture builds on the control-plane principles described in [AI-Native Multi-Agent Engineering](/projects/ai-native-multi-agent-engineering), applied to a concrete document-and-flowchart product.
+
+## The hard product problem: visual evidence to useful artifacts
+
+Flowchart generation is not just a drawing task. Diagram-heavy sources can contain sparse text but still encode lanes, connectors, decision branches, timing, and ownership. Text extraction alone can lose the process.
+
+The multimodal path combines native structure, extracted text, rendered pages, and model visual review before fusing the evidence into a typed process graph. That graph is then the contract for both the SOP and the flowchart. Unresolved connector or decision meaning should lead to a bounded clarification or replan, never an invented step.
+
+Deterministic validation owns schema, provenance, graph structure, layout, package safety, and rendered-artifact checks. Visual interpretation is treated as a qualified semantic input, not as proof that an output is correct by itself.
+
+## Reliability and trust controls
+
+- Source lineage follows an attachment or retained revision into the generated output.
+- Requester identity and workspace boundaries prevent one conversation from consuming another request's files or state.
+- Consent, approval, and delivery receipts are explicit workflow states rather than assumptions inferred from a successful model run.
+- Idempotency keys and version-aware ledgers keep retries from producing duplicate external effects.
+- DOCX and flowchart outputs pass structural, semantic, and visual checks before they are eligible for delivery.
+- Private source content, credentials, customer names, and internal identifiers stay out of public logs and this case study.
+
+## Collaboration with OpenClaw
+
+Quiver is built around the official OpenClaw runtime; I do not claim authorship of the upstream project. I contributed a focused upstream fix, [`c1243671`](https://github.com/carjes232/openclaw/commit/c12436718ead1aaae00c038d76f502e307853455), titled `fix(msteams): honor inbound channel media limit`.
+
+The patch made the Teams adapter prefer its channel-specific media limit and fall back to the agent default only when no Teams override exists. It also added lifecycle regression tests for both paths. This is a good example of the boundary between product work and upstream collaboration: Quiver needed the behavior, and the reusable runtime fix belonged in OpenClaw.
+
+## My contribution
+
+I worked across the agent/tool boundary, source and workspace lineage, parallel-task contracts, deterministic document and flowchart workers, approval and consent flows, delivery/retry state, channel reliability, regression fixtures, and operational acceptance. The repository contains team contributions, so this page describes my areas of ownership without claiming sole ownership of the whole platform.
+
+## What I learned
+
+The best agent products are not defined only by model quality. They are defined by the contracts around the model: typed evidence, explicit authority, durable state, idempotent effects, reviewable artifacts, and a clear answer when the source is ambiguous.
+
+## Interview summary
+
+I helped build Quiver, an internal multimodal agent platform that turns conversations and visual process evidence into governed SOPs and flowcharts. I designed and hardened the boundaries around parallel agent work, typed process graphs, deterministic rendering, approvals, delivery receipts, and recovery. I also contributed a focused OpenClaw upstream bug fix for Teams media-limit handling, with regression coverage.

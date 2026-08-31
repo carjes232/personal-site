@@ -1,0 +1,82 @@
+---
+title: "Contract Retrieval and Evidence-Grounded RAG"
+slug: "contract-retrieval-evidence-grounded-rag"
+date: "2026-06-11"
+tags:
+  - "Python"
+  - "RAG"
+  - "Qdrant"
+  - "Gemini Embeddings"
+  - "SQLite"
+  - "Gradio"
+  - "PDF"
+  - "Vector Search"
+  - "Evaluation"
+track: "ai-backend"
+role: "AI/ML Engineer — PoC implementation"
+summary: "Local-first RAG proof of concept for retrieving contract clauses and returning answers with page-aware, human-verifiable evidence."
+context: "Confidential source documents and storage details are omitted. The repository and its Git history support the architecture described here; this system is a proof of concept, not a production deployment."
+results:
+  - "Page-aware PDF chunking and Qdrant vector retrieval with document metadata"
+  - "Deterministic intent routing and conservative client/contract selection before retrieval"
+  - "Corpus-aware answer caching that invalidates when indexed files or chunk settings change"
+  - "Evidence views distinguish retrieved chunks from the subset sent to the answer model"
+badges:
+  - "RAG PoC"
+  - "Evidence Grounding"
+  - "Cache Correctness"
+  - "Human Review"
+xp: 145
+confidential: true
+featured: true
+---
+
+## Problem
+
+Contract questions often depend on a small clause or pricing table inside a longer set of agreements and amendments. A useful assistant must retrieve the relevant pages, preserve their provenance, avoid reusing stale answers after the corpus changes, and surface uncertainty when the operative document is ambiguous.
+
+The goal was not autonomous legal decision-making. It was a local-first review aid that helps a human locate and inspect relevant contract evidence.
+
+## Status
+
+This project is a **proof of concept**. It runs locally with a Gradio interface, SQLite control state, and a local Qdrant vector database. The repository includes a logic smoke suite, which passed during this portfolio audit, but there is no repository evidence that the application is a production service or has a measured user population.
+
+## Architecture
+
+```text
+confirmed PDF set
+  -> page-aware PDF chunks
+  -> multimodal-capable embeddings
+  -> Qdrant vectors with file and page metadata
+  -> deterministic intent/topic routing
+  -> vector search and bounded chunk selection
+  -> answer extraction from selected chunks
+  -> source links, evidence table, cache, and human feedback
+```
+
+- **Retrieval:** PDFs are divided into bounded page ranges, embedded, and stored in Qdrant with source file, hash, and page metadata.
+- **Routing:** deterministic rules distinguish direct lookups, missing-term checks, broad completeness audits, and client-selection questions before retrieval.
+- **Generation:** the answer model receives only selected PDF chunks and must remain grounded in their visible evidence.
+- **Caching:** SQLite stores aliases, indexed-file hashes, answers, corrections, and feedback. Cache keys include a corpus fingerprint and retrieval settings so an updated document set does not silently reuse an old answer.
+- **Human review:** ambiguous document candidates require user confirmation, and the interface shows both retrieved evidence and the smaller subset actually sent to the model.
+
+## My Contribution
+
+The nested repository's six commits are attributed to me. They cover the baseline RAG proof of concept, deterministic intent routing, chat reliability, cache/evidence hardening, external review, and a live QA harness. Current uncommitted work extends source integration and review-state handling; those changes are treated as active development rather than deployed functionality.
+
+## Technical Challenges
+
+- **Tables and visual pages:** semantic similarity can locate a likely page, but extraction still has to inspect the original PDF chunk.
+- **Negative questions:** claiming that a clause is absent requires broader evidence than answering a narrow lookup.
+- **Contract-stack ambiguity:** a plausible match may be an amendment rather than the governing base agreement, so automatic selection can create confidently wrong answers.
+- **Cache correctness:** a fast cached response is unsafe if its underlying documents or chunk strategy changed.
+- **Evidence discipline:** retrieved context and model-consumed context must remain distinguishable for debugging and review.
+
+## Testing
+
+The smoke suite covers query routing, cache-key behavior, evidence serialization, chunk selection, fallback behavior, and review-state helpers without requiring confidential documents. The portfolio audit executed the current logic suite successfully.
+
+## What I Learned
+
+RAG reliability depends less on adding more retrieved text than on controlling scope and provenance. Deterministic routing, conservative source selection, corpus-aware caching, visible evidence, and explicit human confirmation can matter as much as the embedding or generation model.
+

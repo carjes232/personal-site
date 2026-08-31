@@ -1,0 +1,61 @@
+---
+title: "Lean 360 CRM & Whitespace Intelligence"
+slug: "lean360-crm-whitespace-intelligence"
+date: "2026-08-17"
+tags:
+  - "TanStack Start"
+  - "React"
+  - "TypeScript"
+  - "HubSpot"
+  - "Supabase"
+  - "Cloudflare Workers"
+  - "Webhooks"
+  - "RLS"
+  - "CRM"
+track: "web-cloud"
+role: "Full-stack / AI Data Systems Engineer"
+summary: "A read-only CRM intelligence layer that mirrors HubSpot customers and prospects into Supabase for account, owner, status, and whitespace analysis."
+context: "Work performed at Lean Tech. Client records, connector credentials, internal identifiers, and deployment details are omitted from this public-safe case study."
+results:
+  - "Typed TanStack Start dashboard for customers, prospects, account detail, pipeline metrics, roles, and whitespace"
+  - "Paged, resumable syncs handle large HubSpot datasets without crossing the Search API ceiling"
+  - "Signed, deduplicated webhooks keep hot company and prospect changes visible between refreshes"
+  - "Supabase RLS, permission flags, optimistic guards, and audit-oriented sync state protect operational data"
+badges:
+  - "HubSpot Sync"
+  - "Supabase / RLS"
+  - "CRM Analytics"
+  - "Signed Webhooks"
+xp: 145
+confidential: true
+featured: true
+---
+
+## Problem
+
+CRM data is useful only when refreshes are predictable and the resulting metrics can be trusted. HubSpot Search has pagination and result-size limits, while customer status, deal stage, line items, and workforce roles change on different cadences.
+
+The product needed a read-only intelligence layer that could refresh each entity independently, expose data quality issues, and avoid turning a partial sync into a confident-looking dashboard.
+
+## Architecture
+
+- **Application:** TanStack Start, React, and TypeScript provide authenticated routes for customer/prospect browsing, account detail, pipeline metrics, roles across accounts, and whitespace analysis.
+- **Storage:** Supabase/Postgres mirrors HubSpot objects and associations with explicit sync-state rows, status history, and activity records.
+- **Sync engine:** browser-driven server functions page companies and prospects independently. Large populations are windowed to stay below HubSpot's 10,000-result search ceiling.
+- **Hot updates:** a public webhook route verifies HubSpot signature v3, rejects stale timestamps, deduplicates events, and refetches only the affected object types.
+
+## Scope boundary
+
+The current public scope is intentionally read-only and centered on customers and prospects. Deal synchronization, Order Management, HubSpot writeback, Retool, and ClickUp integrations are separate or dormant workstreams rather than capabilities this page claims as live product behavior.
+
+## Trust controls
+
+Permission middleware and Supabase RLS protect operational views. Sync locks reclaim crashed runs after a bounded timeout, while errors and orphan/unclassified records remain visible for remediation. Whitespace confidence is accompanied by source and data-quality flags rather than presented as an unquestionable forecast.
+
+## My contribution
+
+I worked across the typed server functions, sync orchestration, pagination/windowing guards, webhook validation, pipeline/role aggregations, permission boundaries, and operational documentation. The public case study describes the system architecture without exposing client data or connector secrets.
+
+## Interview summary
+
+I built a typed CRM intelligence layer that treats synchronization, permissions, and data quality as first-class product behavior—not as invisible plumbing behind a dashboard.

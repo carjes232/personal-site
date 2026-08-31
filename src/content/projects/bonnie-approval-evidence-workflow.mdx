@@ -1,0 +1,70 @@
+---
+title: "Bonnie — Approval & Evidence Workflow Platform"
+slug: "bonnie-approval-evidence-workflow"
+date: "2026-08-30"
+tags:
+  - "React"
+  - "TypeScript"
+  - "Supabase"
+  - "RLS"
+  - "Document Workflows"
+  - "Auditability"
+  - "Email OTP"
+  - "Power Platform"
+  - "Microsoft Teams"
+  - "Billing Automation"
+track: "web-cloud"
+role: "Full-stack Systems Engineer — workflow, evidence, and secure integrations"
+summary: "An internal workflow platform for evidence verification, approvals, signatures, audit trails, notifications, and controlled billing handoffs."
+context: "Internal product work. Company names, employee and customer records, approval payloads, credentials, and production integration details are omitted; this page describes the architecture and local qualification."
+results:
+  - "One workflow foundation supports verification-only and full-signature paths"
+  - "Authentication, RLS, private storage, hashes, consent, and audit events establish evidence boundaries"
+  - "Background workers and adapters handle notifications, reminders, callbacks, and billing handoffs"
+  - "Local smoke and end-to-end qualification covers auth, RLS, storage, transitions, and delivery boundaries"
+badges:
+  - "Workflow Platform"
+  - "Supabase / RLS"
+  - "Audit Trail"
+  - "Document Evidence"
+xp: 150
+confidential: true
+featured: true
+---
+
+## Problem
+
+Approval and billing workflows often begin as email threads, spreadsheets, and loosely attached documents. That makes it difficult to prove who approved what, which evidence was reviewed, whether a document changed, and whether a downstream billing handoff happened once or twice.
+
+Bonnie turns those steps into a role-aware workflow with explicit state transitions, evidence, notifications, and audit history. It is designed for internal operations, so the public description intentionally omits company-specific records and integration details.
+
+## Two controlled workflow paths
+
+- **Verification-only:** collect evidence, classify risk, route an approval or rejection, record the decision, notify the participants, and create a controlled billing handoff.
+- **Full internal signing:** create or upload the document, assign approvers or signers, capture signature evidence, produce the final document and certificate, notify the participants, and hand off the result.
+
+Both paths use the same identity, authorization, storage, audit, notification, and callback boundaries instead of implementing separate one-off flows.
+
+## Architecture
+
+- **Application:** a React/Vite workspace provides the operator experience for intake, review, decision, signing, and status tracking.
+- **Data and access:** Supabase authentication, email OTP, Postgres persistence, storage, and row-level security keep user, membership, workflow, and document access explicit.
+- **Evidence model:** hashes, private document storage, risk classification, consent, state transitions, and append-oriented audit events make a decision reviewable after the workflow completes.
+- **Workers and adapters:** background jobs support reminders, notifications, callback handling, and billing handoffs. Local mock adapters qualify the contract without requiring a live downstream system.
+- **Operational boundaries:** server-side authorization and storage policies remain the source of truth; front-end convenience checks cannot grant access.
+
+## Quality and safety
+
+The important behavior is not just a successful button click. Qualification covers authentication, membership and RLS behavior, private storage, workflow transitions, document integrity, notification boundaries, and duplicate-effect handling. Internal signing and external integrations are kept behind explicit adapters so they can be tested and replaced without weakening the core workflow.
+
+## My contribution
+
+I worked on the workflow model, evidence and audit boundaries, Supabase/RLS data access, document handling, notification and billing-handoff adapters, local mock integrations, and end-to-end qualification. The case study describes the system-level contribution while avoiding private records, credentials, and deployment-specific claims.
+
+## What I learned
+
+Trustworthy operational software makes the proof part of the product. Identity, permission, evidence, version, and notification state need to be modeled together; otherwise an approval can look complete while the underlying record is still ambiguous.
+
+## Interview summary
+
+I helped shape Bonnie, an internal approval and evidence platform that supports verification and signing workflows with Supabase-backed authorization, private document storage, auditability, background jobs, and controlled billing handoffs. The focus was making operational decisions explainable, repeatable, and safe to integrate.

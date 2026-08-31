@@ -1,0 +1,49 @@
+---
+title: "Cloudflare PF Appointment Availability Monitor"
+slug: "pf-appointment-availability-monitor"
+date: "2026-08-31"
+tags:
+  - "Cloudflare Workers"
+  - "JavaScript"
+  - "Wrangler"
+  - "KV"
+  - "Telegram"
+  - "Monitoring"
+  - "Automation"
+track: "web-cloud"
+role: "Cloud Automation Developer"
+summary: "A scheduled Cloudflare Worker that checks public appointment availability, stores edge state in KV, and sends a Telegram alert only when availability changes."
+context: "Personal automation. Bot credentials and deployment identifiers are intentionally omitted. The worker observes public endpoints and does not bypass anti-bot controls or book appointments."
+results:
+  - "Scheduled checks every 15 minutes with a small manual health/check route"
+  - "Two-stage probe distinguishes configured service metadata from appointment availability"
+  - "KV-backed state prevents repeated alerts for an unchanged result"
+  - "Explicit boundary: observe and notify only; no Cloudflare/Turnstile bypass or booking automation"
+badges:
+  - "Cloudflare Workers"
+  - "Edge Monitoring"
+  - "Telegram Alerts"
+  - "State Transitions"
+xp: 90
+confidential: false
+featured: false
+---
+
+## Problem
+
+Availability endpoints can change state without a person watching them continuously. A useful monitor needs to be cheap to run at the edge, resistant to repeated notifications, and honest about what a positive HTTP response means.
+
+## Approach
+
+- Built an ES-module Cloudflare Worker with a scheduled handler and a manual `/check` route.
+- Probed a configuration endpoint first, then the public agenda endpoint, so an alert reports whether the unit/service pair is configured as well as whether the agenda is currently positive.
+- Stored the last observed state in a KV namespace and sent Telegram notifications only on a meaningful transition, with an optional recovery alert.
+- Kept all secrets in Worker bindings and provided local smoke scripts that can use a generated `.dev.vars` file without committing credentials.
+
+## Safety boundary
+
+The worker does not attempt to bypass Cloudflare, Turnstile, or other access controls. It does not log in, reserve a slot, or claim that a positive probe is a completed appointment; it only reports the public endpoint state and an optional scheduling link.
+
+## Interview summary
+
+I shipped a small edge-monitoring worker with scheduled execution, durable state, transition-based notifications, and an explicit no-bypass boundary—an example of reliable automation without overreaching into an external system.

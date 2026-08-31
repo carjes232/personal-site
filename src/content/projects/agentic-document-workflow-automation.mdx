@@ -1,0 +1,85 @@
+---
+title: "Agentic Document Generation and Workflow Automation"
+slug: "agentic-document-workflow-automation"
+date: "2026-07-20"
+tags:
+  - "OpenClaw"
+  - "Python"
+  - "Node.js"
+  - "Slack"
+  - "Microsoft Teams"
+  - "DOCX"
+  - "Docker"
+  - "AWS EC2"
+  - "GitHub Actions"
+  - "Testing"
+track: "ai-backend"
+role: "AI/ML Engineer — workflow, delivery, and reliability contributor"
+summary: "Multi-step document-agent workflows that turn conversations, attachments, and feedback into validated, template-controlled SOPs and Work Instructions."
+context: "Work performed at Lean Tech. This public description omits customer names, internal identifiers, documents, prompts, URLs, and infrastructure addresses."
+results:
+  - "Internally deployed Slack workflow for document intake, generation, validation, delivery, and feedback"
+  - "Deterministic DOCX rendering through approved templates instead of free-form layout generation"
+  - "Durable request, replay, approval, delivery, feedback, and output-version state"
+  - "Deployment-ready Microsoft Teams channel; final deployment and a live DOCX delivery test remain pending"
+badges:
+  - "Agent Workflows"
+  - "Deterministic Tools"
+  - "Durable State"
+  - "Regression QA"
+xp: 150
+confidential: true
+featured: true
+---
+
+## Problem
+
+Generating a useful procedure document requires more than asking a language model for formatted text. The system must accept conversations and attachments, isolate each request, choose an approved document format, preserve template structure, validate the result, deliver the correct version, and incorporate feedback without confusing one user or revision with another.
+
+The engineering problem was therefore a multi-step workflow problem: combine model-driven drafting with deterministic tools and durable state so that document generation remains inspectable and recoverable.
+
+## Architecture
+
+- **Agent runtime:** an OpenClaw gateway routes SOP and Work Instruction requests to a specialized document workflow.
+- **Deterministic rendering:** Python utilities assemble content into approved DOCX templates, preserve headings, tables, headers, footers, images, and numbering, and validate the generated package.
+- **Request isolation:** each request receives a correlation identifier and its own workspace rather than sharing a global output directory.
+- **Durable workflow state:** a SQLite ledger records requests, approvals, replay jobs, delivery attempts, output versions, template/model versions, feedback, and safe operational events.
+- **Channel delivery:** the internally deployed Slack path handles attachment intake, access approval, file delivery, and structured feedback. The Microsoft Teams channel is deployment-ready but should not yet be described as an internally deployed production rollout.
+- **Runtime:** Docker Compose packages the gateway and supporting services. GitHub Actions deploys the selected branch to EC2 and rebuilds the containers.
+
+This is an agentic workflow, not a RAG system: its core problem is orchestration, deterministic document construction, state transitions, and delivery reliability rather than vector retrieval.
+
+The Microsoft Teams integration combines authenticated intake, isolated request state, deterministic document generation, consent-gated delivery, idempotent retries, and user feedback. Authenticated bidirectional messaging was manually validated in an isolated development deployment, while the complete document lifecycle is implemented and automatically tested; final deployment and a recorded live file-delivery test remain pending.
+
+Development and validation run on a persistent Linux VPS using private-network access, Cloudflare Tunnels, Docker Compose, tmux, restart policies, health checks, and durable application state.
+
+## My Contribution
+
+Git history attributes my commits to the initial SOP-generator skill and renderer, template and table-of-contents hardening, deployment safeguards, access approval and feedback workflows, request and delivery ledgers, and regression fixtures. Other engineers also contributed to the repository, so this was team work rather than sole ownership of the complete platform.
+
+My work concentrated on the boundaries where a useful model response can still fail as a software system:
+
+- enforcing template-controlled rendering instead of trusting generated formatting;
+- recording delivery only after the messaging platform returns a receipt;
+- deduplicating deliveries by request and output version;
+- preserving request identity across approvals, retries, corrections, and feedback;
+- adding safe replay and bounded retry behavior;
+- diagnosing container, session, and channel-health failures;
+- keeping runtime secrets and user document contents outside public logs and source control.
+
+## Testing and Reliability
+
+The repository contains unit and integration tests for request initialization, agent routing, approvals, replay, delivery, feedback, ledger migrations, and channel-specific behavior. Fictional fixtures and approved visual baselines exercise DOCX and flowchart renderers so structural or visual changes can be reviewed rather than accepted silently.
+
+Deployment and operations documentation also distinguishes source changes from deployed runtime state. Release checks pin the OpenClaw version, verify the container configuration, and preserve runtime data during deployment.
+
+## Technical Challenges
+
+- **Nondeterministic drafting versus deterministic output:** the model can help organize content, but Word structure, numbering, tables, and template fidelity require explicit code and validation.
+- **Exactly-once effects over unreliable channels:** retries must not deliver the same output repeatedly or mark an upload complete before the platform confirms it.
+- **Long-running agent tasks:** health checks must distinguish a slow document job from a stuck session or dead container.
+- **Cross-channel semantics:** Slack and Microsoft Teams expose different attachment, approval, consent, and delivery lifecycles, so a shared workflow still needs channel-specific adapters.
+
+## What I Learned
+
+Reliable AI systems need conventional systems engineering around the model: explicit state machines, idempotency keys, durable receipts, deterministic tools, versioned artifacts, regression fixtures, health diagnostics, and human feedback. The model is one component of the workflow, not the workflow itself.
