@@ -1,0 +1,60 @@
+---
+title: "Voice Agent for Employee Lateness and Absence Follow-up"
+slug: "sst-voice-agent-reliability"
+date: "2026-09-25"
+tags:
+  - "Voice AI"
+  - "Vapi"
+  - "TypeScript"
+  - "Supabase"
+  - "Call Audits"
+  - "Evaluation"
+track: "ai-backend"
+role: "Lead AI Engineer — voice-agent behavior, reliability, and evaluation"
+summary: "A voice agent extends initial follow-up beyond the longer absences staff had time to call, capturing reported reasons for lateness or absence so operations can review them."
+context: "Internal Lean Tech work. This account omits employee data, recordings, private prompts, identifiers, customer details, and deployment configuration. The measured comparison is an observed before/after result, not a controlled experiment."
+results:
+  - "Extends initial follow-up beyond longer absences and gives operations a reviewable reported reason"
+  - "Observed cost per call fell 69%, from $0.1275 to $0.0395, on the first full day after the voicemail-detection change"
+  - "At 847 calls per day, the measured rates imply about $27,217 in potential annual savings if volume and call mix stay constant"
+  - "Call duration averaged 73.1 seconds before versus 20.7 seconds after in the report's comparison periods"
+  - "Added review-only call audits that separate reported reasons, transcript evidence, and issues requiring human verification"
+badges:
+  - "69% Lower Cost / Call"
+  - "Voice Agent"
+  - "Vapi + Supabase"
+  - "Human Review"
+xp: 190
+confidential: true
+featured: true
+---
+
+## What I owned
+
+When an employee is marked late or absent, someone needs to learn what happened and decide what to do next. The team explained that staff previously had limited time to call people and therefore focused mainly on longer absences. I led the voice-agent work that can make initial calls across more lateness and absence cases, ask for the employee's explanation, record it, and present it for operational review. The wider follow-up is a workflow capability; I do not claim a measured increase in case coverage or staff hours saved. The system does not treat a reported reason as independently verified attendance or medical evidence.
+
+My ownership centered on call behavior, evaluation, and reliability. The surrounding web application and integrations include team and generated contributions. Voicemail, silence, transcription errors, retries, and partial records must not become false successful outcomes.
+
+## Finding the cost failure
+
+I reviewed an export of 909 calls and found that 284 had run to the 600-second limit while the agent repeatedly answered an automated voicemail greeting. Those calls accounted for most of that sample's cost. The investigation separated live voicemail detection from prompt behavior: a post-call classifier cannot stop a call that is still looping.
+
+The voicemail-detection improvement was deployed midday September 2. On September 3, the first full day after the change, 847 calls averaged **$0.0395 per call**, compared with **$0.1275** during the August 27–29 release period. That is a **69% lower observed cost per call**. Average duration fell from **73.1 to 20.7 seconds** across those comparison periods.
+
+At a constant 847 calls every calendar day, the report estimates **$27,217 in potential annual savings**. This is an illustrative run rate, not realized savings or a forecast. Call volume, operating days, rates, and call mix may change; the before/after comparison does not isolate every cause.
+
+## Making outcomes trustworthy
+
+- Aligned voicemail and answering-machine handling across call creation paths so a configured detector is the one actually used at runtime.
+- Kept voicemail, no-answer, silence, and insufficient-information outcomes distinct from a completed employee conversation.
+- Bounded retries and follow-up transitions so one failed call does not silently become a success or create duplicate work.
+- Reconciled call analysis, duration, and cost with provider records and added tests around authorization and lifecycle edges.
+- Built review-only call audits that attach transcript evidence to the employee's reported reason, potential conversation defects, and technical call issues. These are signals for a reviewer, not verified attendance or medical facts.
+
+## Evaluation and current scope
+
+The work combines TypeScript/React, Supabase Edge Functions, Vapi, provider configuration, prompt evaluation, call exports, and regression tests. Recent call-audit features classify reported reasons and make review candidates filterable. Some transcriber and runtime-hook experiments remain under evaluation, so I do not present them as proven production improvements.
+
+## Interview summary
+
+I led a voice workflow that extends initial follow-up beyond the longer absences staff previously had time to call. It captures employee-reported reasons and gives operations a reviewable case. I also traced expensive calls to voicemail loops and improved the live exit path. The first full post-change day showed a 69% lower observed cost per call, equivalent to roughly $27.2K in potential annual savings at the report's constant-volume assumption.

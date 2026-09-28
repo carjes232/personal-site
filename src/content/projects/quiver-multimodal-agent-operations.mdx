@@ -1,7 +1,7 @@
 ---
 title: "Quiver — Multimodal Agent Operations Platform"
 slug: "quiver-multimodal-agent-operations"
-date: "2026-08-31"
+date: "2026-09-25"
 tags:
   - "AgentOps"
   - "LLM"
@@ -16,15 +16,16 @@ tags:
   - "Docker"
   - "Evaluation"
 track: "ai-backend"
-role: "AI Platform Engineer — agent orchestration, multimodal workflows, and reliability"
-summary: "A channel-aware agent platform that turns conversations and visual process sources into governed SOPs and flowcharts, with parallel agent work, typed tools, durable state, and validated delivery."
+role: "Lead AI Platform Engineer — agent workflows, artifacts, and reliability"
+summary: "Turns process shadowing, source files, and feedback into an editable SOP and flowchart, reducing the manual work of documenting a process while preserving review and revisions."
 context: "Work performed on an internal Lean Tech platform. Customer content, private prompts, credentials, identifiers, deployment addresses, and internal topology are omitted; this page focuses on reusable architecture and my technical contribution."
 results:
+  - "Process discovery, SOP drafting, flowchart creation, and revisions move through one reviewable workflow"
   - "Parallel agent collaboration with explicit ownership, durable callbacks, isolated workspaces, and human-controlled acceptance"
   - "SOP and flowchart generation that preserves source lineage and carries structured evidence into typed process graphs"
   - "Template-controlled DOCX plus Mermaid, PNG, SVG, Visio, and PDF outputs with structural and visual quality gates"
   - "Approval, consent, retries, receipts, and exactly-once effect boundaries across Slack and Microsoft Teams"
-  - "A focused upstream OpenClaw bug fix that makes Teams honor its channel-specific inbound media limit"
+  - "Built a separate Slides agent within the platform for editable, visually reviewed presentations"
 badges:
   - "Parallel Agents"
   - "Multimodal Evidence"
@@ -37,7 +38,9 @@ featured: true
 
 ## Product
 
-Quiver is an internal product for turning natural-language requests and source files into useful operational artifacts. A requester can ask for a standard operating procedure, a Work Instruction, or a process flowchart through a supported collaboration channel and receive an editable, reviewable output rather than a chat transcript.
+Documenting a process often starts with a shadowing meeting, continues through notes and source files, and ends only after several rounds of SOP and flowchart revisions. I led the engineering of a workflow that keeps those steps together: the requester talks with an agent, provides evidence, reviews the proposed procedure and diagram, and asks for corrections until the result is useful.
+
+The QA team shared an early estimate of roughly 8–9 hours for the earlier manual process versus 1–2 hours with agent assistance, including the shadowing meeting and multiple revisions. I have not verified the underlying timings or sample, so this is a direction for evaluation rather than a measured outcome.
 
 The difficult part is preserving meaning across intake, source understanding, graph construction, document layout, validation, approval, and delivery. The model contributes semantic reasoning, while deterministic services protect the boundaries where an incorrect or duplicated effect would be costly.
 
@@ -50,6 +53,8 @@ The difficult part is preserving meaning across intake, source understanding, gr
 - **Durability:** request, revision, approval, consent, delivery, receipt, and output-version state are recorded so retries and recovery remain inspectable.
 
 This architecture builds on the control-plane principles described in [AI-Native Multi-Agent Engineering](/projects/ai-native-multi-agent-engineering), applied to a concrete document-and-flowchart product.
+
+I also built [AgentEdge Slides](/projects/agentedge-slides-presentation-agent) as a separate presentation agent within the platform. It has its own identity, workspace, and PowerPoint quality pipeline; its live Teams rollout is tracked separately from Quiver's document workflow.
 
 ## The hard product problem: visual evidence to useful artifacts
 
@@ -70,13 +75,13 @@ Deterministic validation owns schema, provenance, graph structure, layout, packa
 
 ## Collaboration with OpenClaw
 
-Quiver is built around the official OpenClaw runtime; I do not claim authorship of the upstream project. I contributed a focused upstream fix, [`c1243671`](https://github.com/carjes232/openclaw/commit/c12436718ead1aaae00c038d76f502e307853455), titled `fix(msteams): honor inbound channel media limit`.
+Quiver is built around the official OpenClaw runtime; I do not claim authorship of the upstream project. I contributed a focused [upstream fix, `c1243671`](https://github.com/openclaw/openclaw/commit/c12436718ead1aaae00c038d76f502e307853455), titled `fix(msteams): honor inbound channel media limit`.
 
 The patch made the Teams adapter prefer its channel-specific media limit and fall back to the agent default only when no Teams override exists. It also added lifecycle regression tests for both paths. This is a good example of the boundary between product work and upstream collaboration: Quiver needed the behavior, and the reusable runtime fix belonged in OpenClaw.
 
 ## My contribution
 
-I worked across the agent/tool boundary, source and workspace lineage, parallel-task contracts, deterministic document and flowchart workers, approval and consent flows, delivery/retry state, channel reliability, regression fixtures, and operational acceptance. The repository contains team contributions, so this page describes my areas of ownership without claiming sole ownership of the whole platform.
+I led the core Quiver engineering work across the agent/tool boundary, source and workspace lineage, parallel-task contracts, deterministic document and flowchart workers, approval and consent flows, delivery/retry state, channel reliability, regression fixtures, and operational acceptance. I also led the separate Slides agent and shared platform controls. Other engineers contributed to Quiver, so I credit the team for the complete product while describing these areas as my primary ownership.
 
 ## What I learned
 
@@ -84,4 +89,4 @@ The best agent products are not defined only by model quality. They are defined 
 
 ## Interview summary
 
-I helped build Quiver, an internal multimodal agent platform that turns conversations and visual process evidence into governed SOPs and flowcharts. I designed and hardened the boundaries around parallel agent work, typed process graphs, deterministic rendering, approvals, delivery receipts, and recovery. I also contributed a focused OpenClaw upstream bug fix for Teams media-limit handling, with regression coverage.
+I led a process-documentation workflow that turns shadowing conversations and source material into editable SOPs and flowcharts with room for several review rounds. I designed the agent and rendering boundaries, source tracking, approval and delivery flow, and recovery controls; built a separate presentation agent; and contributed a focused OpenClaw Teams fix.

@@ -1,4 +1,3 @@
-import { Search } from "lucide-react";
 import Link from "next/link";
 import { getAllNotes, getAllProjects } from "@/lib/content";
 import { Navigation } from "@/components/Navigation";
@@ -69,34 +68,19 @@ export function HUDShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-screen overflow-hidden gradient-bg">
       <div className="pointer-events-none absolute inset-0 hud-grid opacity-[0.08]" />
-      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col gap-10 px-4 pb-12 pt-6 sm:px-8 lg:px-12">
-        <header className="sticky top-4 z-30 flex flex-col gap-4 rounded-2xl border border-hud-border/50 bg-hud-surface/90 p-4 backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between">
+      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col gap-8 px-4 pb-12 pt-4 sm:gap-10 sm:px-8 sm:pt-6 lg:px-12">
+        <header className="sticky top-3 z-30 flex flex-col gap-3 rounded-2xl border border-hud-border/50 bg-hud-surface/95 p-3 backdrop-blur-xl sm:top-4 sm:flex-row sm:items-center sm:justify-between sm:p-4">
           <Link href="/" className="group shrink-0 space-y-0.5">
             <p className="text-[10px] font-medium uppercase tracking-[0.32em] text-hud-subtle">
               Daniel Cárdenas
             </p>
             <p className="text-sm font-semibold text-hud-text transition group-hover:text-hud-accent">
-              AI Automation · RAG · Edge ML
+              Applied AI · Automation · Edge ML
             </p>
           </Link>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Navigation items={NAV_ITEMS} />
-            <CmdPalette
-              items={paletteItems}
-              trigger={
-                <button
-                  type="button"
-                  className="flex items-center gap-2 rounded-full border border-hud-border/70 bg-hud-surface-alt/80 px-4 py-2 text-sm text-hud-subtle transition hover:border-hud-accent/60 hover:text-hud-text"
-                  aria-label="Search portfolio"
-                >
-                  <Search className="size-4 text-hud-accent" />
-                  <span className="hidden sm:inline">Search</span>
-                  <span className="hidden rounded bg-hud-border/80 px-2 py-0.5 text-[10px] uppercase tracking-[0.18em] text-hud-subtle md:inline">
-                    ⌘K
-                  </span>
-                </button>
-              }
-            />
+            <CmdPalette items={paletteItems} />
           </div>
         </header>
 

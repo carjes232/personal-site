@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { Globe, Layers, Map, Rocket } from "lucide-react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Daniel Cárdenas: AI automation engineer with RAG, Python API, edge ML, and firmware experience.",
+    "Meet Daniel Cárdenas: applied AI engineer building systems that shorten process documentation, automate employee follow-up, and produce reviewable results.",
   openGraph: {
     title: "About | Daniel Cárdenas",
     description:
-      "Meet Daniel Cárdenas: AI automation engineer with RAG, Python API, edge ML, and firmware experience.",
+      "Meet Daniel Cárdenas: applied AI engineer building systems that shorten process documentation, automate employee follow-up, and produce reviewable results.",
   },
 };
 
@@ -19,22 +20,22 @@ const STACK = [
   },
   {
     label: "Backend",
-    items: ["Python", "FastAPI", "Flask", "Postgres", "Docker"],
+    items: ["Python", "FastAPI", "Flask", "Postgres / SQLite", "Docker"],
   },
   {
     label: "AI",
     items: ["RAG", "Gemini", "Azure OpenAI", "pgvector", "LLM Eval"],
   },
   {
-    label: "Web",
-    items: ["Next.js", "Vue", "PyQt6", "Dashboards"],
+    label: "Product & Cloud",
+    items: ["React / TanStack", "Supabase / RLS", "Cloudflare Workers", "Dashboards"],
   },
 ];
 
 const LANGUAGES = [
   { label: "Spanish", level: "Native" },
-  { label: "English", level: "Professional" },
-  { label: "Portuguese", level: "Professional" },
+  { label: "English", level: "C1 Advanced" },
+  { label: "Portuguese", level: "A2" },
 ];
 
 export default function AboutPage() {
@@ -47,13 +48,16 @@ export default function AboutPage() {
               Professional Snapshot
             </p>
             <h1 className="text-4xl font-semibold text-hud-text">
-              AI automation with hardware-level instincts.
+              I build AI workflows that reduce repetitive work.
             </h1>
             <p className="text-base text-hud-subtle">
-              I build production-oriented AI systems across documents, business workflows, and connected devices. My recent work includes RAG pipelines for clinical simulation workflows, a Gemini-powered Telegram inventory bot, and smart-meter NILM systems that connect STM32 acquisition, Python services, MQTT telemetry, and field devices.
+              I lead a <Link href="/projects/quiver-multimodal-agent-operations" className="text-hud-accent hover:text-hud-accent-strong">process-documentation workflow</Link> that turns shadowing conversations, source files, and revisions into an SOP and flowchart people can inspect and edit. I also built a <Link href="/projects/agentedge-slides-presentation-agent" className="text-hud-accent hover:text-hud-accent-strong">presentation agent</Link> that creates editable slides from source material and checks the rendered deck before delivery.
             </p>
             <p className="text-base text-hud-subtle">
-              I am strongest where software has to touch reality: noisy sensor data, private documents, legacy spreadsheets, uncertain prompts, and users who need the system to work without drama. My toolkit spans Python/FastAPI/Flask, Postgres/pgvector/FAISS, Gemini/Azure OpenAI, Docker, STM32/FreeRTOS, and practical dashboards.
+              Staff previously had time to call mainly longer absence cases. I led a <Link href="/projects/sst-voice-agent-reliability" className="text-hud-accent hover:text-hud-accent-strong">voice-agent workflow</Link> that can follow up on more lateness and absence cases, record each person&apos;s reported reason, and give operations a case to review. A voicemail-detection improvement reduced observed cost per call by 69%; the $27.2K annual savings figure is a potential run rate, not realized savings.
+            </p>
+            <p className="text-base text-hud-subtle">
+              I have also <Link href="/projects/openclaw-msteams-media-limit-fix" className="text-hud-accent hover:text-hud-accent-strong">fixed a Teams issue in OpenClaw</Link>, advised on <Link href="/projects/lean360-crm-whitespace-intelligence" className="text-hud-accent hover:text-hud-accent-strong">CRM integration reliability</Link>, and built RAG and edge ML systems. Across these projects, I focus on keeping AI output useful after it leaves the model: grounded evidence, clear state, human review, and reliable delivery.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
@@ -85,7 +89,8 @@ export default function AboutPage() {
               </div>
               <ul className="mt-3 space-y-2 text-sm text-hud-subtle">
                 <li>RAG, retrieval quality, and citation-aware LLM workflows.</li>
-                <li>Voice/document automation using Python APIs and LLMs.</li>
+                <li>Voice agents, multimodal documents, editable presentations, and reliable delivery.</li>
+                <li>Integration reviews, operational data products, and auditable finance workflows.</li>
                 <li>Edge ML and smart-meter telemetry with OTA safety.</li>
               </ul>
             </div>

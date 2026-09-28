@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Filter, X } from "lucide-react";
 import type { Project } from "@/lib/content";
@@ -24,6 +24,8 @@ function toggleTag(tags: string[], tag: string): string[] {
 }
 
 export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
+  const [visibleCount, setVisibleCount] = useState(9);
+  const [showTagFilters, setShowTagFilters] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -48,6 +50,7 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
 
   const updateQuery = useCallback(
     (params: Record<string, string | null>) => {
+      setVisibleCount(9);
       const next = new URLSearchParams(searchParams.toString());
       Object.entries(params).forEach(([key, value]) => {
         if (value && value.length > 0) {
@@ -78,18 +81,19 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
   );
 
   const clearFilters = useCallback(() => {
+    setVisibleCount(9);
     router.replace(pathname);
   }, [pathname, router]);
 
   return (
     <div className="space-y-8">
-      <p className="text-sm text-hud-subtle">
+      <p className="text-sm text-hud-subtle" aria-live="polite">
         Showing{" "}
         <span className="font-semibold tabular-nums text-hud-text">
-          {filteredProjects.length}
+          {Math.min(visibleCount, filteredProjects.length)}
         </span>{" "}
-        of {projects.length} projects
-        {(selectedTags.length > 0 || selectedTrack) ? " (filtered)" : ""}
+        of {filteredProjects.length} matching projects
+        {(selectedTags.length > 0 || selectedTrack) ? ` (${projects.length} total)` : ""}
       </p>
 
       <div className="rounded-3xl border border-hud-border/60 bg-hud-surface/70 p-6 lg:sticky lg:top-24 lg:z-20">
@@ -117,7 +121,16 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
               ))}
             </div>
           </div>
-          <div>
+          <button
+            type="button"
+            className="self-start text-xs font-semibold uppercase tracking-[0.16em] text-hud-accent md:hidden"
+            aria-expanded={showTagFilters}
+            aria-controls="project-tag-filters"
+            onClick={() => setShowTagFilters((open) => !open)}
+          >
+            {showTagFilters ? "Hide tag filters" : `More filters${selectedTags.length ? ` (${selectedTags.length} selected)` : ""}`} ↓
+          </button>
+          <div id="project-tag-filters" className={cn(!showTagFilters && "hidden md:block")}>
             <p className="text-xs uppercase tracking-[0.18em] text-hud-subtle">
               Tags
             </p>
@@ -145,10 +158,21 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
       </div>
 
       {filteredProjects.length ? (
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
+        <div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {filteredProjects.slice(0, visibleCount).map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+          {visibleCount < filteredProjects.length ? (
+            <button
+              type="button"
+              onClick={() => setVisibleCount((count) => count + 9)}
+              className="mx-auto mt-10 block rounded-full border border-hud-accent/60 px-8 py-3 text-sm font-semibold text-hud-accent transition hover:bg-hud-accent/10"
+            >
+              Show more projects ({filteredProjects.length - visibleCount} remaining)
+            </button>
+          ) : null}
         </div>
       ) : (
         <div className="rounded-3xl border border-dashed border-hud-border/70 bg-hud-surface/60 p-12 text-center text-sm text-hud-subtle">

@@ -14,6 +14,7 @@ import {
   Command as CommandIcon,
   FileText,
   NotebookPen,
+  Search,
 } from "lucide-react";
 import type { Route } from "next";
 import { usePathname, useRouter } from "next/navigation";
@@ -31,7 +32,6 @@ export interface PaletteItem {
 
 interface CmdPaletteProps {
   items: PaletteItem[];
-  trigger?: React.ReactNode;
 }
 
 const icons: Record<PaletteItemType, React.ReactNode> = {
@@ -40,7 +40,7 @@ const icons: Record<PaletteItemType, React.ReactNode> = {
   note: <NotebookPen className="size-4 text-hud-accent" />,
 };
 
-export function CmdPalette({ items, trigger }: CmdPaletteProps) {
+export function CmdPalette({ items }: CmdPaletteProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -98,7 +98,17 @@ export function CmdPalette({ items, trigger }: CmdPaletteProps) {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      {trigger ? <Dialog.Trigger asChild>{trigger}</Dialog.Trigger> : null}
+      <Dialog.Trigger asChild>
+        <button
+          type="button"
+          className="absolute right-3 top-3 flex size-9 items-center justify-center gap-2 rounded-full border border-hud-border/70 bg-hud-surface-alt/80 text-sm text-hud-subtle transition hover:border-hud-accent/60 hover:text-hud-text sm:static sm:size-auto sm:px-4 sm:py-2"
+          aria-label="Search portfolio"
+        >
+          <Search className="size-4 text-hud-accent" />
+          <span className="hidden sm:inline">Search</span>
+          <span className="hidden rounded bg-hud-border/80 px-2 py-0.5 text-[10px] uppercase tracking-[0.18em] text-hud-subtle md:inline">⌘K</span>
+        </button>
+      </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" />
         <Dialog.Content className="fixed inset-x-0 top-[10%] z-50 mx-auto w-full max-w-2xl">

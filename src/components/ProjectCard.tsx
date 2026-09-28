@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Github, Globe } from "lucide-react";
+import { ArrowUpRight, Github, Globe, X } from "lucide-react";
 import type { Project } from "@/lib/content";
-import { Badge } from "@/components/Badge";
 import { ProjectCoverArt } from "@/components/ProjectCoverArt";
 import { getProjectCover, getTrackVisual } from "@/lib/project-visuals";
 import { cn } from "@/lib/utils";
@@ -47,13 +46,6 @@ export function ProjectCard({ project, className, priority = false }: ProjectCar
               sizes="(min-width: 1280px) 400px, (min-width: 768px) 50vw, 100vw"
               priority={priority}
             />
-            {cover ? (
-              <div className="absolute left-4 right-4 top-4 flex flex-wrap gap-2">
-                {project.badges?.slice(0, 2).map((badge) => (
-                  <Badge key={badge} label={badge} kind="info" />
-                ))}
-              </div>
-            ) : null}
             <span className="absolute bottom-3 left-4 rounded-full border border-white/10 bg-hud-bg/50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-hud-subtle backdrop-blur-sm">
               {track.label}
             </span>
@@ -61,16 +53,18 @@ export function ProjectCard({ project, className, priority = false }: ProjectCar
         </Dialog.Trigger>
         {cover ? (
           <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm" />
+            <Dialog.Overlay className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm" />
             <Dialog.Content
-              className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center p-4 md:p-8"
-              onClick={() => setImageModalOpen(false)}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
             >
               <Dialog.Title className="sr-only">{project.title}</Dialog.Title>
+              <Dialog.Close className="absolute right-4 top-4 z-10 flex size-10 items-center justify-center rounded-full border border-white/30 bg-hud-bg text-white transition hover:bg-hud-surface" aria-label="Close image">
+                <X className="size-5" />
+              </Dialog.Close>
               <div className="relative h-full w-full max-h-[90vh] max-w-[90vw]">
                 <Image
                   src={cover}
-                  alt={`${project.title} cover`}
+                  alt={`${project.title} project visual`}
                   fill
                   className="object-contain"
                   sizes="100vw"

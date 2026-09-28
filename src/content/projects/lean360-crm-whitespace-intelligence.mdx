@@ -1,7 +1,7 @@
 ---
 title: "Lean 360 CRM & Whitespace Intelligence"
 slug: "lean360-crm-whitespace-intelligence"
-date: "2026-08-17"
+date: "2026-09-08"
 tags:
   - "TanStack Start"
   - "React"
@@ -13,14 +13,13 @@ tags:
   - "RLS"
   - "CRM"
 track: "web-cloud"
-role: "Full-stack / AI Data Systems Engineer"
-summary: "A read-only CRM intelligence layer that mirrors HubSpot customers and prospects into Supabase for account, owner, status, and whitespace analysis."
+role: "Integration reliability advisor and contributor"
+summary: "Advised on the reliability of an existing CRM intelligence product, reviewed its data flows, and contributed focused Portal identity and delivery fixes."
 context: "Work performed at Lean Tech. Client records, connector credentials, internal identifiers, and deployment details are omitted from this public-safe case study."
 results:
-  - "Typed TanStack Start dashboard for customers, prospects, account detail, pipeline metrics, roles, and whitespace"
-  - "Paged, resumable syncs handle large HubSpot datasets without crossing the Search API ceiling"
-  - "Signed, deduplicated webhooks keep hot company and prospect changes visible between refreshes"
-  - "Supabase RLS, permission flags, optimistic guards, and audit-oriented sync state protect operational data"
+  - "Mapped and reviewed HubSpot, Retool, ClickUp, Portal, and Alejandro integration health and failure states"
+  - "Produced a prioritized repair backlog and acceptance checks for sync correctness, observability, and data quality"
+  - "Implemented focused Portal employee identity, delivery, and diagnostic fixes with regression coverage"
 badges:
   - "HubSpot Sync"
   - "Supabase / RLS"
@@ -37,25 +36,28 @@ CRM data is useful only when refreshes are predictable and the resulting metrics
 
 The product needed a read-only intelligence layer that could refresh each entity independently, expose data quality issues, and avoid turning a partial sync into a confident-looking dashboard.
 
-## Architecture
+## Existing product
 
 - **Application:** TanStack Start, React, and TypeScript provide authenticated routes for customer/prospect browsing, account detail, pipeline metrics, roles across accounts, and whitespace analysis.
 - **Storage:** Supabase/Postgres mirrors HubSpot objects and associations with explicit sync-state rows, status history, and activity records.
 - **Sync engine:** browser-driven server functions page companies and prospects independently. Large populations are windowed to stay below HubSpot's 10,000-result search ceiling.
 - **Hot updates:** a public webhook route verifies HubSpot signature v3, rejects stale timestamps, deduplicates events, and refetches only the affected object types.
 
-## Scope boundary
+## Scope and attribution
 
-The current public scope is intentionally read-only and centered on customers and prospects. Deal synchronization, Order Management, HubSpot writeback, Retool, and ClickUp integrations are separate or dormant workstreams rather than capabilities this page claims as live product behavior.
+Lean 360 existed before my involvement. It is a read-only intelligence layer over CRM and connected operational feeds, with different integrations at different stages of maturity. I advised on their correctness and visibility and made two focused Portal reliability changes. I did not design or build the entire dashboard, sync engine, or Alejandro research system. Alejandro is a sibling research service whose outputs Lean 360 consumes; Lean 360 does not itself perform that research.
 
-## Trust controls
+## Reliability questions I investigated
 
-Permission middleware and Supabase RLS protect operational views. Sync locks reclaim crashed runs after a bounded timeout, while errors and orphan/unclassified records remain visible for remediation. Whitespace confidence is accompanied by source and data-quality flags rather than presented as an unquestionable forecast.
+- Which feeds were actually fresh, partially delivered, or stale, and whether a successful webhook meant the correct mirror row changed.
+- Whether manual, scheduled, and webhook paths applied the same data scope and handled duplicates safely.
+- How Portal workforce updates reached Alejandro, and whether employee identity and delivery diagnostics survived retries and malformed records.
+- Whether source links and confidence flags made whitespace estimates reviewable rather than presenting them as verified facts.
 
 ## My contribution
 
-I worked across the typed server functions, sync orchestration, pagination/windowing guards, webhook validation, pipeline/role aggregations, permission boundaries, and operational documentation. The public case study describes the system architecture without exposing client data or connector secrets.
+I reviewed Lovable exports against integration behavior, inspected bounded live diagnostics, documented mismatches, and wrote prioritized acceptance criteria for the product team. I then contributed Portal fixes that use employee identification as the stable key and harden delivery and diagnostics, including tests. This was advisory and targeted implementation work on an existing team product.
 
 ## Interview summary
 
-I built a typed CRM intelligence layer that treats synchronization, permissions, and data quality as first-class product behavior—not as invisible plumbing behind a dashboard.
+I advised on an existing CRM intelligence product and made focused Portal integration fixes. My work centered on proving which connections and data were trustworthy, turning failures into an actionable repair plan, and hardening employee identity and delivery diagnostics.

@@ -1,0 +1,35 @@
+---
+title: "OpenClaw — Microsoft Teams Media-Limit Fix"
+slug: "openclaw-msteams-media-limit-fix"
+date: "2026-08-11"
+tags:
+  - "OpenClaw"
+  - "Microsoft Teams"
+  - "TypeScript"
+  - "Open Source"
+  - "Testing"
+track: "ai-backend"
+role: "Open-source contributor — issue diagnosis, patch, and regression coverage"
+summary: "Found and fixed a Teams adapter bug so its configured inbound media limit takes precedence over the agent default, with regression tests for both paths."
+repo: "https://github.com/openclaw/openclaw/commit/c12436718ead1aaae00c038d76f502e307853455"
+results:
+  - "Teams now honors its channel-specific inbound media limit when configured"
+  - "Falls back to the agent default when no Teams override exists"
+  - "Added lifecycle regression coverage for the override and fallback paths"
+badges:
+  - "Upstream Fix"
+  - "Teams"
+  - "Regression Tests"
+xp: 100
+featured: false
+---
+
+## The issue
+
+While working on Quiver's Teams attachment intake, I found that the OpenClaw Teams adapter did not respect the channel's configured inbound media limit. This mattered for a workflow that needs to receive source documents without applying the wrong size boundary.
+
+## The contribution
+
+I traced the configuration path and made the adapter prefer the Teams-specific limit. If Teams has no override, it falls back to the agent default. I added regression tests for both cases in [upstream commit `c1243671`](https://github.com/openclaw/openclaw/commit/c12436718ead1aaae00c038d76f502e307853455).
+
+This is a focused contribution to OpenClaw, not authorship of the upstream runtime. Quiver uses OpenClaw; the reusable fix belongs in the runtime itself.

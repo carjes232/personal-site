@@ -8,7 +8,7 @@ const TRACKS = [
   {
     title: "AI Automation",
     description:
-      "RAG, voice/document workflows, evals, and Python services that can be tested and deployed.",
+      "AI workflows that gather process knowledge, create useful artifacts, and follow up on operational cases.",
     icon: Brain,
     highlights: ["RAG", "LLM evals", "FastAPI"],
     href: "/projects?track=ai-backend",
@@ -32,11 +32,37 @@ const TRACKS = [
 ];
 
 export default function HomePage() {
-  const featured = getFeaturedProjects().slice(0, 6);
+  const featuredProjects = getFeaturedProjects();
+  const featured = [
+    "quiver-multimodal-agent-operations",
+    "sst-voice-agent-reliability",
+    "agentedge-slides-presentation-agent",
+    "lean360-crm-whitespace-intelligence",
+  ]
+    .map((slug) => featuredProjects.find((project) => project.slug === slug))
+    .filter((project): project is (typeof featuredProjects)[number] => Boolean(project));
 
   return (
-    <div className="space-y-16 sm:space-y-20">
+    <div className="space-y-12 sm:space-y-20">
       <PortfolioHero />
+
+      <section aria-labelledby="measured-impact-title" className="grid gap-6 border-y border-hud-border/60 py-9 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)] lg:items-center lg:gap-12">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-hud-accent">Measured impact</p>
+          <p className="mt-3 text-6xl font-semibold leading-none tabular-nums text-hud-text sm:text-7xl">69%</p>
+          <p className="mt-2 text-sm text-hud-subtle">Lower observed cost per employee follow-up call</p>
+        </div>
+        <div className="space-y-4">
+          <h2 id="measured-impact-title" className="text-2xl font-semibold text-hud-text sm:text-3xl">Less manual chasing, more usable answers.</h2>
+          <p className="max-w-2xl text-sm leading-relaxed text-hud-subtle">
+            Staff previously focused calls on longer absences because their time was limited. A voice agent can follow up on more lateness and absence cases, record each employee&apos;s reported reason, and give operations a reviewable result. A voicemail-detection improvement cut observed cost per call from $0.1275 to $0.0395; the $27.2K annual savings figure is a potential run rate at constant volume.
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-hud-accent">
+            <Link href="/projects/sst-voice-agent-reliability" className="hover:text-hud-accent-strong">How the voice workflow works →</Link>
+            <Link href="/projects/quiver-multimodal-agent-operations" className="hover:text-hud-accent-strong">How process documentation works →</Link>
+          </div>
+        </div>
+      </section>
 
       <section className="space-y-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -45,10 +71,9 @@ export default function HomePage() {
               Featured work
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-hud-subtle">
-              Production-oriented case studies across RAG, agent platforms, LLM
-              automation, CRM and finance workflows, OCR, field devices, and edge
-              ML — each with architecture notes and measurable outcomes where
-              possible.
+              Process documentation, employee follow-up, editable presentations,
+              and an advisory contribution to a data product. Each case study
+              explains my role and what the evidence supports.
             </p>
           </div>
           <Link
@@ -59,12 +84,12 @@ export default function HomePage() {
             <span aria-hidden>→</span>
           </Link>
         </div>
-        <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2">
           {featured.map((project, index) => (
             <ProjectCard
               key={project.slug}
               project={project}
-              priority={index < 3}
+              priority={index < 2}
             />
           ))}
         </div>

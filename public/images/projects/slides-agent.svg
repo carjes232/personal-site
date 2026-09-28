@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Editable presentation agent workflow</title>
+  <desc id="desc">Source content becomes an editable PowerPoint deck through layout selection and visual quality review.</desc>
+  <rect width="1200" height="750" fill="#091c29"/>
+  <path d="M0 604H1200M0 484H1200M0 364H1200M0 244H1200" stroke="#173d49" stroke-width="1"/>
+  <text x="75" y="95" fill="#65d9e4" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="5">PRESENTATION AGENT</text>
+  <text x="75" y="159" fill="#ecf6f7" font-family="Arial,sans-serif" font-size="43" font-weight="700">Source material to editable slides</text>
+  <rect x="75" y="257" width="230" height="315" rx="19" fill="#0d2b38" stroke="#386674" stroke-width="2"/>
+  <path d="M119 313h143m-143 27h123m-123 27h132m-132 27h88" stroke="#73cdd8" stroke-width="7" stroke-linecap="round"/>
+  <text x="119" y="493" fill="#eff8f8" font-family="Arial,sans-serif" font-size="27" font-weight="700">Source files</text>
+  <path d="M325 415h100m-19-18 19 18-19 18" stroke="#59d4df" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="442" y="257" width="308" height="315" rx="19" fill="#0d2b38" stroke="#386674" stroke-width="2"/>
+  <rect x="485" y="303" width="215" height="135" rx="8" fill="#153c49" stroke="#6cd7e0" stroke-width="3"/>
+  <rect x="504" y="322" width="84" height="20" rx="4" fill="#6cd7e0"/>
+  <rect x="504" y="357" width="175" height="9" rx="4" fill="#5b8a97"/>
+  <rect x="504" y="378" width="144" height="9" rx="4" fill="#5b8a97"/>
+  <rect x="504" y="399" width="161" height="9" rx="4" fill="#5b8a97"/>
+  <text x="485" y="493" fill="#eff8f8" font-family="Arial,sans-serif" font-size="27" font-weight="700">Layout + fit checks</text>
+  <path d="M770 415h100m-19-18 19 18-19 18" stroke="#59d4df" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="887" y="257" width="237" height="315" rx="19" fill="#0d2b38" stroke="#386674" stroke-width="2"/>
+  <rect x="925" y="307" width="160" height="115" rx="6" fill="#164653" stroke="#79dee6" stroke-width="3"/>
+  <path d="M945 333h78m-78 18h118m-118 18h97" stroke="#99eaf0" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="1057" cy="394" r="11" fill="#6cd7e0"/>
+  <text x="925" y="493" fill="#eff8f8" font-family="Arial,sans-serif" font-size="27" font-weight="700">Editable PPTX</text>
+  <text x="75" y="666" fill="#7fa5ad" font-family="Arial,sans-serif" font-size="20" letter-spacing="2">ILLUSTRATIVE WORKFLOW · LOCAL QUALIFICATION</text>
+</svg>

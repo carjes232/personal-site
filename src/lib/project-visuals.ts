@@ -3,6 +3,9 @@ import type { ProjectTrack } from "@/lib/content";
 
 /** Covers that exist on disk but are not always set in MDX frontmatter. */
 const DEFAULT_COVERS: Record<string, string> = {
+  "quiver-multimodal-agent-operations": "/images/projects/quiver-process.svg",
+  "sst-voice-agent-reliability": "/images/projects/voice-follow-up.svg",
+  "agentedge-slides-presentation-agent": "/images/projects/slides-agent.svg",
   "solenium-nilm-edge-platform": "/images/projects/solenium-nilm-cover.webp",
 };
 

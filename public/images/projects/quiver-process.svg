@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Process documentation workflow</title>
+  <desc id="desc">Shadowing and evidence become a reviewed SOP and flowchart.</desc>
+  <rect width="1200" height="750" fill="#071b25"/>
+  <path d="M0 610H1200M0 490H1200M0 370H1200M0 250H1200M180 0V750M420 0V750M660 0V750M900 0V750" stroke="#173642" stroke-width="1"/>
+  <text x="76" y="95" fill="#59d9e7" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="5">PROCESS DOCUMENTATION</text>
+  <text x="76" y="158" fill="#e8f4f6" font-family="Arial,sans-serif" font-size="43" font-weight="700">From discovery to reviewable artifacts</text>
+  <rect x="76" y="245" width="260" height="315" rx="24" fill="#0c2934" stroke="#2b6572" stroke-width="2"/>
+  <circle cx="129" cy="302" r="19" fill="#17bed3"/>
+  <path d="M129 315v18m-18-14a25 25 0 0 0 36 0" stroke="#baf6f7" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <text x="112" y="383" fill="#e8f4f6" font-family="Arial,sans-serif" font-size="31" font-weight="700">Shadowing</text>
+  <text x="112" y="428" fill="#9ab8c0" font-family="Arial,sans-serif" font-size="22">Conversation</text>
+  <text x="112" y="461" fill="#9ab8c0" font-family="Arial,sans-serif" font-size="22">+ source files</text>
+  <path d="M351 402h97m-18-17 18 17-18 17" stroke="#55d5df" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="465" y="245" width="260" height="315" rx="24" fill="#0c2934" stroke="#2b6572" stroke-width="2"/>
+  <rect x="503" y="283" width="88" height="76" rx="11" fill="none" stroke="#55d5df" stroke-width="4"/>
+  <path d="M521 305h53m-53 17h37m-37 17h48" stroke="#55d5df" stroke-width="4" stroke-linecap="round"/>
+  <text x="503" y="383" fill="#e8f4f6" font-family="Arial,sans-serif" font-size="31" font-weight="700">Draft + revise</text>
+  <text x="503" y="428" fill="#9ab8c0" font-family="Arial,sans-serif" font-size="22">Evidence linked</text>
+  <text x="503" y="461" fill="#9ab8c0" font-family="Arial,sans-serif" font-size="22">Human approval</text>
+  <path d="M740 402h97m-18-17 18 17-18 17" stroke="#55d5df" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="854" y="245" width="270" height="315" rx="24" fill="#0c2934" stroke="#2b6572" stroke-width="2"/>
+  <path d="M896 286h60v77h-60zM1001 298h33m0 0v43m0-43 29 43m-62 0h62" stroke="#55d5df" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="896" y="383" fill="#e8f4f6" font-family="Arial,sans-serif" font-size="31" font-weight="700">SOP + flowchart</text>
+  <text x="896" y="428" fill="#9ab8c0" font-family="Arial,sans-serif" font-size="22">Editable outputs</text>
+  <text x="896" y="461" fill="#9ab8c0" font-family="Arial,sans-serif" font-size="22">Ready for review</text>
+  <text x="76" y="657" fill="#7fa5ad" font-family="Arial,sans-serif" font-size="21" letter-spacing="2">ILLUSTRATIVE WORKFLOW · NO CUSTOMER DATA</text>
+</svg>

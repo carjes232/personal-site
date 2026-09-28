@@ -1,46 +1,38 @@
 import Link from "next/link";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
-import { PortfolioStats } from "@/components/PortfolioStats";
 
 export function PortfolioHero() {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-hud-border/60 bg-hud-surface/80 p-8 sm:p-10 lg:p-12 backdrop-blur-sm">
+    <section className="relative overflow-hidden rounded-3xl border border-hud-border/60 bg-hud-surface/80 p-6 sm:p-10 lg:p-12 backdrop-blur-sm">
       <div className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-hud-accent/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-16 left-1/3 size-56 rounded-full bg-hud-accent-strong/10 blur-3xl" />
 
-      <div className="relative grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+      <div className="relative grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
         <div className="space-y-6">
           <p className="text-xs font-medium uppercase tracking-[0.32em] text-hud-accent">
             Portfolio
           </p>
           <h1 className="text-4xl font-semibold leading-[1.1] text-hud-text sm:text-5xl lg:text-[3.25rem]">
-            <span className="text-gradient">AI systems</span> that ship — from
-            RAG pipelines to edge firmware.
+            <span className="text-gradient">AI systems</span> that give teams
+            time back.
           </h1>
           <p className="max-w-2xl text-base leading-relaxed text-hud-subtle">
-            I&apos;m Daniel Cárdenas, an applied AI and systems engineer. This site
-            is a curated set of production-oriented case studies: retrieval
-            quality, agent platforms, agentic document workflows, operational
-            data products, Python APIs, and the embedded telemetry that makes
-            edge ML useful in the field.
+            I&apos;m Daniel Cárdenas. I turn process shadowing into reviewable SOPs
+            and flowcharts, and build voice agents that help operations follow
+            up on lateness and absence. My focus is useful outcomes, human
+            review, and reliable delivery.
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="flex flex-wrap gap-3">
             <Link
               href="/projects"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-hud-accent px-6 py-3 text-sm font-semibold !text-hud-bg transition hover:bg-hud-accent-strong hover:!text-hud-bg hover:scale-[1.02] shadow-lg shadow-hud-accent/20"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-hud-accent px-6 py-3 text-sm font-semibold !text-hud-bg shadow-lg shadow-hud-accent/20 transition hover:bg-hud-accent-strong hover:!text-hud-bg"
             >
               Browse case studies
               <ArrowRight className="size-4" />
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-hud-border/70 bg-hud-bg/20 px-6 py-3 text-sm font-semibold text-hud-accent transition hover:border-hud-accent/60 hover:bg-hud-accent/10"
-            >
-              Get in touch
-            </Link>
             <a
               href="/resume.pdf"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-hud-border/50 px-6 py-3 text-sm font-semibold text-hud-subtle transition hover:border-hud-border hover:text-hud-text"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-hud-border/70 px-6 py-3 text-sm font-semibold text-hud-text transition hover:border-hud-accent/60 hover:text-hud-accent"
             >
               Résumé
             </a>
@@ -71,7 +63,14 @@ export function PortfolioHero() {
           </div>
         </div>
 
-        <PortfolioStats />
+        <div className="hidden border-l border-hud-border/70 pl-8 lg:block" aria-label="Selected work">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-hud-accent">Selected work</p>
+          <div className="mt-6 space-y-6">
+            <p className="border-b border-hud-border/50 pb-5 text-lg leading-snug text-hud-text">Shadowing → editable SOP + flowchart</p>
+            <p className="border-b border-hud-border/50 pb-5 text-lg leading-snug text-hud-text">Employee follow-up → reviewable reasons</p>
+            <p className="text-lg leading-snug text-hud-text">Source material → editable slides</p>
+          </div>
+        </div>
       </div>
     </section>
   );

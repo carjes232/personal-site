@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Employee follow-up voice workflow</title>
+  <desc id="desc">A voice agent calls about a lateness or absence event and sends the reported reason for human review.</desc>
+  <rect width="1200" height="750" fill="#081c27"/>
+  <circle cx="909" cy="367" r="290" fill="none" stroke="#173d49" stroke-width="2"/>
+  <circle cx="909" cy="367" r="205" fill="none" stroke="#1f5260" stroke-width="2"/>
+  <circle cx="909" cy="367" r="118" fill="none" stroke="#276574" stroke-width="2"/>
+  <text x="72" y="95" fill="#64d8e4" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="5">VOICE FOLLOW-UP</text>
+  <text x="72" y="160" fill="#e8f4f6" font-family="Arial,sans-serif" font-size="43" font-weight="700">More cases reached. Reasons reviewed.</text>
+  <path d="M118 298h574M118 438h574M118 578h574" stroke="#37616b" stroke-width="2"/>
+  <circle cx="145" cy="298" r="15" fill="#50d3e0"/>
+  <circle cx="145" cy="438" r="15" fill="#50d3e0"/>
+  <circle cx="145" cy="578" r="15" fill="#50d3e0"/>
+  <text x="188" y="290" fill="#f1f8f9" font-family="Arial,sans-serif" font-size="29" font-weight="700">Late or absent event</text>
+  <text x="188" y="335" fill="#9bbbc3" font-family="Arial,sans-serif" font-size="22">Initial follow-up is triggered</text>
+  <text x="188" y="430" fill="#f1f8f9" font-family="Arial,sans-serif" font-size="29" font-weight="700">Voice conversation</text>
+  <text x="188" y="475" fill="#9bbbc3" font-family="Arial,sans-serif" font-size="22">Voicemail and no-answer stay distinct</text>
+  <text x="188" y="570" fill="#f1f8f9" font-family="Arial,sans-serif" font-size="29" font-weight="700">Operational review</text>
+  <text x="188" y="615" fill="#9bbbc3" font-family="Arial,sans-serif" font-size="22">Employee-reported reason + evidence</text>
+  <rect x="818" y="271" width="184" height="194" rx="31" fill="#0d3441" stroke="#5bd8e2" stroke-width="3"/>
+  <path d="M875 320c5-5 10-5 16 0l11 13-10 16c12 22 23 33 46 45l16-10 14 12c5 5 5 11 0 16-12 13-31 12-56-1-36-20-60-45-77-77-12-23-10-42 2-54z" fill="none" stroke="#7ce3e9" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="782" y="557" fill="#e8f4f6" font-family="Arial,sans-serif" font-size="29" font-weight="700">69% lower cost / call</text>
+  <text x="782" y="598" fill="#9bbbc3" font-family="Arial,sans-serif" font-size="20">Observed before / after comparison</text>
+  <text x="72" y="690" fill="#7fa5ad" font-family="Arial,sans-serif" font-size="20" letter-spacing="2">ILLUSTRATIVE WORKFLOW · NO EMPLOYEE DATA</text>
+</svg>

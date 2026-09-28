@@ -17,11 +17,11 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://danielcardenas.dev"),
   title: {
-    default: "Daniel Cárdenas — AI Automation Engineer",
+    default: "Daniel Cárdenas — Applied AI Engineer",
     template: "%s | Daniel Cárdenas",
   },
   description:
-    "Daniel Cárdenas builds RAG systems, AI automation tools, Python APIs, and edge ML/firmware platforms.",
+    "Daniel Cárdenas builds AI workflows that turn process shadowing into SOPs and flowcharts, automate employee follow-up calls, and deliver reviewable results.",
   keywords: [
     "Firmware",
     "Embedded",
@@ -44,10 +44,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://danielcardenas.dev",
-    siteName: "Daniel Cárdenas — AI Automation Engineer",
-    title: "Daniel Cárdenas — AI Automation Engineer",
+    siteName: "Daniel Cárdenas — Applied AI Engineer",
+    title: "Daniel Cárdenas — Applied AI Engineer",
     description:
-      "Portfolio and case studies across RAG, AI automation, Python APIs, edge ML, and firmware.",
+      "AI systems that shorten process documentation, automate employee follow-up, and turn uncertain inputs into useful, reviewable results.",
   },
   twitter: {
     card: "summary_large_image",

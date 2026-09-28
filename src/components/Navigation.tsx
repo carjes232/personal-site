@@ -18,7 +18,7 @@ export function Navigation({ items }: NavigationProps) {
   const pathname = usePathname();
 
   return (
-    <nav className="flex flex-col md:flex-row items-stretch md:items-center gap-1 rounded-2xl md:rounded-full bg-hud-surface/80 p-1.5 text-sm backdrop-blur-sm border border-hud-border/40">
+    <nav aria-label="Main navigation" className="grid grid-cols-5 items-center gap-0.5 rounded-2xl border border-hud-border/40 bg-hud-surface/80 p-1 text-xs backdrop-blur-sm sm:flex sm:rounded-full sm:text-sm">
       {items.map((item) => {
         const active =
           item.href === "/"
@@ -29,10 +29,10 @@ export function Navigation({ items }: NavigationProps) {
             key={item.href}
             href={item.href as Route}
             className={cn(
-              "rounded-xl md:rounded-full px-4 py-2 font-medium transition-all duration-300 relative overflow-hidden text-center",
+              "relative overflow-hidden rounded-xl px-1.5 py-2 text-center font-medium transition-colors duration-200 sm:rounded-full sm:px-4",
               active
                 ? "bg-hud-accent/25 text-hud-text shadow-lg shadow-hud-accent/20"
-                : "text-hud-subtle hover:bg-hud-border/50 hover:text-hud-text hover:scale-105",
+                : "text-hud-subtle hover:bg-hud-border/50 hover:text-hud-text",
             )}
           >
             {active && (

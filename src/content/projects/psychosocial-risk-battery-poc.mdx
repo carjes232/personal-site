@@ -1,0 +1,40 @@
+---
+title: "Psychosocial Risk Battery — Evidence-First Scoring PoC"
+slug: "psychosocial-risk-battery-poc"
+date: "2026-09-25"
+tags:
+  - "Document AI"
+  - "OMR"
+  - "Human Review"
+  - "TypeScript"
+  - "Supabase"
+track: "ai-backend"
+role: "Engineering feasibility and PoC contributor"
+summary: "Reviewed the engineering approach for digitizing fixed-form questionnaires and advanced a controlled PoC that separates uncertain mark reading from deterministic, expert-approved scoring."
+context: "Internal Lean Tech proof of concept involving sensitive occupational-health material. This page includes no respondent data, forms, answers, private rules, or clinical results. The scoring system is not approved for operational use."
+results:
+  - "Defined an evidence-first path: page checks, OMR, bounded AI assistance, human review, then deterministic scoring"
+  - "Mapped source, instrument-version, custody, and access requirements into the engineering handoff"
+  - "Reviewed the final product requirements against the local prototype and documented delivery gaps"
+badges:
+  - "Controlled PoC"
+  - "OMR + Review"
+  - "Deterministic Scoring"
+xp: 115
+confidential: true
+featured: false
+---
+
+## The engineering problem
+
+Fixed-layout questionnaires can be read from scanned pages, but the challenge is proving that every accepted mark and every resulting score follows the correct instrument version and approved manual. An uncertain extraction must stay uncertain until a qualified reviewer resolves it.
+
+## My contribution
+
+I reviewed the proposed architecture and helped define the controlled PoC path: validate and preserve the original scan, align pages to a known template, use deterministic mark reading first, route difficult cases to bounded visual assistance and human review, and score only with an approved, versioned ruleset. I also compared the final product requirements with local implementation evidence and documented the gaps that remain before a complete workflow can be accepted.
+
+The local prototype has page-level extraction and review work, but its coverage and scoring approval are incomplete. A small successful sample does not establish the target error rate. Representative labeled scans, expert-approved rules, golden scoring tests, clinical custody, and end-to-end acceptance are still needed.
+
+## Why this matters
+
+The design makes source evidence, expert authority, and uncertainty explicit. An AI suggestion can help a reviewer find a mark; it cannot silently become a trusted answer or a clinical conclusion.
