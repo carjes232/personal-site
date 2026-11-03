@@ -13,7 +13,7 @@ Ingeniero físico que desarrolla sistemas prácticos de IA para documentos, voz,
 
 **Lean Tech — Ingeniero de IA** · Remoto · Feb 2026 – Presente
 
-- Lidero arquitectura, alcance y aceptación de entregas de un asistente documental en producción en Teams para SOPs, diagramas de flujo y presentaciones editables; coordino implementación asistida por IA con aislamiento por solicitante, fuentes, revisiones y consentimiento de entrega.
+- Lidero arquitectura, alcance y aceptación de Quiver, un asistente documental en Teams con **32 usuarios activos y 144 solicitudes entregadas por primera vez en octubre de 2026**, incluidos **105 SOPs/instrucciones y 32 diagramas de flujo**; coordino implementación asistida por IA y controles de fuentes, identidad y entrega.
 - Soy responsable de mejoras de confiabilidad y evaluación en una plataforma heredada y colaborativa de voz en español. Cohortes retrospectivas mostraron un **costo medio registrado ~70,1% menor entre llamadas con costo disponible** ($0,150631 → $0,045053); datos faltantes y diferencias entre cohortes limitan la interpretación causal.
 - Diseño evaluaciones reproducibles de prompts, separo fallos confirmados de casos ambiguos y conservo resultados inconclusos sin afirmar superioridad de un modelo.
 - Asesoro integraciones CRM y contribuyo correcciones específicas de identidad y entrega; extiendo flujos documentales y operativos con Python, TypeScript, APIs, SQL y revisión humana.

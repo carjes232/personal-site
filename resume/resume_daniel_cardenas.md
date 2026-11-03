@@ -13,7 +13,7 @@ Engineering Physics graduate building practical AI systems across documents, voi
 
 **Lean Tech — AI Engineer** · Remote · Feb 2026 – Present
 
-- Lead architecture, scope and release acceptance for a production Teams document assistant delivering editable SOPs, flowcharts and presentations; coordinate AI-assisted implementation of requester isolation, source tracking, revisions and consent-aware delivery.
+- Lead architecture, scope and release acceptance for Quiver, a production Teams document assistant serving **32 active document users and 144 first-delivered requests in October 2026**, including **105 SOP/work instructions and 32 flowcharts**; coordinate AI-assisted implementation of source, requester and delivery controls.
 - Own reliability and evaluation improvements for an inherited, collaboratively developed Spanish-language voice platform. Retrospective cohorts showed **~70.1% lower mean recorded cost among costed calls** ($0.150631 → $0.045053); missing billing and cohort differences limit causal interpretation.
 - Design reproducible prompt evaluations, separate confirmed from ambiguous failures, and preserve inconclusive comparisons rather than claim model superiority.
 - Advise on CRM integration and contribute focused identity/delivery fixes; extend document and operational workflows with Python, TypeScript, APIs, SQL and human-review controls.
