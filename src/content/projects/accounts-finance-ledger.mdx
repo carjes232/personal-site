@@ -1,7 +1,7 @@
 ---
 title: "Audited Finance Ledger + Hermes MCP"
 slug: "accounts-finance-ledger"
-date: "2026-08-13"
+date: "2026-11-03"
 tags:
   - "Python"
   - "FastAPI"
@@ -28,6 +28,12 @@ xp: 135
 confidential: true
 featured: true
 ---
+
+## Latest status — November 2026
+
+Recent implementation work adds effective-dated reconciliation, deterministic installment identifiers, atomic writes and catch-up handling for missed monthly runs. Regression evidence exercises duplicate prevention, exact final-payment rounding and preservation of history across policy changes.
+
+A focused historical suite recorded 16 passing checks. This is bounded validation of specific ledger behavior, not a full-system correctness claim. Local backup validation and rotation are implemented; an off-site disaster-recovery guarantee or completed full restore drill is not claimed. All household records remain private.
 
 ## Problem
 

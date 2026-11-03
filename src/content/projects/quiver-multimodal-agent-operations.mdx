@@ -1,7 +1,7 @@
 ---
 title: "Quiver — Multimodal Agent Operations Platform"
 slug: "quiver-multimodal-agent-operations"
-date: "2026-09-25"
+date: "2026-11-03"
 tags:
   - "AgentOps"
   - "LLM"
@@ -16,8 +16,8 @@ tags:
   - "Docker"
   - "Evaluation"
 track: "ai-backend"
-role: "Lead AI Platform Engineer — agent workflows, artifacts, and reliability"
-summary: "Turns process shadowing, source files, and feedback into an editable SOP and flowchart, reducing the manual work of documenting a process while preserving review and revisions."
+role: "AI platform engineering — architecture, qualification and production ownership"
+summary: "Turns process shadowing, source files and feedback into editable SOPs and flowcharts with review, revision and recoverable delivery controls."
 context: "Work performed on an internal Lean Tech platform. Customer content, private prompts, credentials, identifiers, deployment addresses, and internal topology are omitted; this page focuses on reusable architecture and my technical contribution."
 results:
   - "Process discovery, SOP drafting, flowchart creation, and revisions move through one reviewable workflow"
@@ -36,11 +36,35 @@ confidential: true
 featured: true
 ---
 
+## Latest status — November 2026
+
+Core SOP and flowchart workflows are deployed and remain under active development. Recent work covers source and revision integrity, artifact fidelity, recoverable delivery, and production operations. The presentation agent has a separate release and validation lifecycle. Coach-style screen observation remains a separately qualified pilot, not an implied production capability.
+
+### Ownership and bounded evidence
+
+My contribution covers problem selection, architecture and safety requirements, user-feedback prioritization, incident ownership and release acceptance. Implementation was shared with AI coding assistants; this does not imply personal authorship of every change or establish a formal employment title or team size.
+
+A six-slide native-template fixture demonstrated a controlled edit to one slide XML part, with no added or removed package parts or shape changes and unchanged renders on the other five pages. This is one bounded fidelity qualification, not a universal document-quality percentage.
+
+Monthly delivery ledgers are available, but operator/test exclusions, unlinked revisions and SOP/flowchart bundle identity remain unresolved. Consequently, raw delivery IDs and artifact versions are not presented here as accepted customer tasks or organic adoption. Request-to-delivery time includes consent, user waiting and recovery; it is not model runtime or human labor.
+
+### Browser runtime remediation
+
+A November 3 runtime remediation qualified explicitly selected patched Chrome with the browser sandbox enabled in the DEV lab and DEV/PROD document helpers. Checks observed non-root namespace and content seccomp isolation, with no added container capabilities or no-sandbox fallback. Synthetic reader checks passed in both live helpers.
+
+This was a scoped browser-runtime change, not certification of every dependency or client. Two optional legacy lab subtests remained unavailable; the full legacy suite is not described as green. Source publication and broader migration work have separate acceptance.
+
+### Measuring time released
+
+A process owner reports that one SOP historically took **6–8 hours**, and one flowchart took **another 6–8 hours**. A comparable pair therefore represents a reported **12–16 hours of manual work**. This is a stakeholder-reported baseline, not a controlled measurement of time saved.
+
+Net monthly hours released are not yet established. A defensible estimate needs unique accepted outputs, comparable complexity, and the human time spent preparing inputs, reviewing results and correcting them. Revisions, retries, synthetic tests and duplicate deliveries must not inflate that count. This case study does not claim a monthly saving until those inputs are validated.
+
 ## Product
 
 Documenting a process often starts with a shadowing meeting, continues through notes and source files, and ends only after several rounds of SOP and flowchart revisions. I led the engineering of a workflow that keeps those steps together: the requester talks with an agent, provides evidence, reviews the proposed procedure and diagram, and asks for corrections until the result is useful.
 
-The QA team shared an early estimate of roughly 8–9 hours for the earlier manual process versus 1–2 hours with agent assistance, including the shadowing meeting and multiple revisions. I have not verified the underlying timings or sample, so this is a direction for evaluation rather than a measured outcome.
+The current evaluation uses the process owner's per-output baseline above. Earlier informal timing estimates are not used to calculate savings because their scope and samples were not established.
 
 The difficult part is preserving meaning across intake, source understanding, graph construction, document layout, validation, approval, and delivery. The model contributes semantic reasoning, while deterministic services protect the boundaries where an incorrect or duplicated effect would be costly.
 

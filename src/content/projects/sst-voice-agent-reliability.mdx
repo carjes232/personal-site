@@ -1,7 +1,7 @@
 ---
 title: "Voice Agent for Employee Lateness and Absence Follow-up"
 slug: "sst-voice-agent-reliability"
-date: "2026-09-25"
+date: "2026-11-03"
 tags:
   - "Voice AI"
   - "Vapi"
@@ -10,17 +10,17 @@ tags:
   - "Call Audits"
   - "Evaluation"
 track: "ai-backend"
-role: "Lead AI Engineer — voice-agent behavior, reliability, and evaluation"
+role: "AI Engineer — voice-agent reliability, evaluation and release acceptance"
 summary: "A voice agent extends initial follow-up beyond the longer absences staff had time to call, capturing reported reasons for lateness or absence so operations can review them."
 context: "Internal Lean Tech work. This account omits employee data, recordings, private prompts, identifiers, customer details, and deployment configuration. The measured comparison is an observed before/after result, not a controlled experiment."
 results:
   - "Extends initial follow-up beyond longer absences and gives operations a reviewable reported reason"
-  - "Observed cost per call fell 69%, from $0.1275 to $0.0395, on the first full day after the voicemail-detection change"
-  - "At 847 calls per day, the measured rates imply about $27,217 in potential annual savings if volume and call mix stay constant"
-  - "Call duration averaged 73.1 seconds before versus 20.7 seconds after in the report's comparison periods"
+  - "About 70% lower recorded cost among costed calls in retrospective before/after cohorts"
+  - "Quarterly platform records contain 36,897 calls; team-scale activity, not solely attributable to my work"
+  - "80.73% lower rendered prompt input across 12 matched synthetic scenarios"
   - "Added review-only call audits that separate reported reasons, transcript evidence, and issues requiring human verification"
 badges:
-  - "69% Lower Cost / Call"
+  - "Retrospective Cost Audit"
   - "Voice Agent"
   - "Vapi + Supabase"
   - "Human Review"
@@ -28,6 +28,20 @@ xp: 190
 confidential: true
 featured: true
 ---
+
+## Latest status — November 2026
+
+I own ongoing engineering, evaluation and release acceptance for an inherited, collaboratively developed platform, rather than sole authorship of the original system. Production Spanish voice workflows operate in Colombia. Guatemala remains controlled preparation; other planned countries are not claimed as delivered.
+
+Quarterly July–September 2026 records contain **36,897 distinct provider-call IDs and 4,451 attempted employee identity keys**. Identity keys are not independently verified unique people. Explicit tests were excluded, but unmarked legacy tests cannot be ruled out. These are platform-scale figures, not activity attributable solely to my work.
+
+Browser survey v11 was published; the optional backend is deployed with phone surveys OFF. A narrow real extraction check does not establish a completed human survey. Later browser corrections remain separate candidates, not evidence of a phone rollout.
+
+## Prompt evaluation
+
+Across **12 matched synthetic scenarios**, rendered input fell from **276,452 to 53,265 tokens: 80.73% lower**. These development controls included corrective iterations and were not a fresh holdout. This is not an 80.73% reduction in actual voice bills or a global quality guarantee.
+
+Real-traffic adjudication found 9 confirmed defects among 111 substantive human calls versus 7 among 54 in a later window. The observational comparison was inconclusive, with prompt/model confounding and missing effective per-call model snapshots. No model superiority is claimed.
 
 ## What I owned
 
@@ -39,9 +53,11 @@ My ownership centered on call behavior, evaluation, and reliability. The surroun
 
 I reviewed an export of 909 calls and found that 284 had run to the 600-second limit while the agent repeatedly answered an automated voicemail greeting. Those calls accounted for most of that sample's cost. The investigation separated live voicemail detection from prompt behavior: a post-call classifier cannot stop a call that is still looping.
 
-The voicemail-detection improvement was deployed midday September 2. On September 3, the first full day after the change, 847 calls averaged **$0.0395 per call**, compared with **$0.1275** during the August 27–29 release period. That is a **69% lower observed cost per call**. Average duration fell from **73.1 to 20.7 seconds** across those comparison periods.
+The voicemail-detection improvement was deployed September 2. A later deduplicated audit compared August 27–29 with September 3, 2026 in UTC. Mean cost **among calls with recorded billing** fell from **$0.150631** (1,277 costed of 1,510 calls) to **$0.045053** (741 costed of 842): approximately **70.1% lower**. Missing costs and changing call populations prevent a causal or invoice-reconciled savings claim.
 
-At a constant 847 calls every calendar day, the report estimates **$27,217 in potential annual savings**. This is an illustrative run rate, not realized savings or a forecast. Call volume, operating days, rates, and call mix may change; the before/after comparison does not isolate every cause.
+In a later September 3–October 25 Bogotá-time window, **none of 42,502 distinct calls had a recorded duration at or above 590 seconds**. Shorter maximum-duration endings remained, so this is evidence about the extreme-duration tail, not zero failures.
+
+The original report's 69% comparison used a different denominator and extrapolated roughly $27.2k in potential annual savings. That is an illustrative constant-volume projection, not realized savings. It is not added to the newer audit as an independent result.
 
 ## Making outcomes trustworthy
 
@@ -57,4 +73,4 @@ The work combines TypeScript/React, Supabase Edge Functions, Vapi, provider conf
 
 ## Interview summary
 
-I led a voice workflow that extends initial follow-up beyond the longer absences staff previously had time to call. It captures employee-reported reasons and gives operations a reviewable case. I also traced expensive calls to voicemail loops and improved the live exit path. The first full post-change day showed a 69% lower observed cost per call, equivalent to roughly $27.2K in potential annual savings at the report's constant-volume assumption.
+I improved reliability and evaluation on a production voice platform: diagnosing voicemail loops, guarding extraction and retries, and separating generated claims from executed effects and human review. Retrospective costed-call cohorts showed about 70% lower recorded cost; controlled synthetic scenarios used 80.7% fewer input tokens. Billing completeness, causal attribution, human time savings and production survey completion remain unestablished.

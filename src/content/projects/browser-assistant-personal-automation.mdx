@@ -1,0 +1,44 @@
+---
+title: "Browser Assistant — Bounded Personal Automation"
+slug: "browser-assistant-personal-automation"
+date: "2026-11-03"
+tags:
+  - "Python"
+  - "Desktop Automation"
+  - "SQLite"
+  - "AgentOps"
+  - "Fault Testing"
+track: "web-cloud"
+role: "Project direction, scope and acceptance review"
+summary: "A personal browser and notification prototype combining scoped desktop controls, a bounded relay and uncertainty-aware agent handoffs."
+context: "Personal, agent-assisted project. Private messages, credentials, endpoints and device identities are omitted."
+results:
+  - "Directed browser controls with geometry validation, serialized input and explicit uncertain-result handling"
+  - "Recorded synthetic acceptance: 62 core checks and 22 browser checks with fake transport and no real accounts"
+  - "Documented Unicode, interrupted-input and session-identity failures instead of treating command success as task completion"
+badges:
+  - "Personal Prototype"
+  - "Fault Testing"
+confidential: false
+featured: false
+---
+
+## Purpose and contribution
+
+I defined the use case, directed priorities and action boundaries, and reviewed and steered an agent-assisted personal browser workflow. Implementation and host installation involved assistant collaborators; this case does not imply that I personally authored every component.
+
+The system combines a desktop-notification relay, scoped browser controls and discovery of eligible existing agent sessions. It separates communications and general work profiles, serializes input, validates action coordinates and records delivery states.
+
+## Evidence and engineering lessons
+
+An October 30, 2026 synthetic acceptance run recorded 62 core/auth/control checks and 22 browser checks using fake delivery, no real accounts and an isolated network. These checks establish behavior in that fixture; they are not an uptime, live-app reliability or throughput measurement. Later component test milestones are not added to this total.
+
+Fault investigation covered Unicode text loss, input-lock contention and interrupted drag handling. Clipboard input and isolated readback addressed the tested text-input failures. A tool reporting success still requires checking the visible field or sent state.
+
+Agent handoffs recheck session identity and distinguish submission from processing and completion. Uncertain delivery is held for reconciliation rather than blindly repeated. Outbound messaging requires an authorized recipient and exact reply, followed by visible verification.
+
+## Current limits
+
+The relay is an incomplete notification preview, not a chat archive or exactly-once messaging service. Historical installation and alert acceptance do not establish current live status on every platform. Missed-alert rate, latency distribution, adoption and time savings remain unmeasured.
+
+Local review also identified cross-tab races, host privilege exposure and notification-origin trust limitations. Operational instructions support the workflow but do not replace permissions or runtime isolation. This work demonstrates practical failure analysis and bounded automation, not a complete security audit or research result.

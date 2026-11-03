@@ -13,14 +13,14 @@ export function PortfolioHero() {
             Portfolio
           </p>
           <h1 className="text-4xl font-semibold leading-[1.1] text-hud-text sm:text-5xl lg:text-[3.25rem]">
-            <span className="text-gradient">AI systems</span> that give teams
-            time back.
+            <span className="text-gradient">Applied AI</span> built for real
+            workflows.
           </h1>
           <p className="max-w-2xl text-base leading-relaxed text-hud-subtle">
-            I&apos;m Daniel Cárdenas. I turn process shadowing into reviewable SOPs
-            and flowcharts, and build voice agents that help operations follow
-            up on lateness and absence. My focus is useful outcomes, human
-            review, and reliable delivery.
+            I&apos;m Daniel Cárdenas. I build agent and voice workflows,
+            document and data systems, and edge AI integrations. My work connects
+            models with evaluation, secure software boundaries and reliable
+            operations—from an offline device to a deployed service.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -66,9 +66,9 @@ export function PortfolioHero() {
         <div className="hidden border-l border-hud-border/70 pl-8 lg:block" aria-label="Selected work">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-hud-accent">Selected work</p>
           <div className="mt-6 space-y-6">
-            <p className="border-b border-hud-border/50 pb-5 text-lg leading-snug text-hud-text">Shadowing → editable SOP + flowchart</p>
-            <p className="border-b border-hud-border/50 pb-5 text-lg leading-snug text-hud-text">Employee follow-up → reviewable reasons</p>
-            <p className="text-lg leading-snug text-hud-text">Source material → editable slides</p>
+            <p className="border-b border-hud-border/50 pb-5 text-lg leading-snug text-hud-text">Document and voice agents with human review</p>
+            <p className="border-b border-hud-border/50 pb-5 text-lg leading-snug text-hud-text">Evidence-led evaluation and reliable operations</p>
+            <p className="text-lg leading-snug text-hud-text">Edge ML, computer vision and offline systems</p>
           </div>
         </div>
       </div>

@@ -1,0 +1,43 @@
+---
+title: "Private Browser-to-Remote Voice Bridge"
+slug: "remote-voice-bridge"
+date: "2026-11-03"
+tags:
+  - "Python"
+  - "Web Audio"
+  - "Linux"
+  - "Windows"
+  - "SSH"
+  - "Security"
+track: "web-cloud"
+role: "Systems engineering and secure integration"
+summary: "Connects a Windows browser microphone to a remote command-line audio session through a private tunnel, with explicit device consent and bounded transport."
+context: "Personal engineering project. Authorization links, device credentials, audio, account details and private endpoints are omitted."
+results:
+  - "A user-confirmed end-to-end voice session connected Windows microphone input with the remote CLI"
+  - "Explicit microphone consent, private authorization and bounded audio queues"
+  - "Boot-ready Linux service with a Windows background tunnel helper"
+badges:
+  - "Personal Project"
+  - "Private Audio"
+  - "Windows + Linux"
+xp: 100
+confidential: false
+featured: false
+---
+
+## Problem and implementation
+
+A remote development machine has no physical microphone, while the laptop connecting to it may use a native SSH client rather than a Linux subsystem. I built a browser-to-remote audio bridge using Web Audio, a private SSH transport and a virtual audio adapter on the remote machine.
+
+Microphone capture requires a deliberate browser action and device permission. Closing or disconnecting the page releases the audio tracks. Private authorization, origin checks, frame limits and bounded queues constrain the transport. The bridge creates no audio recording files and makes no model requests itself.
+
+## Current evidence and limits
+
+The user confirmed one real voice conversation worked. A later remote voice-session error showed why browser connection health and model-session health must be diagnosed separately. The available evidence supports a working personal integration, not a universal reliability or latency guarantee.
+
+The Linux service and Windows startup helper have separate readiness checks. Preparation of an installer is not proof it has run successfully on every Windows device.
+
+## Engineering value
+
+The work joins browser permissions, realtime audio framing, Unix audio devices, cross-platform startup and recovery. It is a useful systems-integration example without claiming a new speech model, a public audio service or production-scale adoption.

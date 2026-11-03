@@ -1,7 +1,7 @@
 ---
 title: "AgentEdge Slides — Governed Presentation Agent"
 slug: "agentedge-slides-presentation-agent"
-date: "2026-09-25"
+date: "2026-11-03"
 tags:
   - "AI Agents"
   - "OpenClaw"
@@ -12,7 +12,7 @@ tags:
 track: "ai-backend"
 role: "Lead engineer — agent platform, presentation pipeline, and quality gates"
 summary: "Built a separate presentation agent alongside Quiver that turns source material into editable, template-controlled slides with source isolation, visual checks, and consent-aware delivery."
-context: "Internal Lean Tech work. This page omits source files, private templates, credentials, internal endpoints, and team conversations. The Slides channel has local qualification evidence; live Teams rollout is a separate gate."
+context: "Internal work, updated November 2026. The core Slides service is deployed; template, library, renderer and future changes retain separate validation gates. Private templates and customer content are omitted."
 results:
   - "Separate agent identity, workspace, ledger, and source mounts from Quiver"
   - "Editable PowerPoint pipeline with template mapping, layout selection, rendering, fit checks, and visual review"
@@ -28,6 +28,12 @@ confidential: true
 featured: true
 ---
 
+## Latest status — November 2026
+
+The Slides service has progressed from local qualification to a controlled production activation. Recent release evidence covers uploaded-template preservation, a curated native slide library, and a separate Office-based renderer with no network access. Configuration, runtime source and rollback artifacts were checked during activation; later changes still require their own acceptance.
+
+Visual quality remains an ongoing engineering responsibility. A successful render does not prove that every deck communicates the source accurately, and a production activation is not a measured customer-adoption result. The core agent, template path, library and renderer are treated as separate components with distinct evidence.
+
 ## Why a separate agent
 
 Quiver produces governed procedures and flowcharts. Presentations need a different planning and validation path: slide selection, page capacity, visual fit, and editable PowerPoint structure. I built AgentEdge Slides as a separate agent within the broader Quiver platform, with its own identity and state instead of treating a deck as another document export.
@@ -42,7 +48,7 @@ The model chooses the message, content, and suitable layout. Deterministic code 
 
 The agent keeps source files and delivery state separate from Quiver's. Consent and upload callbacks distinguish a permission card from a completed file transfer, while idempotent delivery and resend controls reduce duplicate sends. Local qualification covers real slide builds and rendering, state transitions, and synthetic Teams transport.
 
-The available platform notes still list live Teams UI acceptance and rollout gates as pending. I describe the agent as built and locally qualified, without claiming a completed production launch.
+Earlier local qualification preceded the controlled production activation described above. New features, channels and customer-facing changes still require their own acceptance; deployment does not establish adoption or universal output quality.
 
 ## Interview summary
 

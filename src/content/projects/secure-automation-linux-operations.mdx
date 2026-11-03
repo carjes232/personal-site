@@ -1,0 +1,49 @@
+---
+title: "Secure Automation and Shared Linux Operations"
+slug: "secure-automation-linux-operations"
+date: "2026-11-03"
+tags:
+  - "Linux"
+  - "Python"
+  - "Docker"
+  - "Security"
+  - "Reliability"
+  - "AgentOps"
+track: "web-cloud"
+role: "Infrastructure engineering and operational reliability"
+summary: "Engineering the host, runtime and recovery controls around a shared AI development environment: scoped access, observable failures and safe maintenance."
+context: "Sanitized operational case study. Hosts, internal addresses, credentials, customer data, private topology and incident transcripts are excluded."
+results:
+  - "Layered host, private-network and container ingress controls with explicit startup verification"
+  - "Exact conversation recovery and reconciliation without blindly replaying interrupted work"
+  - "Bounded hashing, disk-backed scratch and resource-aware admission for shared workloads"
+badges:
+  - "Linux Operations"
+  - "Security Hardening"
+  - "Incident Response"
+xp: 120
+confidential: true
+featured: false
+---
+
+## What I worked on
+
+AI-assisted development needs conventional operational controls: host firewalls, authenticated private access, process isolation, reproducible package inventories and a recovery plan. I worked on those boundaries across a shared Linux environment and its development workflows.
+
+The work includes source-backed security reviews, application-runtime patching, controlled operating-system maintenance, exact session snapshots, startup checks and scoped browser launch configurations. Public exposure is assessed from effective firewall rules and service bindings rather than from a package name or an open socket alone.
+
+## Diagnosing resource incidents
+
+One incident involved a checksum operation loading an entire large archive into memory. The corrective work used streaming reads, pre-open size checks and explicit reuse of already recorded verification evidence. It preserved the distinction between an earlier verified checksum and a fresh content revalidation.
+
+Another admission failure treated an unused memory threshold as if it were committed allocation. The correction retained the workload maximum and host reserve while accounting for actual live use. Pressure checks and serialized heavy work remained in place.
+
+## Observable and recoverable automation
+
+Uncertain message delivery is reconciled against exact conversation identity and durable receipts. A successful queue submission is not described as completed work. Reboots restore saved histories, while interrupted operations and external effects require explicit reconciliation rather than automatic replay.
+
+Detached review jobs report their failure stage and resource-admission evidence without logging private review packets or credentials. This improves diagnosis without weakening runtime limits.
+
+## Scope of the claims
+
+These are engineering and operational improvements, not a penetration-test certification, an uptime SLA or a claim that every vulnerability is fixed. Vendor-pending updates, least-privilege improvements and off-site restore evidence remain separate follow-up work. Rootless processes, read-only filesystems, browser sandboxing and network controls must each be verified for their own role.

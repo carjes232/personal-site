@@ -1,7 +1,7 @@
 ---
 title: "AI-Native Multi-Agent Engineering Control Plane"
 slug: "ai-native-multi-agent-engineering"
-date: "2026-08-03"
+date: "2026-11-03"
 tags:
   - "AgentOps"
   - "LLMOps"
@@ -29,6 +29,14 @@ confidential: true
 featured: true
 ---
 
+## Latest status — November 2026
+
+Recent reliability work replaces ambiguous terminal handoffs with exact conversation identity checks, durable delivery receipts and explicit reconciliation of uncertain outcomes. A recorded routing regression suite covers nine cases, including refusal to paste into an unresolved target. A separate asynchronous-adviser suite covers 22 cases, including failure before invocation, callback deduplication and diagnostic reporting.
+
+Those suites cover different contracts and are not a product-wide coverage percentage. A queued message is not proof that it was processed, and a completed model response is not an accepted release. Resource admission now distinguishes current memory use from unused cgroup thresholds while retaining job limits and a host reserve.
+
+The operating model is flat ownership with explicit write boundaries and independent acceptance. It does not depend on a permanent hierarchy of model roles, and instructions alone are not a security boundary.
+
 ## Problem
 
 Using more coding agents does not automatically create a reliable engineering process. Parallel workers can edit the same files, inherit too much private context, stall without reporting, repeat a weak approach, or declare their own changes successful. Those risks become worse when several projects share infrastructure and the active repository already contains valuable uncommitted human work.
@@ -41,16 +49,15 @@ This page describes the **development and orchestration system** used to build r
 
 The framework is intentionally described without private repository names, customer information, internal addresses, credentials, conversations, subscription details, or exact production topology.
 
-## Responsibility Hierarchy
+## Ownership and review
 
-- **Portfolio director:** resolves priorities and capacity across projects while preserving final human authority.
-- **Project acceptance director:** reviews architecture, risk, diffs, regression evidence, and integration readiness.
-- **Routine orchestration director:** decomposes accepted objectives into bounded lanes and supervises implementation.
-- **Implementation agents:** produce changes in persistent terminal sessions and isolated Git worktrees.
-- **Deterministic validators:** run syntax, test, privacy, diff, and generated-artifact checks.
-- **Human release authority:** approves commits, pushes, deployments, migrations, restarts, production changes, and destructive cleanup.
+- A named engineer owns the project and its acceptance criteria.
+- Implementation work uses isolated write scopes; parallel writers use separate worktrees.
+- Reviewers receive requirements, the proposed diff and bounded evidence.
+- Deterministic tools check contracts; models retain the semantic work appropriate to the task.
+- Deployment, data changes and external effects stay under explicit authority.
 
-An implementation model never accepts its own work. External coding agents are proposal generators, not release authorities.
+The same person may perform several of these functions. A permanent hierarchy of model roles is not required.
 
 ## Task Lifecycle
 
@@ -99,7 +106,7 @@ Passing these checks makes a proposal reviewable. It does not authorize a commit
 
 ## Security and Privacy Boundaries
 
-Implementation lanes receive minimum necessary context. They do not receive customer content, credentials, private infrastructure details, proprietary conversations, or unrestricted access to hosts and deployment controls. If a capability cannot be narrowed safely, it remains outside the automated lane.
+Implementation and review packets use the context needed for the task, with private data omitted where it is unnecessary. Filesystem permissions, process isolation, sandbox policies and release authority are separate controls that must be checked in the actual runtime. A narrow prompt alone does not guarantee least privilege.
 
 Human-controlled gates apply to external effects. This keeps bounded autonomy useful without presenting the framework as fully autonomous software development.
 
