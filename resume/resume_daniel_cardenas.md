@@ -28,6 +28,10 @@ Engineering Physics graduate building practical AI systems across documents, voi
 
 - Built Python/pandas reconciliation across databases, files and APIs, producing auditable reports and resolving operational discrepancies with stakeholders.
 
+**Magnus — Machine Learning Engineer (Full-time)** · Remote · May 2023 – Jul 2024
+
+- Built Azure OpenAI applications for clinical simulations, medical training and survey feedback, with prompt testing/evaluation and RAG retrieval workflows.
+
 ## Selected Projects
 
 - **Multilingual RAG:** FastAPI, BGE-M3, pgvector, local models and source citations; retrieval and latency evaluation.

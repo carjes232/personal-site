@@ -204,7 +204,7 @@ export default function HomePage() {
           <p className="text-base leading-relaxed text-hud-subtle">
             Today that means agent and voice workflows at Lean Tech. Before
             that it meant smart-meter ML and on-device vision at Solenium.
-            I like problems that cross those boundaries.
+            Earlier, I worked full-time on Azure OpenAI and RAG applications at Magnus (May 2023–July 2024). I like problems that cross those boundaries.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-sm font-medium">
             <Link href="/about">More about me</Link>

@@ -17,6 +17,7 @@ export const profile = {
     { organization: "Lean Tech", role: "AI Engineer", start: "2026-02", end: null },
     { organization: "Solenium", role: "ML Engineer / Firmware Developer", start: "2025-01", end: "2026-02" },
     { organization: "XM S.A. E.S.P.", role: "Market Development Analyst", start: "2024-07", end: "2025-01" },
+    { organization: "Magnus", role: "Machine Learning Engineer (full-time)", start: "2023-05", end: "2024-07" },
   ],
   education: { degree: "B.Sc. Engineering Physics", institution: "Universidad Nacional de Colombia", year: 2025 },
   languages: [

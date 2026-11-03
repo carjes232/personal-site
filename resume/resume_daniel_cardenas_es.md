@@ -1,59 +1,54 @@
-**Daniel Esteban Cárdenas Jerez**
-Medellín, Colombia · daniestebanc@hotmail.com · +57 318 884 8757
-[linkedin.com/in/dancarjes](https://linkedin.com/in/dancarjes) · [github.com/carjes232](https://github.com/carjes232)
+# Daniel Esteban Cárdenas Jerez
+Ingeniero de IA y Sistemas — IA Aplicada, Backend y Edge ML
 
+Campinas, Brasil (Remoto LATAM / Américas) · +55 (19) 99163-7317
 
-### **Ingeniero de Inteligencia Artificial (Datos, ML & Backend)**
+\mbox{daniestebanc@hotmail.com} · [linkedin.com/in/dancarjes](https://linkedin.com/in/dancarjes) · [github.com/carjes232](https://github.com/carjes232) · [dev.danielcardenas.dev](https://dev.danielcardenas.dev)
 
-**Perfil Profesional**
+## Perfil
 
-Ingeniero de IA con más de 2 años de experiencia liderando la implementación técnica de soluciones de Machine Learning, desde el diseño detallado hasta el despliegue. Experto en el ciclo de vida de modelos, incluyendo el **entrenamiento de corpus de información**, la **calibración de intenciones** en colaboración con equipos de Negocio y la optimización de sistemas para baja latencia. Dominio avanzado de Python y su ecosistema (**scikit-learn, PyTorch, Pandas, FastAPI**) y experiencia práctica con **assets de IA en la nube (Azure, AWS, Google)**.
+Ingeniero físico que desarrolla sistemas prácticos de IA para documentos, voz, datos operativos y dispositivos conectados. Combino Python y backend con recuperación de información, evaluación, visión por computador y Linux embebido. Convierto las salidas del modelo en decisiones revisables mediante estado explícito, autorización, trazabilidad y manejo de fallos.
 
+## Experiencia
 
-**Competencias Técnicas Clave**
+**Lean Tech — Ingeniero de IA** · Remoto · Feb 2026 – Presente
 
-*   **Machine Learning**: Python, **scikit-learn**, **PyTorch**, XGBoost, **Numpy**, **Pandas**
-*   **Procesamiento de Lenguaje Natural (NLP)**: **spaCy/NLTK**, Clasificación de Intenciones, Modelos de Embeddings, Métricas (Precision/Recall/F1)
-*   **LLM / Orquestación**: **LlamaIndex**, **LangGraph**, Vector DBs (FAISS), RAG, Azure OpenAI
-*   **Backend & DevOps**: FastAPI, Flask, Arquitectura REST, Docker, Git, GitLab CI/CD
-*   **Datos**: PostgreSQL, SQLAlchemy, Pipelines ETL
-*   **Plataformas Cloud & Assets de IA**: **Azure** (App Services, OpenAI), **AWS** (EC2, S3), **Google Cloud** (Compute Engine)
+- Lidero arquitectura, alcance y aceptación de entregas de un asistente documental en producción en Teams para SOPs, diagramas de flujo y presentaciones editables; coordino implementación asistida por IA con aislamiento por solicitante, fuentes, revisiones y consentimiento de entrega.
+- Soy responsable de mejoras de confiabilidad y evaluación en una plataforma heredada y colaborativa de voz en español. Cohortes retrospectivas mostraron un **costo medio registrado ~70,1% menor entre llamadas con costo disponible** ($0,150631 → $0,045053); datos faltantes y diferencias entre cohortes limitan la interpretación causal.
+- Diseño evaluaciones reproducibles de prompts, separo fallos confirmados de casos ambiguos y conservo resultados inconclusos sin afirmar superioridad de un modelo.
+- Asesoro integraciones CRM y contribuyo correcciones específicas de identidad y entrega; extiendo flujos documentales y operativos con Python, TypeScript, APIs, SQL y revisión humana.
 
+**Solenium — Ingeniero de ML / Desarrollador de Firmware** · Medellín · Ene 2025 – Feb 2026
 
-**Experiencia Profesional**
+- Lideré el componente ML de una plataforma de desagregación energética, integrando inferencia con Linux embebido/Yocto, telemetría, reentrenamiento y recuperación de dispositivos; operación históricamente reportada de **10 Hz e inferencia inferior a 2 segundos**.
+- Desarrollé visión para asistencia en campo con reconocimiento facial, detección de vida, OCR, operación offline e integración de APIs; apoyé depuración de dispositivos y entrega operativa.
+- Impulsé la adopción de herramientas de programación con IA y ayudé a organizar talleres de prototipado con equipos técnicos y de negocio.
 
-**Solenium — Ingeniero de ML & Firmware**
-*Presencial | Ene 2025 – Presente*
+**XM S.A. E.S.P. — Analista de Desarrollo de Mercados** · Medellín · Jul 2024 – Ene 2025
 
-*   Lideré el diseño e implementación de una solución de IA en el borde (edge), logrando una latencia de inferencia inferior a 2 segundos para análisis en tiempo real.
-*   Construí el **diseño detallado** de APIs en Flask/FastAPI para telemetría y actualizaciones OTA, garantizando la continuidad operativa de la flota.
-*   Gestioné el ciclo de **entrenamiento y actualización de corpus de información**, implementando un pipeline de realimentación que permitía al equipo de Negocio mejorar la precisión del modelo a partir de datos de campo.
-*   Automaticé el pipeline de CI/CD con GitLab para la compilación, prueba y despliegue de firmware y servicios, asegurando la integridad y calidad del software.
+- Construí reconciliación con Python/pandas entre bases de datos, archivos y APIs, generando reportes auditables y resolviendo discrepancias con las áreas involucradas.
 
-**XM S.A. E.S.P — Ingeniero de Datos Python**
-*Híbrido | Jul 2024 – Ene 2025*
+**Magnus — Ingeniero de Machine Learning (tiempo completo)** · Remoto · May 2023 – Jul 2024
 
-*   Optimicé un pipeline de ingesta y validación de datos (+100M de registros diarios) usando **Pandas** y SQLAlchemy, reduciendo el tiempo de ejecución de una semana a menos de 10 minutos.
-*   Colaboré directamente con analistas de negocio de operaciones de mercado para traducir requerimientos funcionales en diseños técnicos detallados y criterios de validación.
+- Desarrollé aplicaciones con Azure OpenAI para simulación clínica, formación médica y análisis de respuestas de encuestas, con pruebas y evaluación de prompts y recuperación RAG.
 
-**Magnus — Ingeniero de Machine Learning**
-*Remoto | May 2023 – Sep 2024*
+## Proyectos Seleccionados
 
-*   Desarrollé e implementé una solución de IA tipo RAG (Retrieval-Augmented Generation) en **Azure**, utilizando FastAPI y FAISS para responder a más de 300 consultas diarias de análisis clínico con latencias menores a 3 segundos.
-*   Realicé la ingesta y curación del **corpus de conocimiento** (documentos técnicos y FAQs) y lideré la **calibración de intenciones** y la evaluación de la calidad de respuesta (Recall@k) junto al equipo de negocio.
-*   Aseguré la robustez de la solución implementando monitoreo, logging y healthchecks en los endpoints de inferencia.
+- **RAG multilingüe:** FastAPI, BGE-M3, pgvector, modelos locales y citas; evaluación de recuperación y latencia.
+- **Automatización backend:** reconciliación idempotente Python/SQLite, políticas con vigencia, escrituras atómicas, identificadores deterministas y pruebas de regresión.
+- **Operación de agentes/plataformas:** dirigí controles personales de navegador y mensajería con verificación de identidad, colas acotadas y estados de entrega incierta; coordiné revisiones de seguridad y diagnóstico Linux con colaboradores de IA.
+- **Sistemas conectados:** telemetría ESP32/Azure MQTT/TLS, monitoreo con cámara/OCR y flujos confirmados de voz a inventario.
 
+## Competencias Técnicas
 
-**Educación y Certificaciones**
+**IA y datos:** Python, RAG, agentes, Azure OpenAI, Gemini, LangGraph, evaluación, guardrails, OCR, PostgreSQL/pgvector, FAISS, Pinecone, SQLite, pandas
 
-*   **Ingeniería Física (B.Sc.)**, Universidad Nacional de Colombia — 2025 (Promedio: 4.5/5.0)
-*   **Machine Learning Specialization** — Stanford University / DeepLearning.AI
-*   **Applied Machine Learning in Python** — University of Michigan
+**Producto y plataforma:** FastAPI, Flask, TypeScript, React, Supabase, REST, MCP, Docker, CI/CD, Azure/AWS, Linux, auditoría, idempotencia, controles de acceso
 
+**Embebidos:** C, STM32, FreeRTOS, ESP32, Yocto, MQTT, telemetría, OTA/recuperación
 
-**Idiomas y Habilidades**
+## Educación e Idiomas
 
-*   **Español**: Nativo
-*   **Inglés**: Avanzado (C1)
-*   **Portugués**: Básico (A2)
-*   **Habilidades**: **Comunicación efectiva con equipos de negocio**, trabajo en equipo, **autogestión**, **iniciativa y autoaprendizaje**.
+Ingeniería Física — Universidad Nacional de Colombia, 2025 · Certificados IBM de IA/Deep Learning e IA Generativa · AWS Academy Cloud Foundations
+
+Inglés — C1 (IELTS 7,0) · Español — Nativo · Portugués — A2–B1 (autoevaluado; sin certificación)

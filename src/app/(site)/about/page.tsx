@@ -71,6 +71,12 @@ export default function AboutPage() {
           </p>
           <div className="space-y-5 text-base leading-relaxed text-hud-subtle">
             <p>
+              My professional LLM work began at Magnus, where I worked full-time as a
+              Machine Learning Engineer from May 2023 to July 2024. I contributed
+              Azure OpenAI integrations, prompt testing and RAG retrieval for
+              clinical-training and survey-feedback applications.
+            </p>
+            <p>
               I work on architecture, qualification, and production ownership for a{" "}
               <Link href="/projects/quiver-multimodal-agent-operations">process-documentation workflow</Link>{" "}
               that turns shadowing conversations, source files, and revisions into an SOP and

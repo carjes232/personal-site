@@ -8,7 +8,7 @@ const FACTS = [
   },
   {
     term: "Before",
-    detail: "ML engineering and firmware at Solenium: smart meters and on-device vision",
+    detail: "ML and firmware at Solenium; earlier full-time LLM/RAG work at Magnus (May 2023–July 2024)",
   },
   {
     term: "Trained in",
