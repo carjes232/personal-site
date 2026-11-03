@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 const DESCRIPTION =
-  "Daniel Cárdenas is an applied AI engineer working across agent and voice workflows, backend services, and embedded edge systems.";
+  "Daniel Cardenas is an applied AI engineer working across agent and voice workflows, backend services, and embedded edge systems.";
 
 export const metadata: Metadata = {
   title: "About",
   description: DESCRIPTION,
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About | Daniel Cárdenas",
+    title: "About | Daniel Cardenas",
     description: DESCRIPTION,
     url: "/about",
   },

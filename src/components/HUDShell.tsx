@@ -50,7 +50,7 @@ function Footer() {
     <footer className="mt-20 border-t border-hud-border/70 pb-10 pt-8 text-sm text-hud-subtle">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
         <div className="space-y-1">
-          <p className="font-display text-base text-hud-text">Daniel Cárdenas</p>
+          <p className="font-display text-base text-hud-text">Daniel Cardenas</p>
           <p>Applied AI, backend and edge systems.</p>
         </div>
         <nav aria-label="Contact and profiles" className="flex flex-wrap gap-x-5 gap-y-2">
@@ -65,7 +65,7 @@ function Footer() {
         </nav>
       </div>
       <div className="mt-8 flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:justify-between">
-        <span>© {year} Daniel Cárdenas</span>
+        <span>© {year} Daniel Cardenas</span>
         <span className="flex flex-wrap gap-x-4 gap-y-1">
           <a href="/profile" className="!text-hud-subtle hover:!text-hud-text">
             Readable profile
@@ -94,7 +94,7 @@ export function HUDShell({ children }: { children: React.ReactNode }) {
         <header className="relative flex flex-col gap-4 border-b border-hud-border/70 py-5 sm:flex-row sm:items-center sm:justify-between sm:py-6">
           <Link href="/" className="group shrink-0 !text-hud-text">
             <span className="block font-display text-lg leading-tight transition group-hover:text-hud-accent-strong">
-              Daniel Cárdenas
+              Daniel Cardenas
             </span>
             <span className="block text-xs text-hud-subtle">
               Applied AI · Backend · Edge systems

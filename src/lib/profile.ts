@@ -1,8 +1,8 @@
 export const SITE_URL = "https://danielcardenas.dev";
 
 export const profile = {
-  name: "Daniel Esteban Cárdenas Jerez",
-  displayName: "Daniel Cárdenas",
+  name: "Daniel Esteban Cardenas Jerez",
+  displayName: "Daniel Cardenas",
   headline: "AI & Systems Engineer — Applied AI, Backend & Edge ML",
   location: "Campinas, Brazil",
   summary: "Engineering Physics graduate building applied AI, backend services and connected systems, with evaluation, provenance, human review and failure handling.",

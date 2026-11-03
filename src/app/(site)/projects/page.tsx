@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Case studies across applied AI, backend and embedded systems, with contribution, evidence and limitations.",
   openGraph: {
-    title: "Projects | Daniel Cárdenas",
+    title: "Projects | Daniel Cardenas",
     description:
       "Case studies across applied AI, backend and embedded systems, with contribution, evidence and limitations.",
   },

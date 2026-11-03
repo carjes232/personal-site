@@ -5,7 +5,7 @@ export const dynamic = "force-static";
 
 export function GET() {
   const text = [
-    "# Daniel Cárdenas",
+    "# Daniel Cardenas",
     "",
     "> Applied AI, backend and edge systems engineer. Public, sanitized portfolio; private source evidence is not exposed.",
     "",

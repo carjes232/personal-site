@@ -1,4 +1,4 @@
-# Daniel Esteban Cárdenas Jerez
+# Daniel Esteban Cardenas Jerez
 Ingeniero de IA y Sistemas — IA Aplicada, Backend y Edge ML
 
 Campinas, Brasil (Remoto LATAM / Américas) · +55 (19) 99163-7317

@@ -12,8 +12,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://danielcardenas.dev"),
   title: {
-    default: "Daniel Cárdenas — Applied AI Engineer",
-    template: "%s | Daniel Cárdenas",
+    default: "Daniel Cardenas — Applied AI Engineer",
+    template: "%s | Daniel Cardenas",
   },
   description:
     profile.summary,
@@ -31,16 +31,16 @@ export const metadata: Metadata = {
     "Edge ML",
   ],
   authors: [{
-    name: "Daniel Cárdenas",
+    name: "Daniel Cardenas",
     url: "https://danielcardenas.dev",
   }],
-  creator: "Daniel Cárdenas",
+  creator: "Daniel Cardenas",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://danielcardenas.dev",
-    siteName: "Daniel Cárdenas — Applied AI Engineer",
-    title: "Daniel Cárdenas — Applied AI Engineer",
+    siteName: "Daniel Cardenas — Applied AI Engineer",
+    title: "Daniel Cardenas — Applied AI Engineer",
     description:
       profile.summary,
   },

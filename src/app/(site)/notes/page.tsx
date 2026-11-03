@@ -5,10 +5,10 @@ import { NoteCard } from "@/components/NoteCard";
 export const metadata: Metadata = {
   alternates: { canonical: "https://danielcardenas.dev/notes" },
   title: "Lab Notes",
-  description: "Benchmarks, experiments, and quick notes from Daniel Cárdenas.",
+  description: "Benchmarks, experiments, and quick notes from Daniel Cardenas.",
   openGraph: {
-    title: "Lab Notes | Daniel Cárdenas",
-    description: "Benchmarks, experiments, and quick notes from Daniel Cárdenas.",
+    title: "Lab Notes | Daniel Cardenas",
+    description: "Benchmarks, experiments, and quick notes from Daniel Cardenas.",
   },
 };
 

@@ -1,4 +1,4 @@
-# Daniel Esteban Cárdenas Jerez
+# Daniel Esteban Cardenas Jerez
 
 Medellín, Colombia · daniestebanc@hotmail.com · linkedin.com/in/dancarjes
 
@@ -20,4 +20,4 @@ Lean Tech’s focus on building a powerful tech workforce in Latin America and p
 Thank you for your time and consideration. I would welcome the opportunity to discuss how my background in LLMs, RAG, computer vision, and AI infrastructure can contribute to Lean Tech’s Data Science & Analytics initiatives.
 
 Sincerely,  
-Daniel Esteban Cárdenas Jerez
+Daniel Esteban Cardenas Jerez

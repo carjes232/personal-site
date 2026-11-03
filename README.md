@@ -1,4 +1,4 @@
-# Daniel Cárdenas — professional portfolio
+# Daniel Cardenas — professional portfolio
 
 A personal portfolio spanning applied AI, backend/data systems and embedded engineering. Case studies explain contribution, implementation, evidence and limitations; company source material and private operational records stay outside this repository.
 

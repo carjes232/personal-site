@@ -16,7 +16,7 @@ export async function GET(
   const { slug } = await context.params;
   const project = getProjectBySlug(slug);
 
-  const title = project?.title ?? "Daniel Cárdenas";
+  const title = project?.title ?? "Daniel Cardenas";
   const summary = project?.summary ?? "Applied AI, backend and edge systems";
   const badges = project?.badges?.slice(0, 3) ?? ["Firmware", "AI", "Web"];
 
@@ -37,7 +37,7 @@ export async function GET(
       >
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <span style={{ fontSize: 28, letterSpacing: 2, textTransform: "uppercase", opacity: 0.7 }}>
-            Daniel Cárdenas
+            Daniel Cardenas
           </span>
           <h1 style={{ fontSize: 72, lineHeight: 1.1, margin: 0 }}>{title}</h1>
           <p style={{ fontSize: 28, opacity: 0.78, maxWidth: "80%" }}>{summary}</p>

@@ -31,7 +31,7 @@ export function PortfolioHero() {
           id="hero-title"
           className="text-5xl leading-[1.05] text-hud-text sm:text-6xl"
         >
-          Daniel Cárdenas
+          Daniel Cardenas
         </h1>
         <p className="font-display text-2xl leading-snug text-hud-text/90 sm:text-[1.7rem]">
           Applied AI engineer, working across backend services and edge

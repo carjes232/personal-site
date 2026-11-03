@@ -4,10 +4,10 @@ import { Github, Linkedin, Mail } from "lucide-react";
 export const metadata: Metadata = {
   alternates: { canonical: "https://danielcardenas.dev/contact" },
   title: "Contact",
-  description: "Get in touch with Daniel Cárdenas for AI automation, RAG, Python API, or edge ML projects.",
+  description: "Get in touch with Daniel Cardenas for AI automation, RAG, Python API, or edge ML projects.",
   openGraph: {
-    title: "Contact | Daniel Cárdenas",
-    description: "Get in touch with Daniel Cárdenas for AI automation, RAG, Python API, or edge ML projects.",
+    title: "Contact | Daniel Cardenas",
+    description: "Get in touch with Daniel Cardenas for AI automation, RAG, Python API, or edge ML projects.",
   },
 };
 
