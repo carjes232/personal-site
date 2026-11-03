@@ -96,7 +96,7 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
         {(selectedTags.length > 0 || selectedTrack) ? ` (${projects.length} total)` : ""}
       </p>
 
-      <div className="rounded-lg border border-hud-border/60 bg-hud-surface/70 p-6 lg:sticky lg:top-24 lg:z-20">
+      <div className="rounded-lg border border-hud-border/60 bg-hud-surface/70 p-6">
         <div className="flex items-center gap-3 text-sm font-semibold  text-hud-subtle">
           <Filter className="size-4 text-hud-accent" /> Filters
         </div>
