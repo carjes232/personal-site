@@ -6,25 +6,25 @@ const config: Config = {
     extend: {
       colors: {
         hud: {
-          bg: "#0A0A0F",
-          surface: "#13131A",
-          "surface-alt": "#1A1A24",
-          border: "#2A2A35",
-          text: "#F8FAFC",
-          subtle: "#94A3B8",
-          accent: "#00D4FF",
-          "accent-strong": "#00B8E6",
-          success: "#4ADE80",
-          warning: "#FBBF24",
-          error: "#F87171",
+          bg: "#121211",
+          surface: "#181816",
+          "surface-alt": "#1e1e1b",
+          border: "#34332f",
+          text: "#ecebe6",
+          subtle: "#a9a79f",
+          accent: "#9fc2b0",
+          "accent-strong": "#bdd8c9",
+          success: "#a8c79a",
+          warning: "#d9b878",
+          error: "#e09a8f",
         },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "JetBrains Mono", "ui-monospace", "SFMono-Regular"],
+        mono: ["ui-monospace", "SFMono-Regular", "monospace"],
       },
       boxShadow: {
-        hud: "0 20px 40px -24px rgba(6, 182, 212, 0.35)",
+        hud: "none",
       },
       keyframes: {
         pulseGlow: {

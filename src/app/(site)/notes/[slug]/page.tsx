@@ -58,18 +58,18 @@ export default async function NotePage({ params }: NotePageProps) {
 
   return (
     <article className="space-y-10">
-      <header className="rounded-3xl border border-hud-border/60 bg-hud-surface/70 p-8">
-        <p className="text-xs uppercase tracking-[0.28em] text-hud-subtle">{published}</p>
+      <header className="rounded-lg border border-hud-border/60 bg-hud-surface/70 p-8">
+        <p className="text-xs  text-hud-subtle">{published}</p>
         <h1 className="mt-3 text-4xl font-semibold text-hud-text">{note.title}</h1>
         {note.summary ? (
           <p className="mt-3 max-w-2xl text-base text-hud-subtle">{note.summary}</p>
         ) : null}
         {note.tags?.length ? (
-          <div className="mt-4 flex flex-wrap gap-2 text-xs uppercase tracking-[0.18em] text-hud-subtle">
+          <div className="mt-4 flex flex-wrap gap-2 text-xs  text-hud-subtle">
             {note.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-hud-border/50 px-3 py-1"
+                className="rounded-md border border-hud-border/50 px-3 py-1"
               >
                 {tag}
               </span>
@@ -78,11 +78,11 @@ export default async function NotePage({ params }: NotePageProps) {
         ) : null}
       </header>
 
-      <section className="rounded-3xl border border-hud-border/60 bg-hud-surface/60 p-8">
+      <section className="rounded-lg border border-hud-border/60 bg-hud-surface/60 p-8">
         <MDXRenderer code={note.body.code} />
       </section>
 
-      <footer className="rounded-3xl border border-hud-border/60 bg-hud-surface/60 p-6 text-sm text-hud-subtle">
+      <footer className="rounded-lg border border-hud-border/60 bg-hud-surface/60 p-6 text-sm text-hud-subtle">
         <Link href="/notes" className="text-hud-accent transition hover:text-hud-accent-strong">
           ← Back to notes
         </Link>

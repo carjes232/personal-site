@@ -47,16 +47,33 @@ function buildPaletteItems(): PaletteItem[] {
 function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-12 flex flex-col gap-3 border-t border-hud-border/60 pb-8 pt-6 text-sm text-hud-subtle sm:flex-row sm:items-center sm:justify-between">
-      <span>© {year} Daniel Cárdenas. Firmware → AI systems.</span>
-      <div className="flex flex-wrap items-center gap-4">
-        <a href="https://github.com/carjes232" target="_blank" rel="noopener noreferrer">
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/dancarjes/" target="_blank" rel="noopener noreferrer">
-          LinkedIn
-        </a>
-        <a href="mailto:daniestebanc@hotmail.com">daniestebanc@hotmail.com</a>
+    <footer className="mt-20 border-t border-hud-border/70 pb-10 pt-8 text-sm text-hud-subtle">
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+        <div className="space-y-1">
+          <p className="font-display text-base text-hud-text">Daniel Cárdenas</p>
+          <p>Applied AI, backend and edge systems.</p>
+        </div>
+        <nav aria-label="Contact and profiles" className="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="mailto:daniestebanc@hotmail.com">Email</a>
+          <a href="https://github.com/carjes232" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/dancarjes/" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href="/resume.pdf">Résumé</a>
+        </nav>
+      </div>
+      <div className="mt-8 flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <span>© {year} Daniel Cárdenas</span>
+        <span className="flex flex-wrap gap-x-4 gap-y-1">
+          <a href="/profile" className="!text-hud-subtle hover:!text-hud-text">
+            Readable profile
+          </a>
+          <a href="/llms.txt" className="!text-hud-subtle hover:!text-hud-text">
+            Text index
+          </a>
+        </span>
       </div>
     </footer>
   );
@@ -66,25 +83,32 @@ export function HUDShell({ children }: { children: React.ReactNode }) {
   const paletteItems = buildPaletteItems();
 
   return (
-    <div className="relative min-h-screen overflow-hidden gradient-bg">
-      <div className="pointer-events-none absolute inset-0 hud-grid opacity-[0.08]" />
-      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col gap-8 px-4 pb-12 pt-4 sm:gap-10 sm:px-8 sm:pt-6 lg:px-12">
-        <header className="sticky top-3 z-30 flex flex-col gap-3 rounded-2xl border border-hud-border/50 bg-hud-surface/95 p-3 backdrop-blur-xl sm:top-4 sm:flex-row sm:items-center sm:justify-between sm:p-4">
-          <Link href="/" className="group shrink-0 space-y-0.5">
-            <p className="text-[10px] font-medium uppercase tracking-[0.32em] text-hud-subtle">
+    <div className="min-h-screen bg-hud-bg">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-hud-surface focus:px-4 focus:py-2"
+      >
+        Skip to content
+      </a>
+      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-4 sm:px-8 lg:px-10">
+        <header className="relative flex flex-col gap-4 border-b border-hud-border/70 py-5 sm:flex-row sm:items-center sm:justify-between sm:py-6">
+          <Link href="/" className="group shrink-0 !text-hud-text">
+            <span className="block font-display text-lg leading-tight transition group-hover:text-hud-accent-strong">
               Daniel Cárdenas
-            </p>
-            <p className="text-sm font-semibold text-hud-text transition group-hover:text-hud-accent">
-              Applied AI · Automation · Edge ML
-            </p>
+            </span>
+            <span className="block text-xs text-hud-subtle">
+              Applied AI · Backend · Edge systems
+            </span>
           </Link>
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-3 sm:gap-5">
             <Navigation items={NAV_ITEMS} />
             <CmdPalette items={paletteItems} />
           </div>
         </header>
 
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1 pt-10 sm:pt-14">
+          {children}
+        </main>
 
         <Footer />
       </div>

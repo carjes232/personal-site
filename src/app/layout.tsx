@@ -1,16 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { profile, SITE_URL } from "@/lib/profile";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
   display: "swap",
 });
 
@@ -21,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Daniel Cárdenas",
   },
   description:
-    "Daniel Cárdenas builds AI workflows that turn process shadowing into SOPs and flowcharts, automate employee follow-up calls, and deliver reviewable results.",
+    profile.summary,
   keywords: [
     "Firmware",
     "Embedded",
@@ -47,20 +42,19 @@ export const metadata: Metadata = {
     siteName: "Daniel Cárdenas — Applied AI Engineer",
     title: "Daniel Cárdenas — Applied AI Engineer",
     description:
-      "AI systems that shorten process documentation, automate employee follow-up, and turn uncertain inputs into useful, reviewable results.",
+      profile.summary,
   },
   twitter: {
     card: "summary_large_image",
     creator: "@carjes232",
   },
   manifest: "/site.webmanifest",
-  alternates: {
-    canonical: "https://danielcardenas.dev",
-  },
+  icons: { icon: "/icon.svg" },
+  alternates: { types: { "application/json": "/profile.json", "text/plain": "/llms.txt" } },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#06B6D4",
+  themeColor: "#121211",
 };
 
 export default function RootLayout({
@@ -70,8 +64,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": SITE_URL + "/#person",
+          name: profile.name,
+          url: SITE_URL,
+          jobTitle: "AI Engineer",
+          description: profile.summary,
+          sameAs: [profile.links.github, profile.links.linkedin],
+          knowsAbout: profile.skills,
+        }).replace(/</g, "\\u003c") }} />
+      </head>
       <body
-        className={`${inter.variable} ${jetBrainsMono.variable} bg-hud-bg text-hud-text antialiased`}
+        className={`${inter.variable} bg-hud-bg text-hud-text antialiased`}
       >
         {children}
       </body>

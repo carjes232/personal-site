@@ -1,0 +1,17 @@
+documentclass: extarticle
+fontsize: 9pt
+geometry: margin=1.15cm
+colorlinks: true
+linkcolor: black
+urlcolor: blue
+mainfont: TeX Gyre Heros
+pagestyle: empty
+header-includes:
+  - \usepackage{titlesec}
+  - \usepackage{enumitem}
+  - \titlespacing*{\section}{0pt}{5pt}{3pt}
+  - \titlespacing*{\subsection}{0pt}{7pt}{3pt}
+  - \titleformat{\section}{\Large\bfseries}{}{0pt}{}
+  - \titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+  - \setlength{\parskip}{3pt}
+  - \setlist[itemize]{noitemsep,topsep=2pt,parsep=0pt,leftmargin=13pt}

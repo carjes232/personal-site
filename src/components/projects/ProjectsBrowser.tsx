@@ -96,13 +96,13 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
         {(selectedTags.length > 0 || selectedTrack) ? ` (${projects.length} total)` : ""}
       </p>
 
-      <div className="rounded-3xl border border-hud-border/60 bg-hud-surface/70 p-6 lg:sticky lg:top-24 lg:z-20">
-        <div className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.28em] text-hud-subtle">
+      <div className="rounded-lg border border-hud-border/60 bg-hud-surface/70 p-6 lg:sticky lg:top-24 lg:z-20">
+        <div className="flex items-center gap-3 text-sm font-semibold  text-hud-subtle">
           <Filter className="size-4 text-hud-accent" /> Filters
         </div>
         <div className="mt-4 flex flex-col gap-5">
           <div>
-            <p className="text-xs uppercase tracking-[0.18em] text-hud-subtle">
+            <p className="text-xs  text-hud-subtle">
               Track
             </p>
             <div className="mt-2 flex flex-wrap gap-2">
@@ -123,7 +123,7 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
           </div>
           <button
             type="button"
-            className="self-start text-xs font-semibold uppercase tracking-[0.16em] text-hud-accent md:hidden"
+            className="self-start text-xs font-semibold  text-hud-accent md:hidden"
             aria-expanded={showTagFilters}
             aria-controls="project-tag-filters"
             onClick={() => setShowTagFilters((open) => !open)}
@@ -131,7 +131,7 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
             {showTagFilters ? "Hide tag filters" : `More filters${selectedTags.length ? ` (${selectedTags.length} selected)` : ""}`} ↓
           </button>
           <div id="project-tag-filters" className={cn(!showTagFilters && "hidden md:block")}>
-            <p className="text-xs uppercase tracking-[0.18em] text-hud-subtle">
+            <p className="text-xs  text-hud-subtle">
               Tags
             </p>
             <div className="mt-2 flex flex-wrap gap-2">
@@ -149,7 +149,7 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
             <button
               type="button"
               onClick={clearFilters}
-              className="inline-flex items-center gap-2 rounded-full border border-hud-border/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-hud-subtle transition hover:border-hud-accent/60 hover:text-hud-accent"
+              className="inline-flex items-center gap-2 rounded-md border border-hud-border/70 px-3 py-1.5 text-xs font-semibold  text-hud-subtle transition hover:border-hud-accent/60 hover:text-hud-accent"
             >
               <X className="size-3" /> Clear filters
             </button>
@@ -168,14 +168,14 @@ export function ProjectsBrowser({ projects, tags }: ProjectsBrowserProps) {
             <button
               type="button"
               onClick={() => setVisibleCount((count) => count + 9)}
-              className="mx-auto mt-10 block rounded-full border border-hud-accent/60 px-8 py-3 text-sm font-semibold text-hud-accent transition hover:bg-hud-accent/10"
+              className="mx-auto mt-10 block rounded-md border border-hud-accent/60 px-8 py-3 text-sm font-semibold text-hud-accent transition hover:bg-hud-accent/10"
             >
               Show more projects ({filteredProjects.length - visibleCount} remaining)
             </button>
           ) : null}
         </div>
       ) : (
-        <div className="rounded-3xl border border-dashed border-hud-border/70 bg-hud-surface/60 p-12 text-center text-sm text-hud-subtle">
+        <div className="rounded-lg border border-dashed border-hud-border/70 bg-hud-surface/60 p-12 text-center text-sm text-hud-subtle">
           No projects match this filter set. Try removing a tag or track.
         </div>
       )}
@@ -195,7 +195,7 @@ function FilterChip({ label, active, onClick }: ChipProps) {
       type="button"
       onClick={onClick}
       className={cn(
-        "rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] transition",
+        "rounded-md border px-3 py-1.5 text-xs font-semibold  transition",
         active
           ? "border-hud-accent/70 bg-hud-accent/20 text-hud-text"
           : "border-hud-border/50 text-hud-subtle hover:border-hud-accent/50 hover:text-hud-text",

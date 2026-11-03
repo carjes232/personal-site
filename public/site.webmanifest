@@ -1,0 +1,15 @@
+{
+  "name": "Daniel C\u00e1rdenas \u2014 AI & Systems Engineer",
+  "short_name": "Daniel C\u00e1rdenas",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#121211",
+  "theme_color": "#121211",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

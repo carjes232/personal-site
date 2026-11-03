@@ -1,164 +1,237 @@
-import { Brain, CircuitBoard, Cloud, Sparkles } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllProjects, getFeaturedProjects } from "@/lib/content";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ArrowUpRight } from "lucide-react";
+import {
+  getAllProjects,
+  getProjectBySlug,
+  type Project,
+  type ProjectTrack,
+} from "@/lib/content";
+import { getTrackVisual } from "@/lib/project-visuals";
 import { PortfolioHero } from "@/components/PortfolioHero";
 
-const TRACKS = [
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
+// Curated for breadth: agent platform, voice reliability, on-device vision in
+// the field, and a small backend service built around security boundaries.
+const FEATURED_SLUGS = [
+  "quiver-multimodal-agent-operations",
+  "sst-voice-agent-reliability",
+  "solenium-faceid-attendance-pwa",
+  "authenticated-cloud-share-service",
+];
+
+const AREAS: { track: ProjectTrack; title: string; description: string }[] = [
   {
-    title: "AI Automation",
+    track: "ai-backend",
+    title: "AI workflows and backends",
     description:
-      "AI workflows that gather process knowledge, create useful artifacts, and follow up on operational cases.",
-    icon: Brain,
-    highlights: ["RAG", "LLM evals", "FastAPI"],
-    href: "/projects?track=ai-backend",
+      "Agents, voice and document workflows, retrieval, evaluation, and the APIs and state that keep them honest.",
   },
   {
-    title: "Edge ML / Firmware",
+    track: "firmware",
+    title: "Embedded and edge ML",
     description:
-      "STM32, telemetry, OTA safety, and ML pipelines that connect real devices to cloud systems.",
-    icon: CircuitBoard,
-    highlights: ["STM32", "NILM", "MQTT"],
-    href: "/projects?track=firmware",
+      "STM32 and embedded Linux, telemetry, OTA safety, and models that have to run on the device.",
   },
   {
-    title: "Data Products",
+    track: "web-cloud",
+    title: "Web, cloud and data tools",
     description:
-      "Operational dashboards, reconciliation tools, and cloud-backed automations for business users.",
-    icon: Cloud,
-    highlights: ["Postgres", "Docker", "Reports"],
-    href: "/projects?track=web-cloud",
+      "Internal tools, reconciliation, workflow platforms, and small services with clear security boundaries.",
   },
 ];
 
-export default function HomePage() {
-  const featuredProjects = getFeaturedProjects();
-  const featured = [
-    "quiver-multimodal-agent-operations",
-    "sst-voice-agent-reliability",
-    "agentedge-slides-presentation-agent",
-    "lean360-crm-whitespace-intelligence",
-  ]
-    .map((slug) => featuredProjects.find((project) => project.slug === slug))
-    .filter((project): project is (typeof featuredProjects)[number] => Boolean(project));
+function SelectedWorkItem({ project }: { project: Project }) {
+  const track = getTrackVisual(project.track).label;
+  const evidence = project.results?.[0];
+  const titleId = `work-${project.slug}`;
 
   return (
-    <div className="space-y-12 sm:space-y-20">
-      <PortfolioHero />
-
-      <section aria-labelledby="measured-impact-title" className="grid gap-6 border-y border-hud-border/60 py-9 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)] lg:items-center lg:gap-12">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-hud-accent">Measured impact</p>
-          <p className="mt-3 text-6xl font-semibold leading-none tabular-nums text-hud-text sm:text-7xl">69%</p>
-          <p className="mt-2 text-sm text-hud-subtle">Lower observed cost per employee follow-up call</p>
+    <li>
+      <article
+        aria-labelledby={titleId}
+        className="group grid gap-3 border-t border-hud-border/70 py-8 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-10"
+      >
+        <div className="space-y-2">
+          <p className="text-xs text-hud-subtle">
+            {track}
+            <span aria-hidden="true"> · </span>
+            {new Date(project.date).getFullYear()}
+          </p>
+          <h3 id={titleId} className="font-display text-2xl font-medium leading-snug">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="!text-hud-text hover:!text-hud-accent-strong"
+            >
+              {project.title}
+            </Link>
+          </h3>
+          <p className="text-sm leading-relaxed text-hud-subtle">{project.role}</p>
         </div>
         <div className="space-y-4">
-          <h2 id="measured-impact-title" className="text-2xl font-semibold text-hud-text sm:text-3xl">Less manual chasing, more usable answers.</h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-hud-subtle">
-            Staff previously focused calls on longer absences because their time was limited. A voice agent can follow up on more lateness and absence cases, record each employee&apos;s reported reason, and give operations a reviewable result. A voicemail-detection improvement cut observed cost per call from $0.1275 to $0.0395; the $27.2K annual savings figure is a potential run rate at constant volume.
-          </p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-hud-accent">
-            <Link href="/projects/sst-voice-agent-reliability" className="hover:text-hud-accent-strong">How the voice workflow works →</Link>
-            <Link href="/projects/quiver-multimodal-agent-operations" className="hover:text-hud-accent-strong">How process documentation works →</Link>
-          </div>
+          <p className="text-base leading-relaxed text-hud-text/90">{project.summary}</p>
+          {evidence ? (
+            <p className="border-l-2 border-hud-accent/60 pl-3 text-sm leading-relaxed text-hud-subtle">
+              {evidence}
+            </p>
+          ) : null}
+          <Link
+            href={`/projects/${project.slug}`}
+            className="inline-flex items-center gap-1.5 text-sm font-medium"
+            aria-label={`Read case study: ${project.title}`}
+          >
+            Read case study
+            <ArrowUpRight aria-hidden="true" className="size-4" />
+          </Link>
         </div>
-      </section>
+      </article>
+    </li>
+  );
+}
 
-      <section className="space-y-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 className="text-2xl font-semibold text-hud-text sm:text-3xl">
-              Featured work
+export default function HomePage() {
+  const featured = FEATURED_SLUGS.map((slug) => getProjectBySlug(slug)).filter(
+    (project): project is Project => Boolean(project),
+  );
+  const projectCount = getAllProjects().length;
+
+  return (
+    <div className="space-y-24 sm:space-y-32">
+      <PortfolioHero />
+
+      <section id="work" aria-labelledby="work-title" className="scroll-mt-8">
+        <div className="flex flex-col gap-4 pb-8 sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-2xl space-y-3">
+            <h2 id="work-title" className="text-3xl text-hud-text sm:text-4xl">
+              Selected work
             </h2>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-hud-subtle">
-              Process documentation, employee follow-up, editable presentations,
-              and an advisory contribution to a data product. Each case study
-              explains my role and what the evidence supports.
+            <p className="text-base leading-relaxed text-hud-subtle">
+              Four projects that show the range: a document-agent platform,
+              voice-agent reliability, on-device vision in the field, and a
+              small service built around security boundaries. Each case study
+              says what I did and what the evidence supports.
             </p>
           </div>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 self-start text-sm font-semibold text-hud-accent transition hover:text-hud-accent-strong"
+            className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium"
           >
-            View all {getAllProjects().length} projects
-            <span aria-hidden>→</span>
+            All {projectCount} projects
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {featured.map((project, index) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              priority={index < 2}
-            />
+        <ol className="border-b border-hud-border/70">
+          {featured.map((project) => (
+            <SelectedWorkItem key={project.slug} project={project} />
           ))}
-        </div>
+        </ol>
       </section>
 
-      <section className="rounded-3xl border border-hud-border/60 bg-hud-surface/80 p-8 sm:p-10 backdrop-blur-sm">
-        <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-hud-subtle">
-          Primary tracks
-        </h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {TRACKS.map(({ title, description, icon: Icon, highlights, href }) => (
-            <Link
-              key={title}
-              href={href}
-              className="hud-panel group flex flex-col gap-4 rounded-2xl p-6 transition hover:border-hud-accent/50 hover:shadow-hud"
-            >
-              <div className="flex items-center gap-3">
-                <span className="flex size-10 items-center justify-center rounded-xl bg-hud-border/40 transition group-hover:bg-hud-accent/15">
-                  <Icon className="size-5 text-hud-accent" />
-                </span>
-                <h3 className="text-lg font-semibold text-hud-text">{title}</h3>
-              </div>
-              <p className="text-sm leading-relaxed text-hud-subtle">{description}</p>
-              <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.18em] text-hud-subtle">
-                {highlights.map((highlight) => (
-                  <span
-                    key={highlight}
-                    className="rounded-full border border-hud-border/50 px-2.5 py-1"
-                  >
-                    {highlight}
-                  </span>
-                ))}
-              </div>
-              <span className="mt-auto text-xs font-semibold text-hud-accent opacity-0 transition group-hover:opacity-100">
-                Explore track →
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden rounded-3xl border border-hud-border/60 bg-hud-surface/85 p-10 sm:p-12 backdrop-blur-sm">
-        <div className="absolute inset-0 bg-gradient-to-br from-hud-accent/5 to-hud-accent-strong/5" />
-        <div className="relative flex flex-col gap-6 text-center">
-          <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-hud-accent/20">
-            <Sparkles className="size-8 text-hud-accent" />
-          </div>
-          <h2 className="text-2xl font-semibold leading-tight text-hud-text sm:text-3xl">
-            Need AI automation that survives production?
+      <section aria-labelledby="evidence-title" className="space-y-10">
+        <div className="max-w-2xl space-y-3">
+          <h2 id="evidence-title" className="text-3xl text-hud-text sm:text-4xl">
+            Evidence, with its limits
           </h2>
-          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-hud-subtle">
-            I help teams turn messy documents, device telemetry, and business
-            processes into maintainable AI systems with clear APIs, measurable
-            quality, and deployable demos.
+          <p className="text-base leading-relaxed text-hud-subtle">
+            Numbers in my case studies come with their scope attached. One
+            example, from the employee follow-up voice agent:
           </p>
-          <div className="mt-2 flex flex-col justify-center gap-4 sm:flex-row">
+        </div>
+
+        <div className="grid gap-10 rounded-lg border border-hud-border/80 bg-hud-surface p-6 sm:p-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-14">
+          <div>
+            <p className="font-display text-6xl leading-none tabular-nums text-hud-text sm:text-7xl">
+              <span aria-hidden="true">≈70%</span>
+              <span className="sr-only">About 70 percent</span>
+            </p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-hud-subtle">
+              lower recorded mean cost among costed calls, comparing
+              retrospective cohorts before and after a voicemail-detection fix
+            </p>
+          </div>
+
+          <div className="space-y-6 text-sm leading-relaxed">
+            <p className="text-base text-hud-text/90">
+              In one export, 284 of 909 calls ran to the time limit while the
+              agent kept answering a voicemail greeting. After the detection
+              fix, mean recorded cost among calls with billing data fell about
+              70.1%.
+            </p>
+            <dl className="grid gap-5 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <dt className="font-medium text-hud-text">What it shows</dt>
+                <dd className="text-hud-subtle">
+                  Lower recorded cost after the change, and in a later
+                  seven-week window no recorded call lasted 590 seconds or
+                  more; shorter maximum-duration endings still occurred.
+                </dd>
+              </div>
+              <div className="space-y-1.5">
+                <dt className="font-medium text-hud-text">What it doesn&apos;t</dt>
+                <dd className="text-hud-subtle">
+                  A causal or invoice-reconciled saving: some calls lack billing
+                  records and the call mix changed. The separate 80.73% prompt
+                  reduction comes from 12 synthetic test cases, not voice bills.
+                </dd>
+              </div>
+            </dl>
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-hud-accent px-8 py-3 text-sm font-semibold !text-hud-bg shadow-lg shadow-hud-accent/25 transition hover:bg-hud-accent-strong hover:!text-hud-bg hover:scale-[1.02]"
+              href="/projects/sst-voice-agent-reliability"
+              className="inline-flex items-center gap-1.5 font-medium"
             >
-              Contact
-            </Link>
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-hud-border/70 bg-hud-surface/50 px-8 py-3 text-sm font-semibold text-hud-accent backdrop-blur-sm transition hover:border-hud-accent/80 hover:bg-hud-accent/10"
-            >
-              Review projects
+              Read the voice-agent case study
+              <ArrowUpRight aria-hidden="true" className="size-4" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="background-title" className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+        <div className="space-y-5">
+          <h2 id="background-title" className="text-3xl text-hud-text sm:text-4xl">
+            Background
+          </h2>
+          <p className="text-base leading-relaxed text-hud-text/90">
+            I came to AI through physics and firmware: registers, timing, and
+            sensors that behave differently in the field than on the bench.
+            That habit of checking what a system is actually doing carries
+            into model work, where the hard part is usually the state around
+            the model: retries, partial records, human review, and delivery.
+          </p>
+          <p className="text-base leading-relaxed text-hud-subtle">
+            Today that means agent and voice workflows at Lean Tech. Before
+            that it meant smart-meter ML and on-device vision at Solenium.
+            I like problems that cross those boundaries.
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-sm font-medium">
+            <Link href="/about">More about me</Link>
+            <a href="mailto:daniestebanc@hotmail.com">daniestebanc@hotmail.com</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-medium text-hud-subtle">Areas of work</h3>
+          <ul className="mt-4 divide-y divide-hud-border/60 border-y border-hud-border/60">
+            {AREAS.map(({ track, title, description }) => (
+              <li key={track}>
+                <Link
+                  href={`/projects?track=${track}`}
+                  className="group block py-5 !text-hud-text"
+                >
+                  <span className="flex items-baseline justify-between gap-4">
+                    <span className="font-medium group-hover:text-hud-accent-strong">{title}</span>
+                    <span aria-hidden="true" className="text-hud-subtle group-hover:text-hud-accent-strong">→</span>
+                  </span>
+                  <span className="mt-1.5 block text-sm leading-relaxed text-hud-subtle">
+                    {description}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </div>

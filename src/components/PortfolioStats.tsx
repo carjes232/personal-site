@@ -22,23 +22,23 @@ export function PortfolioStats() {
       {stats.map(({ label, value }) => (
         <div
           key={label}
-          className="rounded-2xl border border-hud-border/50 bg-hud-surface/60 px-5 py-4 backdrop-blur-sm"
+          className="rounded-lg border border-hud-border/80 bg-hud-surface px-5 py-4"
         >
-          <p className="text-3xl font-semibold tabular-nums text-hud-text">{value}</p>
-          <p className="mt-1 text-xs uppercase tracking-[0.22em] text-hud-subtle">
+          <p className="font-display text-3xl tabular-nums text-hud-text">{value}</p>
+          <p className="mt-1 text-sm text-hud-subtle">
             {label}
           </p>
         </div>
       ))}
-      <div className="sm:col-span-3 rounded-2xl border border-hud-border/50 bg-hud-surface/40 px-5 py-4">
-        <p className="text-xs uppercase tracking-[0.22em] text-hud-subtle">
+      <div className="sm:col-span-3 rounded-lg border border-hud-border/80 bg-hud-surface px-5 py-4">
+        <p className="text-sm text-hud-subtle">
           Work by track
         </p>
         <div className="mt-3 flex flex-wrap gap-3">
           {trackCounts.map(({ label, count }) => (
             <span
               key={label}
-              className="inline-flex items-center gap-2 rounded-full border border-hud-border/60 bg-hud-bg/30 px-3 py-1.5 text-xs text-hud-subtle"
+              className="inline-flex items-center gap-2 rounded-md border border-hud-border/80 px-3 py-1.5 text-xs text-hud-subtle"
             >
               <span className="font-semibold tabular-nums text-hud-text">{count}</span>
               {label}

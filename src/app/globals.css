@@ -2,17 +2,22 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-hud-bg: #0a0a0f;
-  --color-hud-surface: #13131a;
-  --color-hud-surface-alt: #1a1a24;
-  --color-hud-border: #2a2a35;
-  --color-hud-text: #f8fafc;
-  --color-hud-subtle: #94a3b8;
-  --color-hud-accent: #00d4ff;
-  --color-hud-accent-strong: #00b8e6;
-  --color-hud-success: #4ade80;
-  --color-hud-warning: #fbbf24;
-  --color-hud-error: #f87171;
+  /*
+   * Token names keep the historical `hud-*` prefix so every route and
+   * component keeps working; the values define the calmer rebrand palette:
+   * warm graphite, paper-toned text, one restrained sage accent.
+   */
+  --color-hud-bg: #121211;
+  --color-hud-surface: #181816;
+  --color-hud-surface-alt: #1e1e1b;
+  --color-hud-border: #34332f;
+  --color-hud-text: #ecebe6;
+  --color-hud-subtle: #a9a79f;
+  --color-hud-accent: #9fc2b0;
+  --color-hud-accent-strong: #bdd8c9;
+  --color-hud-success: #a8c79a;
+  --color-hud-warning: #d9b878;
+  --color-hud-error: #e09a8f;
 }
 
 :root {
@@ -29,6 +34,27 @@ body {
   @apply min-h-screen;
 }
 
+@layer base {
+  h1,
+  h2,
+  .font-display {
+    font-family: var(--font-serif), ui-serif, Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-hud-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
 a {
   @apply text-hud-accent transition-colors duration-200;
 }
@@ -39,8 +65,8 @@ a:focus-visible {
 }
 
 ::selection {
-  background-color: rgba(0, 212, 255, 0.25);
-  color: #f8fafc;
+  background-color: rgba(159, 194, 176, 0.3);
+  color: #ecebe6;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -53,12 +79,9 @@ a:focus-visible {
 }
 
 @layer utilities {
+  /* Retired HUD utilities are kept as quiet aliases for routes that still use them. */
   .hud-panel {
-    @apply bg-hud-surface/95 border border-hud-border/60 backdrop-blur-xl;
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      0 2px 8px rgba(0, 212, 255, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    @apply bg-hud-surface border border-hud-border/80;
   }
 
   .hud-border {
@@ -66,81 +89,43 @@ a:focus-visible {
   }
 
   .hud-grid {
-    background-image: linear-gradient(
-        rgba(42, 42, 53, 0.08) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(42, 42, 53, 0.06) 1px,
-        transparent 1px
-      );
-    background-size: 20px 20px;
+    background-image: none;
   }
 
   .gradient-bg {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 212, 255, 0.1) 0%,
-      rgba(0, 184, 230, 0.05) 25%,
-      rgba(19, 19, 26, 0.8) 50%,
-      rgba(0, 212, 255, 0.05) 75%,
-      rgba(0, 184, 230, 0.1) 100%
-    );
+    @apply bg-hud-bg;
   }
 
   .glass-effect {
-    background: rgba(19, 19, 26, 0.8);
-    backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply bg-hud-surface border border-hud-border/80;
   }
 
   .glow-effect {
-    box-shadow:
-      0 0 20px rgba(0, 212, 255, 0.3),
-      0 0 40px rgba(0, 212, 255, 0.1),
-      0 0 80px rgba(0, 212, 255, 0.05);
+    box-shadow: none;
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #f8fafc 0%, #00d4ff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: inherit;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.14em] text-hud-subtle;
   }
 
   .skeleton {
     @apply animate-pulse bg-hud-border/40 rounded;
   }
 
-  .loading-shimmer {
-    background: linear-gradient(
-      90deg,
-      rgba(19, 19, 26, 0.8) 0%,
-      rgba(42, 42, 53, 0.6) 50%,
-      rgba(19, 19, 26, 0.8) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-  }
-
   .animate-fade-in {
-    animation: fadeIn 0.5s ease-out both;
+    animation: fadeIn 0.4s ease-out both;
   }
 
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(8px);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 }

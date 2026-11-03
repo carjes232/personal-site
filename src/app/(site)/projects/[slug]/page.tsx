@@ -15,6 +15,7 @@ import {
 } from "@/lib/content";
 import { Badge } from "@/components/Badge";
 import { MDXRenderer } from "@/components/MDXRenderer";
+import { getProjectCover } from "@/lib/project-visuals";
 import { ProjectCoverArt } from "@/components/ProjectCoverArt";
 
 function minutesToRead(project: Project) {
@@ -66,8 +67,8 @@ export async function generateMetadata({
 
 function ConfidentialCallout({ context }: { context?: string }) {
   return (
-    <div className="rounded-2xl border border-yellow-500/40 bg-yellow-500/10 p-4 text-sm text-yellow-100">
-      <p className="font-semibold uppercase tracking-[0.2em]">Confidential Context</p>
+    <div className="rounded-md border-l-2 border-hud-accent/60 bg-hud-surface p-4 text-sm text-hud-subtle">
+      <p className="font-semibold ">Confidential Context</p>
       <p className="mt-2">
         This case study is sanitized. Client data and proprietary integrations are omitted.
         {context ? ` ${context}` : ""}
@@ -89,7 +90,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <article className="space-y-10">
-      <div className="relative overflow-hidden rounded-3xl border border-hud-border/60">
+      {getProjectCover(project) ? <div className="relative overflow-hidden rounded-lg border border-hud-border/60">
         <ProjectCoverArt
           project={project}
           variant="hero"
@@ -97,10 +98,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           sizes="100vw"
           priority
         />
-      </div>
+      </div> : null}
 
-      <header className="space-y-6 rounded-3xl border border-hud-border/60 bg-hud-surface/70 p-8">
-        <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.28em] text-hud-subtle">
+      <header className="space-y-6 border-b border-hud-border/70 pb-8">
+        <div className="flex flex-wrap items-center gap-3 text-xs  text-hud-subtle">
           <span>
             {new Date(project.date).toLocaleDateString(undefined, {
               year: "numeric",
@@ -129,7 +130,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {project.tags?.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-hud-border/50 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-hud-subtle"
+                  className="rounded-md border border-hud-border/50 px-3 py-1 text-[11px]  text-hud-subtle"
                 >
                   {tag}
                 </span>
@@ -138,12 +139,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-3">
+          <a href={`/projects/${project.slug}/source`} className="text-sm text-hud-accent underline">Read as plain text</a>
           {project.repo ? (
             <a
               href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-hud-border/70 px-4 py-2 text-sm font-semibold text-hud-accent transition hover:border-hud-accent/60 hover:text-hud-accent-strong"
+              className="inline-flex items-center gap-2 rounded-md border border-hud-border/70 px-4 py-2 text-sm font-semibold text-hud-accent transition hover:border-hud-accent/60 hover:text-hud-accent-strong"
             >
               <ExternalLink className="size-4" /> Repository
             </a>
@@ -153,7 +155,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-hud-border/70 px-4 py-2 text-sm font-semibold text-hud-accent transition hover:border-hud-accent/60 hover:text-hud-accent-strong"
+              className="inline-flex items-center gap-2 rounded-md border border-hud-border/70 px-4 py-2 text-sm font-semibold text-hud-accent transition hover:border-hud-accent/60 hover:text-hud-accent-strong"
             >
               <ExternalLink className="size-4" /> Demo
             </a>
@@ -163,8 +165,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <ConfidentialCallout context={project.context} />
         ) : null}
         {project.results?.length ? (
-          <div className="mt-6 rounded-2xl border border-hud-border/60 bg-hud-surface-alt/80 p-4">
-            <p className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-hud-subtle">
+          <div className="mt-6 rounded-lg border border-hud-border/60 bg-hud-surface-alt/80 p-4">
+            <p className="flex items-center gap-2 text-xs  text-hud-subtle">
               <FileBadge2 className="size-4 text-hud-accent" /> Outcomes
             </p>
             <ul className="mt-3 grid gap-2 text-sm text-hud-text md:grid-cols-2">
@@ -181,11 +183,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         ) : null}
       </header>
 
-      <section className="space-y-10 rounded-3xl border border-hud-border/60 bg-hud-surface/60 p-8">
+      <section className="mx-auto max-w-3xl space-y-10 py-4">
         <MDXRenderer code={project.body.code} />
       </section>
 
-      <nav className="flex flex-col gap-4 rounded-3xl border border-hud-border/60 bg-hud-surface/60 p-6 text-sm sm:flex-row sm:justify-between">
+      <nav className="flex flex-col gap-4 border-t border-hud-border/70 py-6 text-sm sm:flex-row sm:justify-between">
         <div>
           {neighbours.previous ? (
             <Link

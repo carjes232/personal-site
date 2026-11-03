@@ -101,19 +101,19 @@ export function CmdPalette({ items }: CmdPaletteProps) {
       <Dialog.Trigger asChild>
         <button
           type="button"
-          className="absolute right-3 top-3 flex size-9 items-center justify-center gap-2 rounded-full border border-hud-border/70 bg-hud-surface-alt/80 text-sm text-hud-subtle transition hover:border-hud-accent/60 hover:text-hud-text sm:static sm:size-auto sm:px-4 sm:py-2"
+          className="absolute right-3 top-3 flex size-9 items-center justify-center gap-2 rounded-md border border-hud-border/70 bg-hud-surface-alt/80 text-sm text-hud-subtle transition hover:border-hud-accent/60 hover:text-hud-text sm:static sm:size-auto sm:px-4 sm:py-2"
           aria-label="Search portfolio"
         >
           <Search className="size-4 text-hud-accent" />
           <span className="hidden sm:inline">Search</span>
-          <span className="hidden rounded bg-hud-border/80 px-2 py-0.5 text-[10px] uppercase tracking-[0.18em] text-hud-subtle md:inline">⌘K</span>
+          <span className="hidden rounded bg-hud-border/80 px-2 py-0.5 text-[10px]  text-hud-subtle md:inline">⌘K</span>
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" />
         <Dialog.Content className="fixed inset-x-0 top-[10%] z-50 mx-auto w-full max-w-2xl">
           <Command
-            className="hud-panel overflow-hidden rounded-3xl bg-hud-surface/95 shadow-xl"
+            className="hud-panel overflow-hidden rounded-lg bg-hud-surface/95 shadow-xl"
           >
             <div className="flex items-center gap-2 border-b border-hud-border/60 p-3 text-sm">
               <CommandIcon className="size-4 text-hud-accent" />
@@ -124,7 +124,7 @@ export function CmdPalette({ items }: CmdPaletteProps) {
                 onValueChange={setQuery}
                 autoFocus
               />
-              <span className="rounded bg-hud-border/80 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-hud-subtle">
+              <span className="rounded bg-hud-border/80 px-2 py-1 text-[10px]  text-hud-subtle">
                 ⌘K
               </span>
             </div>

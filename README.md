@@ -1,81 +1,41 @@
-# Daniel Cárdenas — Playable Portfolio
+# Daniel Cárdenas — professional portfolio
 
-Next.js App Router site showcasing firmware, backend, and AI/RAG case studies with a HUD-inspired UI. Content lives in MDX, filtered via Contentlayer 2, and the XP system rewards interactions (project reads, repo/demo clicks, notes).
+A personal portfolio spanning applied AI, backend/data systems and embedded engineering. Case studies explain contribution, implementation, evidence and limitations; company source material and private operational records stay outside this repository.
 
-## Stack
+## Stack and development
 
-- **Framework**: Next.js 15 (App Router, React 19)
-- **Styling**: Tailwind CSS v4 with a dark HUD theme
-- **Content**: Contentlayer2 loading MDX case studies and notes
-- **Animations**: Framer Motion accents
-- **Command Palette**: `cmdk` + Fuse.js search
-- **Icons**: Lucide
+Next.js App Router, React, TypeScript, Tailwind CSS and Contentlayer 2.
 
-## Local development
+    npm ci
+    npm run dev
 
-```bash
-npm install
-npm run dev
-```
+Validation:
 
-Contentlayer generates types on demand. If you add MDX files while the dev server is running, the loader will pick them up automatically.
+    npm run lint
+    npm run build
 
-## Authoring content
+On a shared host, bound build workers and use the existing capacity/admission procedure rather than unrestricted parallel builds.
 
-- Projects live in `src/content/projects/*.mdx`
-- Notes live in `src/content/notes/*.mdx`
-- Frontmatter is validated in `contentlayer.config.ts` and surfaces computed fields (slug, reading time, etc.)
+## Content and profile
 
-Run a build to fail fast on invalid front‑matter:
+- Public case studies: src/content/projects/*.mdx.
+- Notes: src/content/notes/*.mdx.
+- Schema: contentlayer.config.ts.
+- Public profile facts: src/lib/profile.ts.
+- Corrected English CV source: resume/resume_daniel_cardenas.md.
+- Rebuild public/resume.pdf with: bash resume/build-public.sh (requires pandoc and xelatex).
 
-```bash
-npm run build
-```
+Keep experience, attribution and languages aligned across these surfaces. Portuguese is A2–B1, self-assessed. Synthetic reductions, observational comparisons and hypothetical projections must retain their scope. Platform activity is not personal output; delivered artifacts are not automatically accepted customer outcomes.
 
-## XP system
+## Readable formats and discovery
 
-XP is stored locally (`localStorage`) and updated via custom events. The progress bar listens to `xp:update` events dispatched by helpers in `src/lib/xp.ts`. New interactions can award XP by importing `awardXP` or reusing `AwardLink` for links.
+- /profile: server-rendered professional summary.
+- /profile.json: versioned JSON profile and project index.
+- /llms.txt: plain-text project discovery index.
+- /projects/{slug}/source: text generated from the same public MDX body as each case study.
+- /robots.txt and /sitemap.xml: public crawl discovery.
+- /og/{slug}: project social previews.
 
-## OG images
+The text index is a convenience convention, not a search-ranking or model-ingestion guarantee. These routes contain only public profile and case-study content. Do not add private evidence paths, client data, credentials or internal records to public assets or metadata.
 
-Dynamic images for projects are generated at `/og/[slug]` using `next/og`. Project metadata wires the image into Open Graph + Twitter cards.
-
-## Project structure
-
-```
-src/
-  app/
-    (site)/
-      page.tsx                 # Home
-      projects/
-        page.tsx               # Projects index with filters
-        [slug]/page.tsx        # MDX-rendered case study
-      notes/
-        page.tsx               # Notes index
-        [slug]/page.tsx        # Note detail
-      about/page.tsx
-      contact/page.tsx
-    og/[slug]/route.tsx        # Dynamic OG images
-  components/
-    HUDShell.tsx               # Shared HUD chrome + command palette trigger
-    ProjectCard.tsx
-    NoteCard.tsx
-    Badge.tsx
-    XPBar.tsx
-    CmdPalette.tsx
-    AwardLink.tsx
-    projects/
-      ProjectsBrowser.tsx
-      ProjectXPTracker.tsx
-    notes/
-      NoteXPTracker.tsx
-  content/                      # MDX sources
-  lib/
-    content.ts                  # Content helpers (sorting, tracks, tags)
-    xp.ts                       # XP storage helpers
-    utils.ts                    # `cn` helper
-```
-
-## Pending enhancements (backlog)
-
-Refer to the spec for v1.1+ items: Spanish i18n, contact API, sitemap, analytics dashboard, Solenium project writeups, and admin revalidation controls.
+Existing project URLs remain stable. UI changes should preserve server-rendered content, keyboard access and reduced-motion preferences.

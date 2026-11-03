@@ -10,8 +10,8 @@ tags:
   - "Microsoft Teams"
   - "Document Automation"
 track: "ai-backend"
-role: "Lead engineer — agent platform, presentation pipeline, and quality gates"
-summary: "Built a separate presentation agent alongside Quiver that turns source material into editable, template-controlled slides with source isolation, visual checks, and consent-aware delivery."
+role: "Contributor — agent integration, presentation pipeline, and quality gates"
+summary: "Engineering work on a separate presentation agent alongside Quiver that turns source material into editable, template-controlled slides with source isolation, visual checks, and consent-aware delivery."
 context: "Internal work, updated November 2026. The core Slides service is deployed; template, library, renderer and future changes retain separate validation gates. Private templates and customer content are omitted."
 results:
   - "Separate agent identity, workspace, ledger, and source mounts from Quiver"
@@ -36,11 +36,11 @@ Visual quality remains an ongoing engineering responsibility. A successful rende
 
 ## Why a separate agent
 
-Quiver produces governed procedures and flowcharts. Presentations need a different planning and validation path: slide selection, page capacity, visual fit, and editable PowerPoint structure. I built AgentEdge Slides as a separate agent within the broader Quiver platform, with its own identity and state instead of treating a deck as another document export.
+Quiver produces governed procedures and flowcharts. Presentations need a different planning and validation path: slide selection, page capacity, visual fit, and editable PowerPoint structure. AgentEdge Slides runs as a separate agent within the broader Quiver platform, with its own identity and state instead of treating a deck as another document export.
 
 ## My contribution
 
-I led the Slides agent and its platform integration. The implementation includes a dedicated agent workspace and control plugin, a Python presentation pipeline, a template and layout catalog, source staging, session isolation, and shared Teams delivery controls. I also worked on quality and lifecycle fixes after the initial scaffold.
+I worked on the Slides agent and its platform integration as part of a collaborative codebase; this describes my contribution, not sole authorship or a formal lead title. The implementation includes a dedicated agent workspace and control plugin, a Python presentation pipeline, a template and layout catalog, source staging, session isolation, and shared Teams delivery controls. I also worked on quality and lifecycle fixes after the initial scaffold.
 
 The model chooses the message, content, and suitable layout. Deterministic code then maps those choices into an approved template, builds an editable PPTX, renders every slide, checks content coverage and fit, and requires visual review before delivery. A revision creates a new artifact version rather than overwriting the prior one.
 
@@ -52,4 +52,4 @@ Earlier local qualification preceded the controlled production activation descri
 
 ## Interview summary
 
-I built a dedicated presentation agent inside the Quiver platform. It turns source material into editable, brand-template PowerPoint decks, then checks layout and rendered slides before consent-aware delivery. The engineering focus was trustworthy artifacts, isolated state, and recoverable delivery rather than text generation alone.
+I worked on a dedicated presentation agent inside the Quiver platform. It turns source material into editable, brand-template PowerPoint decks, then checks layout and rendered slides before consent-aware delivery. The engineering focus was trustworthy artifacts, isolated state, and recoverable delivery rather than text generation alone.

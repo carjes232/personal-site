@@ -3,6 +3,7 @@ import { getAllNotes } from "@/lib/content";
 import { NoteCard } from "@/components/NoteCard";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://danielcardenas.dev/notes" },
   title: "Lab Notes",
   description: "Benchmarks, experiments, and quick notes from Daniel Cárdenas.",
   openGraph: {

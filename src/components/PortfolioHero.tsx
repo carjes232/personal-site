@@ -1,77 +1,104 @@
 import Link from "next/link";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+
+const FACTS = [
+  {
+    term: "Now",
+    detail: "AI Engineer at Lean Tech, since February 2026",
+  },
+  {
+    term: "Before",
+    detail: "ML engineering and firmware at Solenium: smart meters and on-device vision",
+  },
+  {
+    term: "Trained in",
+    detail: "Engineering Physics, Universidad Nacional de Colombia",
+  },
+  {
+    term: "Based in",
+    detail: "Brazil, working remotely · Spanish, English, some Portuguese",
+  },
+];
 
 export function PortfolioHero() {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-hud-border/60 bg-hud-surface/80 p-6 sm:p-10 lg:p-12 backdrop-blur-sm">
-      <div className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-hud-accent/10 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-16 left-1/3 size-56 rounded-full bg-hud-accent-strong/10 blur-3xl" />
-
-      <div className="relative grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
-        <div className="space-y-6">
-          <p className="text-xs font-medium uppercase tracking-[0.32em] text-hud-accent">
-            Portfolio
-          </p>
-          <h1 className="text-4xl font-semibold leading-[1.1] text-hud-text sm:text-5xl lg:text-[3.25rem]">
-            <span className="text-gradient">Applied AI</span> built for real
-            workflows.
-          </h1>
-          <p className="max-w-2xl text-base leading-relaxed text-hud-subtle">
-            I&apos;m Daniel Cárdenas. I build agent and voice workflows,
-            document and data systems, and edge AI integrations. My work connects
-            models with evaluation, secure software boundaries and reliable
-            operations—from an offline device to a deployed service.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-hud-accent px-6 py-3 text-sm font-semibold !text-hud-bg shadow-lg shadow-hud-accent/20 transition hover:bg-hud-accent-strong hover:!text-hud-bg"
-            >
-              Browse case studies
-              <ArrowRight className="size-4" />
-            </Link>
-            <a
-              href="/resume.pdf"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-hud-border/70 px-6 py-3 text-sm font-semibold text-hud-text transition hover:border-hud-accent/60 hover:text-hud-accent"
-            >
-              Résumé
-            </a>
-          </div>
-          <div className="flex flex-wrap items-center gap-4 pt-2 text-sm text-hud-subtle">
+    <section
+      aria-labelledby="hero-title"
+      className="grid gap-12 pb-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)] lg:gap-16"
+    >
+      <div className="space-y-7">
+        <h1
+          id="hero-title"
+          className="text-5xl leading-[1.05] text-hud-text sm:text-6xl"
+        >
+          Daniel Cárdenas
+        </h1>
+        <p className="font-display text-2xl leading-snug text-hud-text/90 sm:text-[1.7rem]">
+          Applied AI engineer, working across backend services and edge
+          devices.
+        </p>
+        <p className="max-w-2xl text-base leading-relaxed text-hud-subtle sm:text-lg">
+          I build practical systems around models (agent and voice workflows,
+          APIs, embedded hardware) and I try to be precise about what the
+          evidence shows and what it doesn&apos;t.
+        </p>
+        <div className="flex flex-wrap items-center gap-3 pt-1">
+          <Link
+            href="#work"
+            className="inline-flex items-center gap-2 rounded-md bg-hud-text px-5 py-2.5 text-sm font-medium !text-hud-bg transition hover:bg-hud-accent-strong hover:!text-hud-bg"
+          >
+            Selected work
+            <ArrowDown aria-hidden="true" className="size-4" />
+          </Link>
+          <a
+            href="/resume.pdf"
+            className="inline-flex items-center rounded-md border border-hud-border px-5 py-2.5 text-sm font-medium !text-hud-text transition hover:border-hud-subtle"
+          >
+            Résumé (PDF)
+          </a>
+        </div>
+        <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+          <li>
             <a
               href="https://github.com/carjes232"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 transition hover:text-hud-accent"
+              className="inline-flex items-center gap-2 !text-hud-subtle hover:!text-hud-text"
             >
-              <Github className="size-4" /> GitHub
+              <Github aria-hidden="true" className="size-4" /> GitHub
             </a>
+          </li>
+          <li>
             <a
               href="https://www.linkedin.com/in/dancarjes/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 transition hover:text-hud-accent"
+              className="inline-flex items-center gap-2 !text-hud-subtle hover:!text-hud-text"
             >
-              <Linkedin className="size-4" /> LinkedIn
+              <Linkedin aria-hidden="true" className="size-4" /> LinkedIn
             </a>
+          </li>
+          <li>
             <a
               href="mailto:daniestebanc@hotmail.com"
-              className="inline-flex items-center gap-2 transition hover:text-hud-accent"
+              className="inline-flex items-center gap-2 !text-hud-subtle hover:!text-hud-text"
             >
-              <Mail className="size-4" /> Email
+              <Mail aria-hidden="true" className="size-4" /> Email
             </a>
-          </div>
-        </div>
-
-        <div className="hidden border-l border-hud-border/70 pl-8 lg:block" aria-label="Selected work">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-hud-accent">Selected work</p>
-          <div className="mt-6 space-y-6">
-            <p className="border-b border-hud-border/50 pb-5 text-lg leading-snug text-hud-text">Document and voice agents with human review</p>
-            <p className="border-b border-hud-border/50 pb-5 text-lg leading-snug text-hud-text">Evidence-led evaluation and reliable operations</p>
-            <p className="text-lg leading-snug text-hud-text">Edge ML, computer vision and offline systems</p>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
+
+      <aside aria-label="Background at a glance" className="lg:border-l lg:border-hud-border/70 lg:pl-10">
+        <dl className="divide-y divide-hud-border/60 border-y border-hud-border/60 lg:border-t-0">
+          {FACTS.map(({ term, detail }) => (
+            <div key={term} className="grid grid-cols-[6.5rem_1fr] gap-4 py-4 text-sm">
+              <dt className="text-hud-subtle">{term}</dt>
+              <dd className="leading-relaxed text-hud-text">{detail}</dd>
+            </div>
+          ))}
+        </dl>
+      </aside>
     </section>
   );
 }

@@ -1,54 +1,50 @@
 # Daniel Esteban Cárdenas Jerez
-Applied AI Engineer — Voice Agents, Multimodal Workflows & RAG
+AI & Systems Engineer — Applied AI, Backend & Edge ML
 
-Brazil (Remote LATAM / Americas) · +57 318 884 8757
+Campinas, Brazil (Remote LATAM / Americas) · +55 (19) 99163-7317
 
 \mbox{daniestebanc@hotmail.com} · [linkedin.com/in/dancarjes](https://linkedin.com/in/dancarjes) · [github.com/carjes232](https://github.com/carjes232) · [dev.danielcardenas.dev](https://dev.danielcardenas.dev)
 
 ## Profile
 
-Applied AI engineer with 3+ years of professional AI/ML experience and 5+ years using Python. Builds workflows that shorten process documentation, automate employee follow-up, and turn AI output into reviewable decisions and artifacts.
+Engineering Physics graduate building practical AI systems across documents, voice workflows, operational data and connected devices. Combines Python/backend engineering with retrieval, evaluation, computer vision and embedded Linux. Turns model output into reviewable decisions through explicit state, authorization, provenance and failure handling.
 
 ## Experience
 
-**Lean Tech — AI Engineer** · Medellín · Feb 2026 – Present
+**Lean Tech — AI Engineer** · Remote · Feb 2026 – Present
 
-- Lead an agent workflow that turns process shadowing, source files, and revisions into editable SOPs and flowcharts, reducing manual drafting and keeping review in the same workflow.
-- Led a voice agent that extends employee follow-up beyond longer absences and gives operations reviewable reported reasons; a voicemail-detection change cut observed cost per call **69%** ($0.1275 to $0.0395), implying **$27.2K potential annual savings** at constant volume.
-- Advised on an existing CRM intelligence product's integrations and implemented focused Portal identity and delivery fixes; contributed a tested Microsoft Teams media-limit fix to OpenClaw.
+- Lead architecture, scope and release acceptance for a production Teams document assistant delivering editable SOPs, flowcharts and presentations; coordinate AI-assisted implementation of requester isolation, source tracking, revisions and consent-aware delivery.
+- Own reliability and evaluation improvements for an inherited, collaboratively developed Spanish-language voice platform. Retrospective cohorts showed **~70.1% lower mean recorded cost among costed calls** ($0.150631 → $0.045053); missing billing and cohort differences limit causal interpretation.
+- Design reproducible prompt evaluations, separate confirmed from ambiguous failures, and preserve inconclusive comparisons rather than claim model superiority.
+- Advise on CRM integration and contribute focused identity/delivery fixes; extend document and operational workflows with Python, TypeScript, APIs, SQL and human-review controls.
 
-**Solenium — ML Engineer (Edge AI & Computer Vision)** · Medellín · Jan 2025 – Feb 2026
+**Solenium — ML Engineer / Firmware Developer** · Medellín · Jan 2025 – Feb 2026
 
-- Led real-time energy-disaggregation systems with **sub-2-second inference** at 10 Hz.
-- Deployed FaceID with liveness detection, OCR, offline handling, telemetry, APIs, CI/CD, and monitoring across **6+ devices**.
+- Led the ML component of a smart-meter energy-disaggregation platform, integrating inference with embedded Linux/Yocto, telemetry, retraining and device recovery; historically reported operation at **10 Hz with sub-2-second inference**.
+- Developed field-attendance computer vision with face matching, liveness, OCR, offline handling and API integration; supported physical-device debugging and operational handover.
+- Championed AI coding-tool adoption and helped organize cross-functional prototyping workshops with technical and business stakeholders.
 
-**XM S.A. E.S.P — Python Data Engineer** · Medellín · Jul 2024 – Jan 2025
+**XM S.A. E.S.P. — Market Development Analyst** · Medellín · Jul 2024 – Jan 2025
 
-- Built an auditable Python/pandas reconciliation workbench for **100M+ records**, reducing processing from **4–6 hours to <30 minutes**.
-
-**Magnus — Machine Learning Engineer (LLM, RAG & Azure)** · Remote · Contract · May 2023 – Sep 2024
-
-- Shipped Azure-hosted LLM workflows supporting **300+ daily clinical-simulation queries** with **<3s latency**.
-- Built RAG and agents with FAISS, pgvector, Pinecone, LangGraph, tool calling, memory, FastAPI, recall@k evaluation, and quality dashboards.
+- Built Python/pandas reconciliation across databases, files and APIs, producing auditable reports and resolving operational discrepancies with stakeholders.
 
 ## Selected Projects
 
-- **Multilingual Multi-Hop RAG:** FastAPI, BGE-M3, pgvector/HNSW, LangGraph, and Docker; source citations, +18% Recall@5, and 4.9-second P95 latency.
-- **Document and presentation agents:** validated DOCX, flowcharts, and editable PPTX with source tracking, visual checks, and reviewable delivery; the Slides agent is in local qualification.
-- **AI-Native Multi-Agent Engineering:** cost-aware routing, worktree isolation, durable callbacks, independent acceptance, and human-gated releases.
+- **Multilingual RAG:** FastAPI, BGE-M3, pgvector, local models and source citations; retrieval and latency evaluation.
+- **Backend automation:** idempotent Python/SQLite ledger reconciliation, effective-dated policies, atomic writes, deterministic payment keys and regression checks.
+- **Agent/platform operations:** directed personal browser and messaging controls with identity rechecks, bounded queues and uncertainty-aware delivery; coordinated security reviews and Linux incident diagnosis with agent collaborators.
+- **Connected systems:** ESP32/Azure MQTT/TLS telemetry, camera/OCR monitoring and confirmed voice-to-inventory workflows.
 
 ## Technical Skills
 
-**Applied AI:** RAG, agents, LangGraph, LlamaIndex, Azure OpenAI, Gemini, Ollama, tool calling, structured outputs, guardrails, computer vision
+**AI & data:** Python, RAG, agents, Azure OpenAI, Gemini, LangGraph, evaluation, guardrails, OCR, PostgreSQL/pgvector, FAISS, Pinecone, SQLite, pandas
 
-**Retrieval & Evaluation:** pgvector, Pinecone, FAISS, HNSW, BGE-M3, recall@k, citations, embeddings, latency and quality monitoring
+**Product & platform:** FastAPI, Flask, TypeScript, React, Supabase, REST, MCP, Docker, CI/CD, Azure/AWS, Linux, audit trails, idempotency, access controls
 
-**Engineering:** Python 3.11+, FastAPI, Flask, SQLAlchemy, TypeScript, React/TanStack, PostgreSQL, SQLite, Supabase, MCP, Docker, CI/CD, Cloudflare Workers, Azure/AWS
+**Embedded:** C, STM32, FreeRTOS, ESP32, Yocto, MQTT, telemetry, OTA/recovery
 
-**AgentOps/LLMOps:** Multi-agent orchestration, Claude Code, OpenAI Codex, model routing, Git worktrees, tmux, durable callbacks, evaluation gates, human release controls
+## Education & Languages
 
-## Education & Certifications
+B.Sc. Engineering Physics — Universidad Nacional de Colombia, 2025 · IBM AI/Deep Learning and Generative AI certificates · AWS Academy Cloud Foundations
 
-B.Sc. Engineering Physics — Universidad Nacional de Colombia · 2025 · IBM Generative AI Engineering with LLMs · IBM AI Engineering · IBM Deep Learning · AWS Academy Cloud Foundations
-
-**Languages:** English — C1 Advanced · Spanish — Native · Portuguese — A2
+English — C1 (IELTS 7.0) · Spanish — Native · Portuguese — A2–B1 (self-assessed; not certified)
