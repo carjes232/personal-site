@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [],
   },
   reactStrictMode: true,
+  outputFileTracingRoot: process.cwd(),
 };
 
 export default withContentlayer(nextConfig);

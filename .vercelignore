@@ -1,0 +1,16 @@
+# Deploy the public application, not local authoring/evidence material.
+.git
+.review
+.env*
+resume
+profile-updates
+private-notes
+application-inputs
+outputs
+portfolio-evidence
+job-search
+security-review
+Profile.pdf
+upWork.md
+profile-recommendations.md
+src/content/repo-to-text_*.txt
